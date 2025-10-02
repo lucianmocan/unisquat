@@ -1,0 +1,451 @@
+[
+    {
+        "name": "UFR de Mathématiques-Informatique",
+        "id": 30626,
+        "isFavorite": false,
+        "roomLabels": {
+            "amphi": "Amphithéatres",
+            "td": "Salles de Cours - TD",
+            "tp": "Salles de TP",
+            "sem-irma": "Salles de Séminaires - réunions IRMA",
+            "sem-mai": "Salles de Séminaires - réunions MAI",
+            "specif": "Salles spécifiques"
+        },
+        "roomNames" : {
+            "amphi" : [
+                "Grand Amphi MAI Frenkel",
+                "Petit Amphi MAI"
+            ],
+            "td" : [
+                "C02 MAI",
+                "C03 MAI",
+                "C04 MAI",
+                "C05 MAI",
+                "C06 MAI",
+                "C07 MAI",
+                "C08 MAI",
+                "C09 MAI",
+                "C10 MAI",
+                "C11 MATH",
+                "C13 MAI",
+                "C14 MAI",
+                "C15 MAI",
+                "C31 MAI",
+                "C32 MAI",
+                "C33 MAI",
+                "C41 MAI",
+                "C42 MAI",
+                "C43 MAI",
+                "C44 MAI"
+            ],
+            "tp" : [
+                "T01 MAI",
+                "T02 MAI",
+                "T03 MAI",
+                "T04 MAI",
+                "T05 MAI",
+                "T11 MAI",
+                "T20 MAI",
+                "T21 MAI",
+                "T22 MAI",
+                "T23 MAI",
+                "T24 MAI",
+                "T40-GPI"
+            ],
+            "sem-irma" : [
+                "I-011 (R.D.C. I.R.E.M.)"
+            ],
+            "sem-mai" : [
+                "S. 309",
+                "S.112A",
+                "S.317",
+                "Salle du conseil 301"
+            ],
+            "specif" : [
+                "Salle Magistère"
+            ]
+        }
+    },
+    {
+            "name": "EOST (Descartes) - École et Observatoire des Sciences de la Terre",
+            "id": 30773,
+            "isFavorite": false,
+            "roomLabels": {
+                "amphi" : "Amphithéatres",
+                "specif" : "Salles spécifiques"
+            },
+            "roomNames" : {
+                "amphi" : [
+                    "Amphi Rothé"
+                ],
+                "specif" : [
+                    "Salle R02"
+                ]
+            }
+    },
+    {
+        "name": "Atrium",
+        "id": 5208,
+        "isFavorite": false,
+        "roomLabels": {
+            "amphi" : "Amphithéatres",
+            "media" : "Salles multimédia",
+            "hall" : "Hall"
+        },
+        "roomNames" : {
+            "amphi" : [
+                "AMPHI AT8 ATRIUM",
+                "AMPHI AT9 ATRIUM"
+            ],
+            "media" : [
+                "ATRIUM AT2",
+                "ATRIUM AT3",
+                "ATRIUM AT4"
+            ],
+            "hall" : [
+                "HALL ATRIUM"
+            ]
+        }
+    },
+    {
+        "name": "Faculté de Chimie",
+        "id": 30631,
+        "isFavorite": false,
+        "roomLabels": {
+                "amphi": "Amphitéatres",
+                "tp": "Salles de TP",
+                "info": "Salles informatiques",
+                "td-meet": "Salles de cours & de réunions",
+                "cafet": "Cafétéria"
+        },
+        "roomNames" : {
+            "amphi" : [
+                "Amphi Fischer",
+                "Amphi GUY OURISSON",
+                "Amphi Muller"
+            ],
+            "tp" : [
+                "TP 1er Nord de Synthèse Organique-Inorganique",
+                "TP 1er Sud de Synthèse Organique",
+                "TP 2ème Nord de Préparation à l'Agrégation",
+                "TP 2ème Sud de Synthèse Organique-Anorganique, Chimie Physique",
+                "TP 3ème Nord de Synthèse Organique-Anorganique,Chimie Physique",
+                "TP 3ème Sud de Chimie",
+                "TP 4ème Nord de Chimie Analytique",
+                "TP 4ème Sud de Chimie-Physique"
+            ],
+            "info" : [
+                "Salle Info 401N",
+                "Salle Info 401S",
+                "Salle Info 402N"
+            ],
+            "td-meet" : [
+                "Salle du Conseil - rdc sud",
+                "Salle des Séminaires - rdc sud",
+                "Salle Schutzenberger",
+                "Salle Gerhardt",
+                "Salle des Examens",
+                "Salle Master",
+                "C.A.V. 1",
+                "C.A.V. 2",
+                "Salle Kern",
+                "S27 Agrégation Chimie"
+            ],
+            "cafet" : [
+                "Cafétéria"
+            ]
+        }
+    },
+    {
+        "name": "Escarpe",
+        "id": 336,
+        "isFavorite": false,
+        "roomLabels" : {
+            "amphi" : "Amphitéatres",
+            "cuej" : "CUEJ",
+            "fedrech" : "Fédération de Recherche",
+            "other" : "Autres"
+        },
+        "roomNames" : {
+            "amphi" : [
+                "A. ORTSCHEIDT",
+                "AMPHI 23",
+                "AMPHI 24",
+                "AMPHI 29"
+            ],
+            "cuej" : [
+                "HORS CUEJ",
+                "S. BOCAL",
+                "S.204",
+                "S.205",
+                "S.206",
+                "S.207",
+                "S.210",
+                "S.211",
+                "S.229 / S.230",
+                "S.232 Mixage",
+                "S.233 Mixage",
+                "S.234-235 TV Std-Rég-1",
+                "S.238",
+                "S.239 Netia",
+                "S.241-242 Radio Std-Rég-2",
+                "S.243-244 Radio Std-Rég-1",
+                "S.245 Radio Montage 1",
+                "S.330 / S.332"
+            ],
+            "fedrech" : [
+                "S.313",
+                "S.339 - réservée exclusivement aux Masters 2 Recherche et aux doctorants - Domaine du Droit"
+            ],
+            "other" : [
+                "BIBLIOTHEQUE DE L'ESCARPE",
+                "HALL",
+                "S.0017",
+                "S.0019",
+                "S.0027",
+                "S.409",
+                "S.420",
+                "Salle Master Arts Visuels"
+            ]
+        }
+    },
+    {
+        "name": "Faculté de Droit",
+        "id": 304,
+        "isFavorite": false,
+        "roomLabels" : {
+            "amphis" : "Amphitéathres",
+            "cours" : "Salles de cours",
+            "meet" : "Salles de réunion",
+            "other" : "Salles divers",
+            "info" : "Salles informatiques"
+        },
+        "roomNames" : {
+            "amphis" : [
+                "Aubry et Rau",
+                "Bischoff",
+                "Carré de Malberg",
+                "Eisenmann"
+            ],
+            "cours" : [
+                "001",
+                "002",
+                "306",
+                "307",
+                "309",
+                "310",
+                "311",
+                "312",
+                "313",
+                "401",
+                "402",
+                "405",
+                "406",
+                "408",
+                "410 (M2 Dt social)",
+                "411 (DJCE)",
+                "412",
+                "413"
+            ],
+            "meet" : [
+                "301",
+                "Alex Weill",
+                "Robert Redslob"
+            ],
+            "other" : [
+                "AULA"
+            ],
+            "info" : [
+                "302",
+                "303",
+                "304",
+                "305"
+            ]
+        }
+    },
+    {
+        "name": "I.P.C.B",
+        "id": 30695,
+        "isFavorite": false,
+        "roomLabels" : {
+            "amphi" : "Amphitéathres",
+            "tp" : "Salles de TP"
+        },
+        "roomNames" : {
+            "amphi" : [
+                "IPCB R10 AMPHI Fred VL ÈS Rez-de-chaussée"
+            ],
+            "tp" : [
+                "Salle de TP 001 - Henry Duranton",
+                "Salle de TP 006 - Geneviève Lebeurier",
+                "Salle de TP 017 - Pierre Joly",
+                "Salle de TP 111 - Benoît Wurtz",
+                "Salle de TP 112 - Léon Hirth",
+                "Salle de TP 113 - Jean-Pierre Ebel",
+                "Salle de TP 114 - Jacques-Henri Weil",
+                "Salle de TP S19 - Fred Studinsky",
+                "Salle de TP S25 - Philippe Miahle",
+                "Salle de TP S26 - Paul Feltz"
+            ]
+        }
+    },
+    {
+        "name": "Institut Le Bel",
+        "id": 5188,
+        "isFavorite": false,
+        "roomLabels" : {
+            "amphi": "Amphitéathres",
+            "other": "Autres",
+            "lansad": "Pôle Lansad",
+            "enseignement" : "Salles Enseignement",
+            "meet" : "Salles de réunion",
+            "tp" : "Salles de TP"
+        },
+        "roomNames" : {
+            "amphi" : [
+                "A1",
+                "A2",
+                "A3",
+                "A4",
+                "A5",
+                "A6"
+            ],
+            "other" : [
+                "HALL",
+                "Jardin Intérieur",
+                "SAS LE BEL",
+                "Salle Demuyinck"
+            ],
+            "lansad" : [
+                "233 H",
+                "261 H",
+                "263 H",
+                "265 H",
+                "CL-255 H",
+                "CL-257 H"
+            ],
+            "enseignement" : [
+                "001H",
+                "009H",
+                "017H",
+                "023H",
+                "107H",
+                "115H",
+                "123H",
+                "131H",
+                "353H",
+                "361H",
+                "369H",
+                "S/sol -101H",
+                "S/sol -103H",
+                "S/sol -105H",
+                "S/sol -109H"
+            ],
+            "meet" : [
+                "018H",
+                "028H",
+                "034H",
+                "Salle Ourisson",
+                "Salle Vivien"
+            ],
+            "tp" : [
+                "044H",
+                "047H",
+                "061H",
+                "146H",
+                "147H",
+                "161H"
+            ]
+        }
+    },
+    {
+        "name": "Le Portique",
+        "id": 8824,
+        "isFavorite": false,
+        "roomLabels" : {
+            "cours" : "Salles spécifiques",
+            "music" : "Musique",
+            "info" : "Informatique",
+            "other" : "Autres"
+        },
+        "roomNames" : {
+            "cours": [
+                "POR-R 002",
+                "POR-R 008",
+                "POR-R 011",
+                "POR-R 014",
+                "POR-R 015",
+                "POR-R 017",
+                "POR-R 018",
+                "POR-R 201",
+                "POR-R 209",
+                "POR-R 210",
+                "POR-R 211",
+                "POR-R 213",
+                "POR-R 301 Salle Bernard MICHON",
+                "POR-R 303",
+                "POR-R 401",
+                "POR-R 410",
+                "POR-R 411",
+                "POR-R 412",
+                "POR-R 414",
+                "POR-R 415",
+                "POR-R 416"
+            ],
+            "music": [
+                "POR-R 001",
+                "POR-R 010",
+                "POR-R 012"
+            ],
+            "info": [
+                "POR-R 214"
+            ],
+            "other": [
+                "Salle d'évolution",
+                "HALL"
+            ]
+        }
+    },
+    {
+        "name": "Pangloss",
+        "id": 4480,
+        "isFavorite": false,
+        "roomLabels": {
+            "other" : "Autres",
+            "lansad" : "Pôle Lansad"
+        },
+        "roomNames": {
+            "other" : [
+                "108",
+                "224.TABLE OVALE",
+                "303",
+                "Amphi Pangloss",
+                "Espace Multimedia (213)",
+                "Hall PANGLOSS",
+                "Labo de langues (215)"
+            ],
+            "lansad" : [
+                "Salle 11",
+                "Salle 15",
+                "Salle Ankara",
+                "Salle Arsène Lupin (205)",
+                "Salle Athenes",
+                "Salle Bratislava",
+                "Salle Bruxelles",
+                "Salle Budapest",
+                "Salle Carmen (212)",
+                "Salle Emma Bovary (R08)",
+                "Salle Esmeralda (R04)",
+                "Salle Granada",
+                "Salle Irkoutsk",
+                "Salle Meursault (R07)",
+                "Salle Milano",
+                "Salle Passau",
+                "Salle Rouletabille (210)",
+                "Salle Simone de Beauvoir",
+                "Salle Zazie (208)",
+                "Salle d'Artagnan (R03)"
+            ]
+        }
+    }
+]
