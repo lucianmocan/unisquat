@@ -46,7 +46,9 @@ function formatAvailability(timeString: string | undefined, referenceNow: Date, 
     return 'Libre';
   }
 
-  const diffMinutes = Math.round((target.getTime() - referenceNow.getTime()) / 60000);
+  // Floor, not round — a countdown should never claim more time remains than actually does
+  // (rounding up would show e.g. "3h06" when only 3h05m20s is genuinely left).
+  const diffMinutes = Math.floor((target.getTime() - referenceNow.getTime()) / 60000);
   const duration = formatDuration(diffMinutes);
   return isFreeNow ? `< ${duration}` : `dans ${duration}`;
 }

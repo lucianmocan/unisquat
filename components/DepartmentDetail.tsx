@@ -145,6 +145,12 @@ export default function DepartmentDetail({
     }
   };
 
+  const handleResetToNow = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setIsLive(true);
+    setSelectedDate(new Date());
+  }, []);
+
   // Download and process iCal data when component mounts or department/date changes
   useEffect(() => {
     fetchData(false);
@@ -161,26 +167,15 @@ export default function DepartmentDetail({
     setLastDownloadKey('');
   }, [department.id, selectedDateKey]);
 
-  // While live, re-tick `selectedDate` exactly when a room's free/busy status could next
-  // change (the nearest event start/end), not on a fixed poll — so a countdown crossing zero
-  // flips Maintenant/Prochainement right away instead of lagging up to a minute behind. Capped
-  // at 60s so countdown labels still refresh even when nothing is imminent. Also re-ticks
-  // immediately when the app returns to the foreground, so a device clock change made while
-  // backgrounded (or just time passing while backgrounded) is picked up right away.
+  // While live, re-tick `selectedDate` every second so the displayed clock never visibly lags
+  // behind the device's real clock, and any Maintenant/Prochainement boundary crossing is
+  // picked up almost immediately. Also re-ticks right away when the app returns to the
+  // foreground, so a device clock change made while backgrounded is picked up instantly rather
+  // than waiting for the next tick.
   useEffect(() => {
     if (!isLive) return;
 
-    let timeout: ReturnType<typeof setTimeout>;
-    const scheduleNext = () => {
-      const now = new Date();
-      const msToBoundary = department.rooms ? DepartmentService.msUntilNextBoundary(department.rooms, now) : null;
-      const delay = Math.max(Math.min(msToBoundary ?? 60_000, 60_000), 1000);
-      timeout = setTimeout(() => {
-        setSelectedDate(new Date());
-        scheduleNext();
-      }, delay);
-    };
-    scheduleNext();
+    const interval = setInterval(() => setSelectedDate(new Date()), 1000);
 
     const subscription = AppState.addEventListener('change', (nextState) => {
       if (nextState === 'active') {
@@ -189,10 +184,10 @@ export default function DepartmentDetail({
     });
 
     return () => {
-      clearTimeout(timeout);
+      clearInterval(interval);
       subscription.remove();
     };
-  }, [isLive, department.rooms]);
+  }, [isLive]);
 
   return (
     <View style={styles.container}>
@@ -218,7 +213,6 @@ export default function DepartmentDetail({
 
           <View style={styles.heroActions}>
             <View style={styles.dateGroup}>
-              <ThemedText style={styles.pickerText}>Date :</ThemedText>
               {Platform.OS === 'ios' ? (
                 <DateTimePicker
                   value={selectedDate}
@@ -230,6 +224,9 @@ export default function DepartmentDetail({
                   // two different-looking times.
                   timeZoneName={Intl.DateTimeFormat().resolvedOptions().timeZone}
                   maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
+                  // The compact style bakes in its own leading padding — pull it back so the
+                  // control sits flush now that there's no label to its left.
+                  style={styles.iosDatePicker}
                 />
               ) : (
                 <>
@@ -275,6 +272,15 @@ export default function DepartmentDetail({
                     />
                   )}
                 </>
+              )}
+              {!isLive && (
+                <TouchableOpacity
+                  onPress={handleResetToNow}
+                  activeOpacity={0.7}
+                  accessibilityRole="button"
+                  accessibilityLabel="Reset to now">
+                  <IconSymbol name="arrow.clockwise" size={18} color={tintColor} />
+                </TouchableOpacity>
               )}
             </View>
             <TouchableOpacity
@@ -384,6 +390,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.sm,
+  },
+  iosDatePicker: {
+    marginLeft: -14,
   },
   // Matches the native compact DateTimePicker's own text size (iOS system body, 17pt).
   pickerText: {

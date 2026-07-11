@@ -38,6 +38,7 @@ const MAPPING = {
   'doc.text.fill': 'description',
   'line.3.horizontal.decrease.circle': 'filter-list',
   'calendar': 'event',
+  'arrow.clockwise': 'refresh',
 } as IconMapping;
 
 /**

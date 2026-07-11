@@ -29,27 +29,6 @@ export class DepartmentService {
   }
 
   /**
-   * Milliseconds until the nearest future room event boundary (a start or end time) — the next
-   * moment some room's free/busy status could actually change. Used to schedule availability
-   * re-ticks exactly when they matter instead of polling on a fixed interval.
-   */
-  static msUntilNextBoundary(rooms: Room[], now: Date): number | null {
-    const nowMs = now.getTime();
-    let closest: number | null = null;
-    for (const room of rooms) {
-      for (const event of room.roomEvents) {
-        for (const boundary of [event.start, event.end]) {
-          const t = new Date(boundary).getTime();
-          if (t > nowMs && (closest === null || t < closest)) {
-            closest = t;
-          }
-        }
-      }
-    }
-    return closest === null ? null : closest - nowMs;
-  }
-
-  /**
    * Download and parse iCal data for a department
    */
   static async downloadICalData(department: Department, selectedDate: Date = new Date()): Promise<Department> {
