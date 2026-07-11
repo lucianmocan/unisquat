@@ -29,20 +29,6 @@ export class DepartmentService {
   }
 
   /**
-   * Check if department data should be downloaded
-   */
-  static shouldDownloadData(department: Department): boolean {
-    if (!department.downloadTime) return true;
-
-    const downloadTime = new Date(department.downloadTime);
-    const now = new Date();
-    const minutesDiff = (now.getTime() - downloadTime.getTime()) / (1000 * 60);
-
-    // Download if data is older than 30 minutes
-    return minutesDiff > 30;
-  }
-
-  /**
    * Download and parse iCal data for a department
    */
   static async downloadICalData(department: Department, selectedDate?: Date): Promise<Department> {

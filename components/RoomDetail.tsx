@@ -1,16 +1,19 @@
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Radius } from '@/constants/theme';
+import { Card } from '@/components/ui/card';
+import { EmptyState } from '@/components/ui/empty-state';
+import { Radius, Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { cleanDescription } from '@/services/DepartmentService';
 import { Room, RoomEvent } from '@/types';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, Platform, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface RoomDetailProps {
   room: Room;
 }
 
 export default function RoomDetail({ room }: RoomDetailProps) {
+  const insets = useSafeAreaInsets();
   const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
   const borderColor = useThemeColor({ light: 'rgba(0,0,0,0.1)', dark: 'rgba(255,255,255,0.15)' }, 'background');
   const errorColor = useThemeColor({}, 'error');
@@ -18,9 +21,9 @@ export default function RoomDetail({ room }: RoomDetailProps) {
 
   const formatEventTime = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleTimeString('fr-FR', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    return date.toLocaleTimeString('fr-FR', {
+      hour: '2-digit',
+      minute: '2-digit'
     });
   };
 
@@ -34,37 +37,37 @@ export default function RoomDetail({ room }: RoomDetailProps) {
   };
 
   const renderEventItem = ({ item }: { item: RoomEvent }) => (
-    <ThemedView style={[styles.eventItem, { backgroundColor, borderColor }]}>
-      <ThemedView style={styles.eventHeader}>
+    <Card style={[styles.eventItem, { backgroundColor, borderColor }]}>
+      <View style={styles.eventHeader}>
         <ThemedText type="defaultSemiBold" numberOfLines={2}>
           {item.summary}
         </ThemedText>
         <ThemedText type="caption" style={styles.eventDate}>
           {formatEventDate(item.start)}
         </ThemedText>
-      </ThemedView>
-      
+      </View>
+
       <ThemedText style={[styles.eventTime, { color: infoColor }]}>
         {formatEventTime(item.start)} - {formatEventTime(item.end)}
       </ThemedText>
-      
+
       {item.description && (
         <ThemedText style={styles.eventDescription} numberOfLines={3}>
           {cleanDescription(item.description)}
         </ThemedText>
       )}
-    </ThemedView>
+    </Card>
   );
 
   return (
-    <ThemedView style={styles.container}>
-      {/* Room Header */}
-      <ThemedView style={styles.header}>
-        <ThemedView style={styles.roomInfo}>
-          <ThemedText type="title" style={styles.roomName}>
+    <View style={styles.container}>
+      {/* Room hero */}
+      <View style={[styles.heroSection, Platform.OS === 'ios' && { paddingTop: insets.top + 52 }]}>
+        <Card style={styles.heroCard}>
+          <ThemedText type="title" style={styles.heroTitle}>
             {room.location}
           </ThemedText>
-          
+
           {room.warnings && (
             <ThemedText type="caption" style={{ color: errorColor }}>
               {room.warnings}
@@ -76,21 +79,20 @@ export default function RoomDetail({ room }: RoomDetailProps) {
               {room.typeDescription}
             </ThemedText>
           )}
-        </ThemedView>
-      </ThemedView>
+        </Card>
+      </View>
 
       {/* Events List */}
-      <ThemedView style={styles.eventsContainer}>
+      <View style={styles.eventsContainer}>
         <ThemedText type="subtitle" style={styles.eventsTitle}>
           Événements ({room.roomEvents?.length || 0})
         </ThemedText>
-        
+
         {(!room.roomEvents || room.roomEvents.length === 0) ? (
-          <ThemedView style={styles.noEventsContainer}>
-            <ThemedText style={styles.noEventsText}>
-              Aucun événement planifié pour cette salle
-            </ThemedText>
-          </ThemedView>
+          <EmptyState
+            icon="checkmark.circle.fill"
+            title="Aucun événement planifié pour cette salle"
+          />
         ) : (
           <FlatList
             data={room.roomEvents}
@@ -98,11 +100,11 @@ export default function RoomDetail({ room }: RoomDetailProps) {
             keyExtractor={(item, index) => `${item.start}-${index}`}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.eventsList}
-            ItemSeparatorComponent={() => <ThemedView style={styles.eventSeparator} />}
+            ItemSeparatorComponent={() => <View style={styles.eventSeparator} />}
           />
         )}
-      </ThemedView>
-    </ThemedView>
+      </View>
+    </View>
   );
 }
 
@@ -110,16 +112,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
+  heroSection: {
     paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingTop: 8,
+    paddingBottom: 16,
   },
-  roomInfo: {
-    gap: 8,
+  heroCard: {
+    padding: Spacing.lg,
+    gap: Spacing.xs,
   },
-  roomName: {
+  heroTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
   },
   eventsContainer: {
     flex: 1,
@@ -158,16 +161,5 @@ const styles = StyleSheet.create({
   },
   eventSeparator: {
     height: 12,
-  },
-  noEventsContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 60,
-  },
-  noEventsText: {
-    fontSize: 16,
-    opacity: 0.7,
-    textAlign: 'center',
   },
 });

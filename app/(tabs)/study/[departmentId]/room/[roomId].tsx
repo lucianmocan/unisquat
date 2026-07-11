@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
 import RoomDetail from '@/components/RoomDetail';
@@ -21,12 +21,7 @@ export default function RoomDetailScreen() {
     );
   }
 
-  return (
-    <>
-      <Stack.Screen options={{ title: room.location }} />
-      <RoomDetail room={room} />
-    </>
-  );
+  return <RoomDetail room={room} />;
 }
 
 const styles = StyleSheet.create({

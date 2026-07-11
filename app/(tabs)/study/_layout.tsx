@@ -12,8 +12,14 @@ export default function StudyLayout() {
           headerTransparent: Platform.OS === 'ios',
         }}
       />
-      <Stack.Screen name="[departmentId]/index" options={{ title: '' }} />
-      <Stack.Screen name="[departmentId]/room/[roomId]" options={{ title: '' }} />
+      <Stack.Screen
+        name="[departmentId]/index"
+        options={{ title: '', headerTransparent: Platform.OS === 'ios' }}
+      />
+      <Stack.Screen
+        name="[departmentId]/room/[roomId]"
+        options={{ title: '', headerTransparent: Platform.OS === 'ios' }}
+      />
     </Stack>
   );
 }

@@ -1,19 +1,19 @@
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { Card } from '@/components/ui/card';
 import { Chip } from '@/components/ui/chip';
 import { EmptyState } from '@/components/ui/empty-state';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 import { RoomsListSkeleton } from '@/components/ui/skeleton';
-import { Radius } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { DepartmentService } from '@/services/DepartmentService';
 import { Department } from '@/types';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Stack } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Modal, Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import RoomsList from './RoomsList';
 
 interface DepartmentDetailProps {
@@ -34,13 +34,15 @@ export default function DepartmentDetail({
   const [isPickerVisible, setIsPickerVisible] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false); // Android only — iOS's compact picker manages its own popover
+  const insets = useSafeAreaInsets();
 
   const iconColor = useThemeColor({}, 'icon');
   const tintColor = useThemeColor({}, 'tint');
   const favoriteColor = useThemeColor({}, 'favorite');
   const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
   const borderColor = useThemeColor({ light: 'rgba(0,0,0,0.1)', dark: 'rgba(255,255,255,0.15)' }, 'background');
+  const isFilterActive = selectedFilter !== 'Toutes';
 
   const handleFavoritePress = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -51,33 +53,6 @@ export default function DepartmentDetail({
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setIsPickerVisible(prev => !prev);
   }, []);
-
-  // Native header: title + favorite/filter toolbar buttons, matching the Swift app's nav bar
-  const renderHeaderRight = useCallback(
-    () => (
-      <View style={styles.headerButtons}>
-        <TouchableOpacity
-          onPress={handleFavoritePress}
-          activeOpacity={0.7}
-          accessibilityRole="button"
-          accessibilityLabel={department.isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
-          <IconSymbol
-            name={department.isFavorite ? 'heart.fill' : 'heart'}
-            size={24}
-            color={department.isFavorite ? favoriteColor : iconColor}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleFilterToggle}
-          activeOpacity={0.7}
-          accessibilityRole="button"
-          accessibilityLabel="Filter by room type">
-          <IconSymbol name="line.3.horizontal.decrease.circle" size={22} color={iconColor} />
-        </TouchableOpacity>
-      </View>
-    ),
-    [department.isFavorite, iconColor, favoriteColor, handleFavoritePress, handleFilterToggle]
-  );
 
   // Filter rooms based on selected filter
   const filteredRooms = useMemo(() => {
@@ -93,8 +68,11 @@ export default function DepartmentDetail({
   // Track if we've already downloaded data for this department/date combination
   const [lastDownloadKey, setLastDownloadKey] = useState<string>('');
 
-  // Fetch (or recompute) room data. `force` bypasses the 30-min cache and the
-  // already-attempted guard — used for pull-to-refresh and the error retry button.
+  // Fetch room data for the selected date. `force` bypasses the already-attempted guard
+  // (used for pull-to-refresh and the error retry button). Once we're past that guard we
+  // always download — `department.ical`/`downloadTime` only ever hold one date's worth of
+  // data, so a wall-clock cache check can't tell "still fresh" apart from "fresh, but for
+  // the wrong date" (that mismatch was why switching dates silently kept showing stale data).
   const fetchData = useCallback(async (force: boolean) => {
     const downloadKey = `${department.id}-${selectedDate.toDateString()}`;
 
@@ -109,21 +87,12 @@ export default function DepartmentDetail({
     setHasError(false);
 
     try {
-      if (force || DepartmentService.shouldDownloadData(department)) {
-        const updatedDepartment = await DepartmentService.downloadICalData(department, selectedDate);
-        onDepartmentUpdate(updatedDepartment);
-        const success = updatedDepartment.downloadSuccess || false;
-        setDownloadSuccess(success);
-        setHasError(!success);
-        setLastDownloadKey(downloadKey);
-      } else {
-        // Data is already fresh, just calculate availability
-        DepartmentService.calculateAvailability(department);
-        // Update the component with the recalculated department
-        onDepartmentUpdate({ ...department });
-        setDownloadSuccess(true);
-        setLastDownloadKey(downloadKey);
-      }
+      const updatedDepartment = await DepartmentService.downloadICalData(department, selectedDate);
+      onDepartmentUpdate(updatedDepartment);
+      const success = updatedDepartment.downloadSuccess || false;
+      setDownloadSuccess(success);
+      setHasError(!success);
+      setLastDownloadKey(downloadKey);
     } catch (error) {
       console.error('Error fetching department data:', error);
       setDownloadSuccess(false);
@@ -153,25 +122,11 @@ export default function DepartmentDetail({
     setSelectedFilter(filter);
   };
 
-  const handleDatePress = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    setShowDatePicker(prev => !prev);
-  };
-
+  // Selecting a date immediately applies it — the effects below pick up the change and refetch.
   const handleDateChange = (event: any, date?: Date) => {
-    setShowDatePicker(false);
     if (date) {
       setSelectedDate(date);
     }
-  };
-
-  const formatSelectedDate = (date: Date) => {
-    return date.toLocaleDateString('fr-FR', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    });
   };
 
   // Download and process iCal data when component mounts or department/date changes
@@ -187,60 +142,115 @@ export default function DepartmentDetail({
   }, [department.id, selectedDate]);
 
   return (
-    <ThemedView style={styles.container}>
-      <Stack.Screen options={{ title: department.name, headerRight: renderHeaderRight }} />
-      {/* Header */}
-      <ThemedView style={styles.header}>
-        <TouchableOpacity
-          onPress={handleDatePress}
-          style={[styles.dateButton, { backgroundColor, borderColor }]}
-          activeOpacity={0.7}
-          accessibilityRole="button"
-          accessibilityLabel="Choose a date">
-          <IconSymbol name="calendar" size={20} color={iconColor} />
-          <ThemedText style={styles.dateText}>
-            {formatSelectedDate(selectedDate)}
-          </ThemedText>
-          <IconSymbol name="chevron.down" size={16} color={iconColor} />
-        </TouchableOpacity>
+    <View style={styles.container}>
+      {/* Hero card — no title in the native header, just the back button */}
+      <View style={[styles.heroSection, Platform.OS === 'ios' && { paddingTop: insets.top + 68 }]}>
+        <Card style={styles.heroCard}>
+          <View style={styles.heroTopRow}>
+            <ThemedText type="title" style={styles.heroTitle} numberOfLines={2}>
+              {department.name}
+            </ThemedText>
+            <TouchableOpacity
+              onPress={handleFavoritePress}
+              activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel={department.isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
+              <IconSymbol
+                name={department.isFavorite ? 'heart.fill' : 'heart'}
+                size={24}
+                color={department.isFavorite ? favoriteColor : iconColor}
+              />
+            </TouchableOpacity>
+          </View>
 
-        {/* Room Type Filter */}
-        {isPickerVisible && (
-          <ThemedView style={styles.filterContainer}>
-            <ThemedText style={styles.filterLabel}>Choisir un type de salle:</ThemedText>
-            <ThemedView style={styles.filterOptions}>
-              {roomTypeOptions.map((option) => (
-                <Chip
-                  key={option}
-                  label={option}
-                  selected={selectedFilter === option}
-                  onPress={() => handleFilterChange(option)}
+          <View style={styles.heroActions}>
+            <View style={styles.dateGroup}>
+              <ThemedText style={styles.pickerText}>Date :</ThemedText>
+              {Platform.OS === 'ios' ? (
+                <DateTimePicker
+                  value={selectedDate}
+                  mode="date"
+                  display="compact"
+                  onChange={handleDateChange}
+                  maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
                 />
-              ))}
-            </ThemedView>
-          </ThemedView>
-        )}
-      </ThemedView>
+              ) : (
+                <>
+                  <TouchableOpacity
+                    onPress={() => setShowDatePicker(true)}
+                    style={[styles.androidDateButton, { backgroundColor, borderColor }]}
+                    activeOpacity={0.7}
+                    accessibilityRole="button"
+                    accessibilityLabel="Choose a date">
+                    <IconSymbol name="calendar" size={16} color={iconColor} />
+                    <ThemedText style={styles.pickerText}>
+                      {selectedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
+                    </ThemedText>
+                  </TouchableOpacity>
+                  {showDatePicker && (
+                    <DateTimePicker
+                      value={selectedDate}
+                      mode="date"
+                      display="default"
+                      onChange={(event, date) => {
+                        setShowDatePicker(false);
+                        handleDateChange(event, date);
+                      }}
+                      maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
+                    />
+                  )}
+                </>
+              )}
+            </View>
+            <TouchableOpacity
+              onPress={handleFilterToggle}
+              style={[
+                styles.filterChip,
+                { backgroundColor: isFilterActive ? tintColor : backgroundColor },
+              ]}
+              activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel="Filter by room type"
+              accessibilityState={{ selected: isFilterActive }}>
+              <IconSymbol
+                name="line.3.horizontal.decrease.circle"
+                size={16}
+                color={isFilterActive ? '#ffffff' : iconColor}
+              />
+              <ThemedText style={[styles.pickerText, isFilterActive && { color: '#ffffff' }]}>Filtrer</ThemedText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Room Type Filter */}
+          {isPickerVisible && (
+            <View style={styles.filterContainer}>
+              <ThemedText style={styles.filterLabel}>Choisir un type de salle:</ThemedText>
+              <View style={styles.filterOptions}>
+                {roomTypeOptions.map((option) => (
+                  <Chip
+                    key={option}
+                    label={option}
+                    selected={selectedFilter === option}
+                    onPress={() => handleFilterChange(option)}
+                  />
+                ))}
+              </View>
+            </View>
+          )}
+        </Card>
+      </View>
 
       {/* Time Period Selector */}
-      <ThemedView style={styles.timeSelectorContainer}>
+      <View style={styles.timeSelectorContainer}>
         <SegmentedControl
           options={['Maintenant', 'Prochainement']}
           selectedIndex={selectedView}
           onChange={handleViewChange}
         />
-
-        {/* Column Headers */}
-        <ThemedView style={styles.columnHeaders}>
-          <ThemedText style={styles.columnHeader}>Salle :</ThemedText>
-          <ThemedText style={styles.columnHeader}>
-            {selectedView === 0 ? 'Disponible jusqu\'à :' : 'Disponible à partir de:'}
-          </ThemedText>
-        </ThemedView>
-      </ThemedView>
+      </View>
 
       {/* Content */}
-      <ThemedView style={styles.content}>
+      <View style={styles.content}>
         {downloadSuccess ? (
           <RoomsList
             rooms={filteredRooms}
@@ -260,83 +270,8 @@ export default function DepartmentDetail({
         ) : (
           <RoomsListSkeleton />
         )}
-      </ThemedView>
-
-      {/* Date Picker — a sheet overlay so opening it doesn't reflow the screen behind it */}
-      <Modal
-        visible={showDatePicker}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setShowDatePicker(false)}>
-        <View style={styles.datePickerOverlay}>
-          <Pressable style={StyleSheet.absoluteFill} onPress={() => setShowDatePicker(false)} />
-          <ThemedView style={styles.datePickerSheet}>
-            <View style={styles.datePickerHeader}>
-              <ThemedText type="defaultSemiBold">Sélectionner une date</ThemedText>
-              <TouchableOpacity
-                onPress={() => setShowDatePicker(false)}
-                accessibilityRole="button"
-                accessibilityLabel="Done">
-                <ThemedText type="link">Terminé</ThemedText>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.quickDateOptions}>
-              <TouchableOpacity
-                onPress={() => setSelectedDate(new Date())}
-                style={[
-                  styles.quickDateButton,
-                  {
-                    backgroundColor: selectedDate.toDateString() === new Date().toDateString() ? tintColor : backgroundColor,
-                    borderColor,
-                  }
-                ]}
-                activeOpacity={0.7}>
-                <ThemedText
-                  style={[
-                    styles.quickDateText,
-                    { color: selectedDate.toDateString() === new Date().toDateString() ? '#ffffff' : iconColor }
-                  ]}>
-                  Aujourd&apos;hui
-                </ThemedText>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  const tomorrow = new Date();
-                  tomorrow.setDate(tomorrow.getDate() + 1);
-                  setSelectedDate(tomorrow);
-                }}
-                style={[
-                  styles.quickDateButton,
-                  {
-                    backgroundColor: selectedDate.toDateString() === new Date(Date.now() + 86400000).toDateString() ? tintColor : backgroundColor,
-                    borderColor,
-                  }
-                ]}
-                activeOpacity={0.7}>
-                <ThemedText
-                  style={[
-                    styles.quickDateText,
-                    { color: selectedDate.toDateString() === new Date(Date.now() + 86400000).toDateString() ? '#ffffff' : iconColor }
-                  ]}>
-                  Demain
-                </ThemedText>
-              </TouchableOpacity>
-            </View>
-
-            <DateTimePicker
-              value={selectedDate}
-              mode="date"
-              display="inline"
-              onChange={handleDateChange}
-              maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
-              style={styles.datePicker}
-            />
-          </ThemedView>
-        </View>
-      </Modal>
-    </ThemedView>
+      </View>
+    </View>
   );
 }
 
@@ -344,18 +279,59 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
+  heroSection: {
     paddingHorizontal: 20,
-    paddingTop: 12,
+    paddingTop: 8,
     paddingBottom: 16,
-    gap: 12,
   },
-  headerButtons: {
+  heroCard: {
+    padding: Spacing.lg,
+    gap: Spacing.sm,
+  },
+  heroTopRow: {
     flexDirection: 'row',
-    gap: 16,
-    paddingRight: 4,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: Spacing.md,
+  },
+  heroTitle: {
+    flex: 1,
+    fontSize: 24,
+  },
+  heroActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: Spacing.xs,
+  },
+  dateGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
+  },
+  // Matches the native compact DateTimePicker's own text size (iOS system body, 17pt).
+  pickerText: {
+    fontSize: 17,
+  },
+  filterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.xs,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs,
+    borderRadius: Radius.pill,
+  },
+  androidDateButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.xs,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm,
+    borderRadius: Radius.pill,
+    borderWidth: 1,
   },
   filterContainer: {
+    marginTop: Spacing.md,
     gap: 12,
   },
   filterLabel: {
@@ -372,65 +348,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     gap: 16,
   },
-  columnHeaders: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 8,
-  },
-  columnHeader: {
-    fontSize: 14,
-    opacity: 0.7,
-  },
   content: {
     flex: 1,
-  },
-  dateButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    gap: 12,
-  },
-  dateText: {
-    flex: 1,
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  datePickerOverlay: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0,0,0,0.4)',
-  },
-  datePickerSheet: {
-    borderTopLeftRadius: Radius.md,
-    borderTopRightRadius: Radius.md,
-    padding: 20,
-    paddingBottom: 32,
-  },
-  datePickerHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-  },
-  quickDateOptions: {
-    flexDirection: 'row',
-    gap: 12,
-    marginBottom: 12,
-  },
-  quickDateButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: Radius.pill,
-    borderWidth: 1,
-  },
-  quickDateText: {
-    fontSize: 14,
-    fontWeight: '500',
-  },
-  datePicker: {
-    width: '100%',
   },
 });

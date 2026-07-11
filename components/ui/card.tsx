@@ -27,30 +27,68 @@ interface RowProps {
   icon?: ReactNode;
   title: string;
   subtitle?: string;
+  subtitleColor?: string;
   onPress?: () => void;
   right?: ReactNode;
+  /**
+   * Set to `false` when `right` is purely informational (no touchable of its own) so the
+   * whole row — including `right` — becomes the tap target. Defaults to `true`, which keeps
+   * `right` a sibling of the tappable area rather than its child: some callers (e.g. a
+   * favorite-toggle button) put a real touchable in `right`, and nesting touchables breaks on
+   * web (invalid `<button>`-in-`<button>`) and is fragile on native.
+   */
+  rightIsInteractive?: boolean;
   showChevron?: boolean;
   titleNumberOfLines?: number;
   accessibilityLabel?: string;
 }
 
-/**
- * icon + title/subtitle + trailing accessory — used for both department and settings rows.
- * The tappable area (icon + text) is a sibling of `right`, never its ancestor — `right` often
- * contains its own touchable (e.g. a favorite button), and nesting touchables breaks on web
- * (invalid `<button>`-in-`<button>`) and is fragile on native.
- */
+/** icon + title/subtitle + trailing accessory — used for both department and settings rows. */
 export function Row({
   icon,
   title,
   subtitle,
+  subtitleColor,
   onPress,
   right,
+  rightIsInteractive = true,
   showChevron = !!onPress,
   titleNumberOfLines,
   accessibilityLabel,
 }: RowProps) {
   const iconColor = useThemeColor({}, 'icon');
+
+  const textContent = (
+    <>
+      {icon && <View style={styles.icon}>{icon}</View>}
+      <View style={styles.textContainer}>
+        <ThemedText type="defaultSemiBold" numberOfLines={titleNumberOfLines}>
+          {title}
+        </ThemedText>
+        {subtitle && (
+          <ThemedText type="caption" style={subtitleColor ? { color: subtitleColor } : undefined}>
+            {subtitle}
+          </ThemedText>
+        )}
+      </View>
+    </>
+  );
+
+  if (onPress && !rightIsInteractive) {
+    return (
+      <TouchableOpacity
+        style={[styles.row, styles.content]}
+        onPress={onPress}
+        activeOpacity={0.7}
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel ?? title}>
+        {textContent}
+        {right}
+        {showChevron && <IconSymbol name="chevron.right" size={18} color={iconColor} />}
+      </TouchableOpacity>
+    );
+  }
+
   const Content = onPress ? TouchableOpacity : View;
 
   return (
@@ -61,13 +99,7 @@ export function Row({
         activeOpacity={onPress ? 0.7 : undefined}
         accessibilityRole={onPress ? 'button' : undefined}
         accessibilityLabel={accessibilityLabel ?? title}>
-        {icon && <View style={styles.icon}>{icon}</View>}
-        <View style={styles.textContainer}>
-          <ThemedText type="defaultSemiBold" numberOfLines={titleNumberOfLines}>
-            {title}
-          </ThemedText>
-          {subtitle && <ThemedText type="caption">{subtitle}</ThemedText>}
-        </View>
+        {textContent}
       </Content>
       {right}
       {showChevron && <IconSymbol name="chevron.right" size={18} color={iconColor} />}

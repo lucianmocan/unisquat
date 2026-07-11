@@ -33,6 +33,7 @@ const MAPPING = {
   'ladybug.fill': 'bug-report',
   'lightbulb.fill': 'lightbulb',
   'info.circle.fill': 'info',
+  'checkmark.circle.fill': 'check-circle',
   'checkmark.shield.fill': 'verified-user',
   'doc.text.fill': 'description',
   'line.3.horizontal.decrease.circle': 'filter-list',
