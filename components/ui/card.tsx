@@ -3,18 +3,23 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Radius } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { ReactNode } from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { LayoutChangeEvent, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 interface CardProps {
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
+  onLayout?: (event: LayoutChangeEvent) => void;
 }
 
 /** A rounded, shadowed surface — the shared container for grouped rows or standalone content. */
-export function Card({ children, style }: CardProps) {
+export function Card({ children, style, onLayout }: CardProps) {
   const backgroundColor = useThemeColor({}, 'card');
 
-  return <View style={[styles.card, { backgroundColor }, style]}>{children}</View>;
+  return (
+    <View style={[styles.card, { backgroundColor }, style]} onLayout={onLayout}>
+      {children}
+    </View>
+  );
 }
 
 /** A hairline divider between rows inside a Card, inset to align with row text. */

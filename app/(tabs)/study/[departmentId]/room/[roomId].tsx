@@ -7,7 +7,11 @@ import { ThemedView } from '@/components/themed-view';
 import { useDepartments } from '@/contexts/DepartmentsContext';
 
 export default function RoomDetailScreen() {
-  const { departmentId, roomId } = useLocalSearchParams<{ departmentId: string; roomId: string }>();
+  const { departmentId, roomId, referenceDate } = useLocalSearchParams<{
+    departmentId: string;
+    roomId: string;
+    referenceDate?: string;
+  }>();
   const { getDepartment } = useDepartments();
 
   const department = getDepartment(Number(departmentId));
@@ -21,7 +25,9 @@ export default function RoomDetailScreen() {
     );
   }
 
-  return <RoomDetail room={room} />;
+  const parsedReferenceDate = referenceDate ? new Date(referenceDate) : new Date();
+
+  return <RoomDetail room={room} referenceDate={parsedReferenceDate} />;
 }
 
 const styles = StyleSheet.create({

@@ -57,7 +57,6 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
   // `selectedDate` already carries the exact reference moment (live "now" or a user-picked
   // date/time) that `calculateAvailability`/`computeAvailability` used to derive `timeData`.
   const referenceNow = selectedDate;
-  const errorColor = useThemeColor({}, 'error');
   const tintColor = useThemeColor({}, 'tint');
   const insets = useSafeAreaInsets();
 
@@ -67,7 +66,7 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
   const handleRoomPress = (room: Room) => {
     router.push({
       pathname: '/study/[departmentId]/room/[roomId]',
-      params: { departmentId: department.id, roomId: room.location },
+      params: { departmentId: department.id, roomId: room.location, referenceDate: referenceNow.toISOString() },
     });
   };
 
@@ -99,7 +98,6 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
             <Row
               title={room.location}
               subtitle={room.warnings}
-              subtitleColor={errorColor}
               onPress={() => handleRoomPress(room)}
               rightIsInteractive={false}
               right={

@@ -1,51 +1,177 @@
 import { ThemedText } from '@/components/themed-text';
-import { Card } from '@/components/ui/card';
+import { Card, CardSeparator } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
-import { Radius, Spacing } from '@/constants/theme';
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { cleanDescription } from '@/services/DepartmentService';
 import { Room, RoomEvent } from '@/types';
 import { formatShortWeekdayDate, formatTime } from '@/utils/date-format';
-import { FlatList, Platform, StyleSheet, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FlatList, LayoutChangeEvent, Platform, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface RoomDetailProps {
   room: Room;
+  referenceDate: Date;
 }
 
-export default function RoomDetail({ room }: RoomDetailProps) {
+type EventSectionKey = 'past' | 'current' | 'future';
+
+const SECTION_TITLES: Record<EventSectionKey, string> = {
+  past: 'Passé',
+  current: 'En cours',
+  future: 'À venir',
+};
+
+type ListRow =
+  | { type: 'header'; key: string; label: string; sectionKey: EventSectionKey }
+  | { type: 'event'; key: string; event: RoomEvent; status: EventSectionKey };
+
+/**
+ * Flattens events into Passé/En cours/À venir groups (an inset-grouped-list layout, iOS
+ * Settings-style) as one row array — header rows mark `stickyHeaderIndices` — classified once
+ * against `referenceDate`, the moment the picker/live clock held when this screen was opened.
+ * Also returns the index of the row to scroll to on open: the current event, or the first
+ * future one if nothing's happening right now.
+ */
+function buildRows(
+  events: RoomEvent[],
+  referenceDate: Date
+): { rows: ListRow[]; stickyHeaderIndices: number[]; targetIndex: number | null } {
+  const sorted = [...events].sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+  const nowMs = referenceDate.getTime();
+
+  const grouped: Record<EventSectionKey, RoomEvent[]> = { past: [], current: [], future: [] };
+  sorted.forEach(event => {
+    const start = new Date(event.start).getTime();
+    const end = new Date(event.end).getTime();
+    const key: EventSectionKey = nowMs >= end ? 'past' : nowMs >= start ? 'current' : 'future';
+    grouped[key].push(event);
+  });
+
+  const rows: ListRow[] = [];
+  const stickyHeaderIndices: number[] = [];
+  let targetIndex: number | null = null;
+
+  (['past', 'current', 'future'] as EventSectionKey[]).forEach(key => {
+    const groupEvents = grouped[key];
+    if (groupEvents.length === 0) return;
+
+    stickyHeaderIndices.push(rows.length);
+    rows.push({ type: 'header', key: `header-${key}`, label: SECTION_TITLES[key], sectionKey: key });
+
+    groupEvents.forEach((event, i) => {
+      if (targetIndex === null && (key === 'current' || key === 'future')) {
+        targetIndex = rows.length;
+      }
+      rows.push({ type: 'event', key: `${event.start}-${i}`, event, status: key });
+    });
+  });
+
+  return { rows, stickyHeaderIndices, targetIndex };
+}
+
+export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
   const insets = useSafeAreaInsets();
-  const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
-  const borderColor = useThemeColor({ light: 'rgba(0,0,0,0.1)', dark: 'rgba(255,255,255,0.15)' }, 'background');
-  const errorColor = useThemeColor({}, 'error');
-  const infoColor = useThemeColor({}, 'info');
+  // iOS system grouped-background gray, used behind the sticky section headers.
+  const sectionBackground = useThemeColor({ light: '#F2F2F7', dark: '#1c1c1e' }, 'background');
+  const tintColor = useThemeColor({}, 'tint');
+  const sectionHeaderColor = useThemeColor({}, 'icon');
+  const textColor = useThemeColor({}, 'text');
+
+  const events = room.roomEvents ?? [];
+  // Classified once, as of the reference moment this screen opened with — not re-ticked while
+  // you're looking at it.
+  const [{ rows, stickyHeaderIndices, targetIndex }] = useState(() => buildRows(events, referenceDate));
+  const listRef = useRef<FlatList<ListRow>>(null);
+  // A FlatList row's `onLayout` reports `y` relative to its own cell wrapper, not the
+  // scrollable content's origin — there's no direct way to read a row's absolute offset. So
+  // instead we measure every row's own height and sum the ones before the target to get its
+  // true offset within the list.
+  const rowHeights = useRef<(number | null)[]>(new Array(rows.length).fill(null));
+  const [listHeight, setListHeight] = useState(0);
+  const hasScrolled = useRef(false);
 
   const formatEventTime = (dateString: string) => formatTime(new Date(dateString));
-
   const formatEventDate = (dateString: string) => formatShortWeekdayDate(new Date(dateString));
 
-  const renderEventItem = ({ item }: { item: RoomEvent }) => (
-    <Card style={[styles.eventItem, { backgroundColor, borderColor }]}>
-      <View style={styles.eventHeader}>
-        <ThemedText type="defaultSemiBold" numberOfLines={2}>
-          {item.summary}
-        </ThemedText>
-        <ThemedText type="caption" style={styles.eventDate}>
-          {formatEventDate(item.start)}
-        </ThemedText>
-      </View>
+  const tryScroll = useCallback(() => {
+    // Wait for the list's own real viewport height (it's shorter than the full screen — the
+    // hero card and title sit above it) — using an overestimate here under-scrolls, leaving
+    // the target lower than intended.
+    if (hasScrolled.current || targetIndex === null || listHeight === 0) return;
+    for (let i = 0; i < targetIndex; i++) {
+      if (rowHeights.current[i] === null) return;
+    }
+    hasScrolled.current = true;
+    const offsetToTarget = rowHeights.current.slice(0, targetIndex).reduce((sum: number, h) => sum + (h ?? 0), 0);
+    const offset = Math.max(offsetToTarget - listHeight * 0.25, 0);
+    listRef.current?.scrollToOffset({ offset, animated: false });
+  }, [targetIndex, listHeight]);
 
-      <ThemedText style={[styles.eventTime, { color: infoColor }]}>
-        {formatEventTime(item.start)} - {formatEventTime(item.end)}
-      </ThemedText>
+  // Re-attempt once the list's real height arrives, in case it lands after the rows measure.
+  useEffect(() => {
+    tryScroll();
+  }, [tryScroll]);
 
-      {item.description && (
-        <ThemedText style={styles.eventDescription} numberOfLines={3}>
-          {cleanDescription(item.description)}
+  const handleRowLayout = (index: number) => (event: LayoutChangeEvent) => {
+    rowHeights.current[index] = event.nativeEvent.layout.height;
+    tryScroll();
+  };
+
+  const renderItem = ({ item, index }: { item: ListRow; index: number }) => {
+    if (item.type === 'header') {
+      return (
+        <View style={[styles.sectionHeader, { backgroundColor: sectionBackground }]} onLayout={handleRowLayout(index)}>
+          <ThemedText
+            style={[
+              styles.sectionHeaderText,
+              { color: item.sectionKey === 'current' ? textColor : sectionHeaderColor },
+            ]}>
+            {item.label}
+          </ThemedText>
+        </View>
+      );
+    }
+
+    const { event, status } = item;
+    const isCurrent = status === 'current';
+    const isDimmed = status === 'past' || status === 'future';
+
+    return (
+      <Card style={[styles.eventCard, isDimmed && styles.dimmedEvent]} onLayout={handleRowLayout(index)}>
+        <View style={styles.eventHeader}>
+          <View style={styles.eventTitleRow}>
+            {isCurrent && <IconSymbol name="clock" size={16} color={tintColor} />}
+            <ThemedText
+              type="defaultSemiBold"
+              numberOfLines={2}
+              style={isCurrent ? { color: tintColor } : undefined}>
+              {event.summary}
+            </ThemedText>
+          </View>
+          <ThemedText type="caption" style={styles.eventDate}>
+            {formatEventDate(event.start)}
+          </ThemedText>
+        </View>
+
+        {event.description && (
+          <ThemedText style={styles.eventDescription} numberOfLines={3}>
+            {cleanDescription(event.description)}
+          </ThemedText>
+        )}
+
+        <View style={styles.eventSeparatorWrap}>
+          <CardSeparator inset={0} />
+        </View>
+
+        <ThemedText style={[styles.eventTime, { color: tintColor }]}>
+          {formatEventTime(event.start)} - {formatEventTime(event.end)}
         </ThemedText>
-      )}
-    </Card>
-  );
+      </Card>
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -56,11 +182,7 @@ export default function RoomDetail({ room }: RoomDetailProps) {
             {room.location}
           </ThemedText>
 
-          {room.warnings && (
-            <ThemedText type="caption" style={{ color: errorColor }}>
-              {room.warnings}
-            </ThemedText>
-          )}
+          {room.warnings && <ThemedText type="caption">{room.warnings}</ThemedText>}
 
           {room.typeDescription && (
             <ThemedText type="caption">
@@ -73,22 +195,29 @@ export default function RoomDetail({ room }: RoomDetailProps) {
       {/* Events List */}
       <View style={styles.eventsContainer}>
         <ThemedText type="subtitle" style={styles.eventsTitle}>
-          Événements ({room.roomEvents?.length || 0})
+          Événements ({events.length})
         </ThemedText>
 
-        {(!room.roomEvents || room.roomEvents.length === 0) ? (
+        {events.length === 0 ? (
           <EmptyState
             icon="checkmark.circle.fill"
             title="Aucun événement planifié pour cette salle"
           />
         ) : (
           <FlatList
-            data={room.roomEvents}
-            renderItem={renderEventItem}
-            keyExtractor={(item, index) => `${item.start}-${index}`}
+            ref={listRef}
+            data={rows}
+            renderItem={renderItem}
+            keyExtractor={item => item.key}
+            stickyHeaderIndices={stickyHeaderIndices}
+            // Render every row up front (lists here are small) so every row's `onLayout` fires
+            // immediately — otherwise, with normal virtualization, a target further down than
+            // the initial render window wouldn't be measurable until it scrolls into view,
+            // which is exactly what we're trying to do in the first place.
+            initialNumToRender={rows.length}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.eventsList}
-            ItemSeparatorComponent={() => <View style={styles.eventSeparator} />}
+            contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}
+            onLayout={event => setListHeight(event.nativeEvent.layout.height)}
           />
         )}
       </View>
@@ -120,14 +249,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 16,
   },
-  eventsList: {
-    paddingBottom: 40,
+  sectionHeader: {
+    paddingTop: 16,
+    paddingBottom: 6,
   },
-  eventItem: {
+  sectionHeaderText: {
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  eventCard: {
     padding: 16,
-    borderRadius: Radius.md,
-    borderWidth: 0.5,
     gap: 8,
+    marginBottom: 12,
+  },
+  dimmedEvent: {
+    opacity: 0.55,
+  },
+  eventSeparatorWrap: {
+    marginHorizontal: -16,
   },
   eventHeader: {
     flexDirection: 'row',
@@ -135,19 +274,22 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 12,
   },
+  eventTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    flexShrink: 1,
+  },
   eventDate: {
     textAlign: 'right',
   },
   eventTime: {
-    fontSize: 14,
-    fontWeight: '500',
+    fontSize: 16,
+    fontWeight: '600',
   },
   eventDescription: {
     fontSize: 14,
     opacity: 0.8,
     lineHeight: 20,
-  },
-  eventSeparator: {
-    height: 12,
   },
 });
