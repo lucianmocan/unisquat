@@ -5,6 +5,7 @@ import { Radius, Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { cleanDescription } from '@/services/DepartmentService';
 import { Room, RoomEvent } from '@/types';
+import { formatShortWeekdayDate, formatTime } from '@/utils/date-format';
 import { FlatList, Platform, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -19,22 +20,9 @@ export default function RoomDetail({ room }: RoomDetailProps) {
   const errorColor = useThemeColor({}, 'error');
   const infoColor = useThemeColor({}, 'info');
 
-  const formatEventTime = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('fr-FR', {
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
+  const formatEventTime = (dateString: string) => formatTime(new Date(dateString));
 
-  const formatEventDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('fr-FR', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short'
-    });
-  };
+  const formatEventDate = (dateString: string) => formatShortWeekdayDate(new Date(dateString));
 
   const renderEventItem = ({ item }: { item: RoomEvent }) => (
     <Card style={[styles.eventItem, { backgroundColor, borderColor }]}>

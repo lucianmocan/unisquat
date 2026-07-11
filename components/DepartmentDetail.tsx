@@ -9,10 +9,11 @@ import { Radius, Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { DepartmentService } from '@/services/DepartmentService';
 import { Department } from '@/types';
+import { formatShortDate, formatTime } from '@/utils/date-format';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { AppState, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import RoomsList from './RoomsList';
 
@@ -35,6 +36,11 @@ export default function DepartmentDetail({
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false); // Android only — iOS's compact picker manages its own popover
+  const [showTimePicker, setShowTimePicker] = useState(false); // Android only
+  // Whether `selectedDate` should keep tracking the real current moment. Turns off the instant
+  // the user manually picks a date/time — at that point they've chosen a specific moment to
+  // inspect, and ticking it forward would fight their selection.
+  const [isLive, setIsLive] = useState(true);
   const insets = useSafeAreaInsets();
 
   const iconColor = useThemeColor({}, 'icon');
@@ -54,16 +60,20 @@ export default function DepartmentDetail({
     setIsPickerVisible(prev => !prev);
   }, []);
 
+  // Re-bucket rooms against `selectedDate` — ticked live below when the user hasn't picked a
+  // specific moment — without waiting for a network refresh, so a room whose class just
+  // started moves out of "Maintenant" on its own.
+  const roomsWithFreshAvailability = useMemo(() => {
+    return department.rooms ? DepartmentService.computeAvailability(department.rooms, selectedDate) : [];
+  }, [department.rooms, selectedDate]);
+
   // Filter rooms based on selected filter
   const filteredRooms = useMemo(() => {
-    if (!department.rooms) {
-      return [];
-    }
     if (selectedFilter === 'Toutes') {
-      return department.rooms;
+      return roomsWithFreshAvailability;
     }
-    return department.rooms.filter(room => room.typeDescription === selectedFilter);
-  }, [department, selectedFilter]);
+    return roomsWithFreshAvailability.filter(room => room.typeDescription === selectedFilter);
+  }, [roomsWithFreshAvailability, selectedFilter]);
 
   // Track if we've already downloaded data for this department/date combination
   const [lastDownloadKey, setLastDownloadKey] = useState<string>('');
@@ -83,7 +93,12 @@ export default function DepartmentDetail({
     }
 
     setIsRefreshing(force);
-    setDownloadSuccess(false);
+    // A forced refresh (pull-to-refresh, error retry) keeps the existing list mounted —
+    // resetting downloadSuccess here would unmount RoomsList into the skeleton mid-gesture,
+    // discarding its RefreshControl and making room re-bucketing look like it silently failed.
+    if (!force) {
+      setDownloadSuccess(false);
+    }
     setHasError(false);
 
     try {
@@ -122,9 +137,10 @@ export default function DepartmentDetail({
     setSelectedFilter(filter);
   };
 
-  // Selecting a date immediately applies it — the effects below pick up the change and refetch.
+  // Picking any part of the date/time control freezes it there — see `isLive` above.
   const handleDateChange = (event: any, date?: Date) => {
     if (date) {
+      setIsLive(false);
       setSelectedDate(date);
     }
   };
@@ -134,12 +150,49 @@ export default function DepartmentDetail({
     fetchData(false);
   }, [fetchData]);
 
-  // Reset download status and key when department or date changes
+  // Reset download status and key when department or the selected DAY changes. Keyed off the
+  // date string rather than the `selectedDate` object so a live tick (which only changes the
+  // time-of-day, not the day) doesn't retrigger this — that would unmount RoomsList into the
+  // skeleton and force a network refetch every minute for no reason.
+  const selectedDateKey = selectedDate.toDateString();
   useEffect(() => {
     setDownloadSuccess(false);
     setHasError(false);
     setLastDownloadKey('');
-  }, [department.id, selectedDate]);
+  }, [department.id, selectedDateKey]);
+
+  // While live, re-tick `selectedDate` exactly when a room's free/busy status could next
+  // change (the nearest event start/end), not on a fixed poll — so a countdown crossing zero
+  // flips Maintenant/Prochainement right away instead of lagging up to a minute behind. Capped
+  // at 60s so countdown labels still refresh even when nothing is imminent. Also re-ticks
+  // immediately when the app returns to the foreground, so a device clock change made while
+  // backgrounded (or just time passing while backgrounded) is picked up right away.
+  useEffect(() => {
+    if (!isLive) return;
+
+    let timeout: ReturnType<typeof setTimeout>;
+    const scheduleNext = () => {
+      const now = new Date();
+      const msToBoundary = department.rooms ? DepartmentService.msUntilNextBoundary(department.rooms, now) : null;
+      const delay = Math.max(Math.min(msToBoundary ?? 60_000, 60_000), 1000);
+      timeout = setTimeout(() => {
+        setSelectedDate(new Date());
+        scheduleNext();
+      }, delay);
+    };
+    scheduleNext();
+
+    const subscription = AppState.addEventListener('change', (nextState) => {
+      if (nextState === 'active') {
+        setSelectedDate(new Date());
+      }
+    });
+
+    return () => {
+      clearTimeout(timeout);
+      subscription.remove();
+    };
+  }, [isLive, department.rooms]);
 
   return (
     <View style={styles.container}>
@@ -169,9 +222,13 @@ export default function DepartmentDetail({
               {Platform.OS === 'ios' ? (
                 <DateTimePicker
                   value={selectedDate}
-                  mode="date"
+                  mode="datetime"
                   display="compact"
                   onChange={handleDateChange}
+                  // Without this, the compact toggle's label can render in UTC while the
+                  // expanded wheel uses the device's actual calendar/timezone — same instant,
+                  // two different-looking times.
+                  timeZoneName={Intl.DateTimeFormat().resolvedOptions().timeZone}
                   maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
                 />
               ) : (
@@ -183,9 +240,16 @@ export default function DepartmentDetail({
                     accessibilityRole="button"
                     accessibilityLabel="Choose a date">
                     <IconSymbol name="calendar" size={16} color={iconColor} />
-                    <ThemedText style={styles.pickerText}>
-                      {selectedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-                    </ThemedText>
+                    <ThemedText style={styles.pickerText}>{formatShortDate(selectedDate)}</ThemedText>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => setShowTimePicker(true)}
+                    style={[styles.androidDateButton, { backgroundColor, borderColor }]}
+                    activeOpacity={0.7}
+                    accessibilityRole="button"
+                    accessibilityLabel="Choose a time">
+                    <IconSymbol name="clock" size={16} color={iconColor} />
+                    <ThemedText style={styles.pickerText}>{formatTime(selectedDate)}</ThemedText>
                   </TouchableOpacity>
                   {showDatePicker && (
                     <DateTimePicker
@@ -197,6 +261,17 @@ export default function DepartmentDetail({
                         handleDateChange(event, date);
                       }}
                       maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
+                    />
+                  )}
+                  {showTimePicker && (
+                    <DateTimePicker
+                      value={selectedDate}
+                      mode="time"
+                      display="default"
+                      onChange={(event, date) => {
+                        setShowTimePicker(false);
+                        handleDateChange(event, date);
+                      }}
                     />
                   )}
                 </>

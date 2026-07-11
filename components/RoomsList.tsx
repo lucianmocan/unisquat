@@ -1,7 +1,6 @@
 import { Card, CardSeparator, Row } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
 import { useThemeColor } from '@/hooks/use-theme-color';
-import { DepartmentService } from '@/services/DepartmentService';
 import { Department, Room } from '@/types';
 import { router } from 'expo-router';
 import { Fragment } from 'react';
@@ -53,7 +52,9 @@ function formatAvailability(timeString: string | undefined, referenceNow: Date, 
 }
 
 export default function RoomsList({ rooms, now, department, selectedDate, isRefreshing = false, onRefresh }: RoomsListProps) {
-  const referenceNow = DepartmentService.getReferenceNow(selectedDate);
+  // `selectedDate` already carries the exact reference moment (live "now" or a user-picked
+  // date/time) that `calculateAvailability`/`computeAvailability` used to derive `timeData`.
+  const referenceNow = selectedDate;
   const errorColor = useThemeColor({}, 'error');
   const tintColor = useThemeColor({}, 'tint');
   const insets = useSafeAreaInsets();

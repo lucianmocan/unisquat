@@ -29,16 +29,24 @@ export class DepartmentService {
   }
 
   /**
-   * The "now" to treat a selected date as being at, for availability purposes: the current
-   * time-of-day, projected onto that date. For today this is just the real current time; for
-   * a past or future date it's "if it were this time of day, on that date" — the only reading
-   * of "is this room free right now" that makes sense once you're not looking at today.
+   * Milliseconds until the nearest future room event boundary (a start or end time) — the next
+   * moment some room's free/busy status could actually change. Used to schedule availability
+   * re-ticks exactly when they matter instead of polling on a fixed interval.
    */
-  static getReferenceNow(selectedDate: Date): Date {
-    const real = new Date();
-    const reference = new Date(selectedDate);
-    reference.setHours(real.getHours(), real.getMinutes(), real.getSeconds(), real.getMilliseconds());
-    return reference;
+  static msUntilNextBoundary(rooms: Room[], now: Date): number | null {
+    const nowMs = now.getTime();
+    let closest: number | null = null;
+    for (const room of rooms) {
+      for (const event of room.roomEvents) {
+        for (const boundary of [event.start, event.end]) {
+          const t = new Date(boundary).getTime();
+          if (t > nowMs && (closest === null || t < closest)) {
+            closest = t;
+          }
+        }
+      }
+    }
+    return closest === null ? null : closest - nowMs;
   }
 
   /**
@@ -69,8 +77,9 @@ export class DepartmentService {
         rooms: this.createRooms(department, icalData)
       };
 
-      // Calculate room availability relative to the selected date, not the real current moment
-      this.calculateAvailability(updatedDepartment, this.getReferenceNow(selectedDate));
+      // Calculate room availability relative to the selected moment (which already carries
+      // whatever date/time the caller intends — live "now" or a user-picked date/time).
+      this.calculateAvailability(updatedDepartment, selectedDate);
 
       return updatedDepartment;
 
@@ -218,41 +227,60 @@ export class DepartmentService {
   }
 
   /**
-   * Calculate room availability based on `now` (defaults to the real current time) and events.
-   * Pass the result of `getReferenceNow(selectedDate)` when computing for a non-today date.
+   * Pure version of availability calculation: returns a NEW array of rooms with `isFree`/
+   * `timeData` computed against `now`, without touching the input. Events themselves only
+   * change on a real re-download, but which event is "current" shifts every minute purely
+   * because time passes — this lets a screen re-bucket rooms locally on a timer without
+   * re-fetching iCal data or mutating the shared department object.
    */
-  static calculateAvailability(department: Department, now: Date = new Date()): void {
-    if (!department.rooms) {
-      return;
-    }
+  static computeAvailability(rooms: Room[], now: Date): Room[] {
+    return rooms.map(room => {
+      const sortedEvents = [...room.roomEvents].sort(
+        (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
+      );
 
-    department.rooms.forEach(room => {
-      // Find if there's an event happening RIGHT NOW
-      const currentEvent = room.roomEvents.find(event => {
+      const currentEvent = sortedEvents.find(event => {
         const start = new Date(event.start);
         const end = new Date(event.end);
         return start <= now && now < end;
       });
 
       if (currentEvent) {
-        room.isFree = false;
-        room.timeData = currentEvent.end;
-      } else {
-        room.isFree = true;
-        // Find the next event (if any)
-        const nextEvent = room.roomEvents
-          .filter(event => new Date(event.start) > now)
-          .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime())[0];
-        if (nextEvent) {
-          room.timeData = nextEvent.start;
-        } else {
-          // Free for rest of day
-          const endOfDay = new Date(now);
-          endOfDay.setHours(23, 59, 59, 999);
-          room.timeData = endOfDay.toISOString();
+        // A room isn't actually free the instant this event ends if another booking follows
+        // immediately (or overlaps) — walk forward through any back-to-back events to find
+        // when there's a real gap, so "dans 1h30" reflects when the room truly becomes free.
+        let chainEnd = new Date(currentEvent.end).getTime();
+        for (const event of sortedEvents) {
+          const eventStart = new Date(event.start).getTime();
+          const eventEnd = new Date(event.end).getTime();
+          if (eventStart <= chainEnd && eventEnd > chainEnd) {
+            chainEnd = eventEnd;
+          }
         }
+        return { ...room, isFree: false, timeData: new Date(chainEnd).toISOString() };
       }
+
+      const nextEvent = sortedEvents.find(event => new Date(event.start) > now);
+
+      if (nextEvent) {
+        return { ...room, isFree: true, timeData: nextEvent.start };
+      }
+
+      const endOfDay = new Date(now);
+      endOfDay.setHours(23, 59, 59, 999);
+      return { ...room, isFree: true, timeData: endOfDay.toISOString() };
     });
+  }
+
+  /**
+   * Calculate room availability based on `now` (defaults to the real current time) and events.
+   */
+  static calculateAvailability(department: Department, now: Date = new Date()): void {
+    if (!department.rooms) {
+      return;
+    }
+
+    department.rooms = this.computeAvailability(department.rooms, now);
   }
 
   /**
