@@ -1,7 +1,6 @@
-import { ThemedText } from '@/components/themed-text';
-import { Radius } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import RNSegmentedControl, { type NativeSegmentedControlIOSChangeEvent } from '@react-native-segmented-control/segmented-control';
+import { NativeSyntheticEvent, StyleSheet } from 'react-native';
 
 interface SegmentedControlProps {
   options: string[];
@@ -9,47 +8,28 @@ interface SegmentedControlProps {
   onChange: (index: number) => void;
 }
 
+/** Thin wrapper around the real native UISegmentedControl / Android equivalent. */
 export function SegmentedControl({ options, selectedIndex, onChange }: SegmentedControlProps) {
   const tintColor = useThemeColor({}, 'tint');
-  const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
+  const textColor = useThemeColor({}, 'text');
 
   return (
-    <View style={[styles.container, { borderColor: tintColor }]}>
-      {options.map((option, index) => {
-        const selected = index === selectedIndex;
-        return (
-          <TouchableOpacity
-            key={option}
-            style={[
-              styles.segment,
-              index > 0 && { borderLeftWidth: StyleSheet.hairlineWidth, borderLeftColor: tintColor },
-              { backgroundColor: selected ? tintColor : backgroundColor },
-            ]}
-            onPress={() => onChange(index)}
-            activeOpacity={0.8}
-            accessibilityRole="button"
-            accessibilityState={{ selected }}>
-            <ThemedText type="label" style={{ color: selected ? '#ffffff' : tintColor }}>
-              {option}
-            </ThemedText>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+    <RNSegmentedControl
+      values={options}
+      selectedIndex={selectedIndex}
+      onChange={(event: NativeSyntheticEvent<NativeSegmentedControlIOSChangeEvent>) =>
+        onChange(event.nativeEvent.selectedSegmentIndex)
+      }
+      tintColor={tintColor}
+      fontStyle={{ color: textColor }}
+      activeFontStyle={{ color: '#ffffff' }}
+      style={styles.control}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    overflow: 'hidden',
-  },
-  segment: {
-    flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    alignItems: 'center',
+  control: {
+    height: 36,
   },
 });

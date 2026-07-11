@@ -5,9 +5,8 @@
 
 import { Platform } from 'react-native';
 
-// One brand accent shared by both modes — a muted mid-tone green reads calmly against
-// both light and dark backgrounds, instead of needing a brighter "neon" variant for dark mode.
-const tintColor = '#6FA83A';
+// One brand accent shared by both modes.
+const tintColor = '#6a5acd';
 
 export const Colors = {
   light: {

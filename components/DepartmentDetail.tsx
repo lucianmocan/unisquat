@@ -13,7 +13,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Stack } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Modal, Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
 import RoomsList from './RoomsList';
 
 interface DepartmentDetailProps {
@@ -191,79 +191,18 @@ export default function DepartmentDetail({
       <Stack.Screen options={{ title: department.name, headerRight: renderHeaderRight }} />
       {/* Header */}
       <ThemedView style={styles.header}>
-        {/* Date Selector */}
-        <ThemedView style={styles.dateContainer}>
-          <ThemedText style={styles.dateLabel}>Date sélectionnée:</ThemedText>
-          <TouchableOpacity
-            onPress={handleDatePress}
-            style={[styles.dateButton, { backgroundColor, borderColor }]}
-            activeOpacity={0.7}
-            accessibilityRole="button"
-            accessibilityLabel="Choose a date">
-            <IconSymbol name="calendar" size={20} color={iconColor} />
-            <ThemedText style={styles.dateText}>
-              {formatSelectedDate(selectedDate)}
-            </ThemedText>
-            <IconSymbol name="chevron.down" size={16} color={iconColor} />
-          </TouchableOpacity>
-          
-          {/* Quick Date Options */}
-          <ThemedView style={styles.quickDateOptions}>
-            <TouchableOpacity
-              onPress={() => setSelectedDate(new Date())}
-              style={[
-                styles.quickDateButton,
-                {
-                  backgroundColor: selectedDate.toDateString() === new Date().toDateString() ? tintColor : backgroundColor,
-                  borderColor,
-                }
-              ]}
-              activeOpacity={0.7}>
-              <ThemedText
-                style={[
-                  styles.quickDateText,
-                  { color: selectedDate.toDateString() === new Date().toDateString() ? '#ffffff' : iconColor }
-                ]}>
-                Aujourd&apos;hui
-              </ThemedText>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => {
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                setSelectedDate(tomorrow);
-              }}
-              style={[
-                styles.quickDateButton,
-                {
-                  backgroundColor: selectedDate.toDateString() === new Date(Date.now() + 86400000).toDateString() ? tintColor : backgroundColor,
-                  borderColor,
-                }
-              ]}
-              activeOpacity={0.7}>
-              <ThemedText
-                style={[
-                  styles.quickDateText,
-                  { color: selectedDate.toDateString() === new Date(Date.now() + 86400000).toDateString() ? '#ffffff' : iconColor }
-                ]}>
-                Demain
-              </ThemedText>
-            </TouchableOpacity>
-          </ThemedView>
-
-          {showDatePicker && (
-            <DateTimePicker
-              value={selectedDate}
-              mode="date"
-              display="inline"
-              onChange={handleDateChange}
-              maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
-              minimumDate={new Date()} // Today
-              style={styles.datePicker}
-            />
-          )}
-        </ThemedView>
+        <TouchableOpacity
+          onPress={handleDatePress}
+          style={[styles.dateButton, { backgroundColor, borderColor }]}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="Choose a date">
+          <IconSymbol name="calendar" size={20} color={iconColor} />
+          <ThemedText style={styles.dateText}>
+            {formatSelectedDate(selectedDate)}
+          </ThemedText>
+          <IconSymbol name="chevron.down" size={16} color={iconColor} />
+        </TouchableOpacity>
 
         {/* Room Type Filter */}
         {isPickerVisible && (
@@ -322,6 +261,81 @@ export default function DepartmentDetail({
           <RoomsListSkeleton />
         )}
       </ThemedView>
+
+      {/* Date Picker — a sheet overlay so opening it doesn't reflow the screen behind it */}
+      <Modal
+        visible={showDatePicker}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setShowDatePicker(false)}>
+        <View style={styles.datePickerOverlay}>
+          <Pressable style={StyleSheet.absoluteFill} onPress={() => setShowDatePicker(false)} />
+          <ThemedView style={styles.datePickerSheet}>
+            <View style={styles.datePickerHeader}>
+              <ThemedText type="defaultSemiBold">Sélectionner une date</ThemedText>
+              <TouchableOpacity
+                onPress={() => setShowDatePicker(false)}
+                accessibilityRole="button"
+                accessibilityLabel="Done">
+                <ThemedText type="link">Terminé</ThemedText>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.quickDateOptions}>
+              <TouchableOpacity
+                onPress={() => setSelectedDate(new Date())}
+                style={[
+                  styles.quickDateButton,
+                  {
+                    backgroundColor: selectedDate.toDateString() === new Date().toDateString() ? tintColor : backgroundColor,
+                    borderColor,
+                  }
+                ]}
+                activeOpacity={0.7}>
+                <ThemedText
+                  style={[
+                    styles.quickDateText,
+                    { color: selectedDate.toDateString() === new Date().toDateString() ? '#ffffff' : iconColor }
+                  ]}>
+                  Aujourd&apos;hui
+                </ThemedText>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  const tomorrow = new Date();
+                  tomorrow.setDate(tomorrow.getDate() + 1);
+                  setSelectedDate(tomorrow);
+                }}
+                style={[
+                  styles.quickDateButton,
+                  {
+                    backgroundColor: selectedDate.toDateString() === new Date(Date.now() + 86400000).toDateString() ? tintColor : backgroundColor,
+                    borderColor,
+                  }
+                ]}
+                activeOpacity={0.7}>
+                <ThemedText
+                  style={[
+                    styles.quickDateText,
+                    { color: selectedDate.toDateString() === new Date(Date.now() + 86400000).toDateString() ? '#ffffff' : iconColor }
+                  ]}>
+                  Demain
+                </ThemedText>
+              </TouchableOpacity>
+            </View>
+
+            <DateTimePicker
+              value={selectedDate}
+              mode="date"
+              display="inline"
+              onChange={handleDateChange}
+              maximumDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
+              style={styles.datePicker}
+            />
+          </ThemedView>
+        </View>
+      </Modal>
     </ThemedView>
   );
 }
@@ -332,8 +346,9 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 12,
     paddingBottom: 16,
+    gap: 12,
   },
   headerButtons: {
     flexDirection: 'row',
@@ -341,7 +356,6 @@ const styles = StyleSheet.create({
     paddingRight: 4,
   },
   filterContainer: {
-    marginTop: 16,
     gap: 12,
   },
   filterLabel: {
@@ -370,9 +384,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
-  dateContainer: {
-    marginTop: 16,
-  },
   dateButton: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -387,16 +398,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
   },
-  dateLabel: {
-    fontSize: 14,
-    fontWeight: '500',
-    marginBottom: 8,
-    opacity: 0.7,
+  datePickerOverlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  datePickerSheet: {
+    borderTopLeftRadius: Radius.md,
+    borderTopRightRadius: Radius.md,
+    padding: 20,
+    paddingBottom: 32,
+  },
+  datePickerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 16,
   },
   quickDateOptions: {
     flexDirection: 'row',
-    marginTop: 12,
     gap: 12,
+    marginBottom: 12,
   },
   quickDateButton: {
     paddingHorizontal: 16,
