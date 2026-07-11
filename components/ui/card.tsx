@@ -1,0 +1,112 @@
+import { ThemedText } from '@/components/themed-text';
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { Radius } from '@/constants/theme';
+import { useThemeColor } from '@/hooks/use-theme-color';
+import { ReactNode } from 'react';
+import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+
+interface CardProps {
+  children: ReactNode;
+  style?: StyleProp<ViewStyle>;
+}
+
+/** A rounded, shadowed surface — the shared container for grouped rows or standalone content. */
+export function Card({ children, style }: CardProps) {
+  const backgroundColor = useThemeColor({}, 'card');
+
+  return <View style={[styles.card, { backgroundColor }, style]}>{children}</View>;
+}
+
+/** A hairline divider between rows inside a Card, inset to align with row text. */
+export function CardSeparator({ inset = 56 }: { inset?: number }) {
+  const borderColor = useThemeColor({}, 'border');
+  return <View style={[styles.separator, { backgroundColor: borderColor, marginLeft: inset }]} />;
+}
+
+interface RowProps {
+  icon?: ReactNode;
+  title: string;
+  subtitle?: string;
+  onPress?: () => void;
+  right?: ReactNode;
+  showChevron?: boolean;
+  titleNumberOfLines?: number;
+  accessibilityLabel?: string;
+}
+
+/**
+ * icon + title/subtitle + trailing accessory — used for both department and settings rows.
+ * The tappable area (icon + text) is a sibling of `right`, never its ancestor — `right` often
+ * contains its own touchable (e.g. a favorite button), and nesting touchables breaks on web
+ * (invalid `<button>`-in-`<button>`) and is fragile on native.
+ */
+export function Row({
+  icon,
+  title,
+  subtitle,
+  onPress,
+  right,
+  showChevron = !!onPress,
+  titleNumberOfLines,
+  accessibilityLabel,
+}: RowProps) {
+  const iconColor = useThemeColor({}, 'icon');
+  const Content = onPress ? TouchableOpacity : View;
+
+  return (
+    <View style={styles.row}>
+      <Content
+        style={styles.content}
+        onPress={onPress}
+        activeOpacity={onPress ? 0.7 : undefined}
+        accessibilityRole={onPress ? 'button' : undefined}
+        accessibilityLabel={accessibilityLabel ?? title}>
+        {icon && <View style={styles.icon}>{icon}</View>}
+        <View style={styles.textContainer}>
+          <ThemedText type="defaultSemiBold" numberOfLines={titleNumberOfLines}>
+            {title}
+          </ThemedText>
+          {subtitle && <ThemedText type="caption">{subtitle}</ThemedText>}
+        </View>
+      </Content>
+      {right}
+      {showChevron && <IconSymbol name="chevron.right" size={18} color={iconColor} />}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: Radius.md,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  separator: {
+    height: StyleSheet.hairlineWidth,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    gap: 12,
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  icon: {
+    width: 28,
+    alignItems: 'center',
+  },
+  textContainer: {
+    flex: 1,
+    gap: 2,
+  },
+});
