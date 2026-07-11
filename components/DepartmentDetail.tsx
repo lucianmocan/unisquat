@@ -256,6 +256,7 @@ export default function DepartmentDetail({
             rooms={filteredRooms}
             now={selectedView === 0}
             department={department}
+            selectedDate={selectedDate}
             isRefreshing={isRefreshing}
             onRefresh={handleRefresh}
           />

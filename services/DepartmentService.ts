@@ -29,9 +29,22 @@ export class DepartmentService {
   }
 
   /**
+   * The "now" to treat a selected date as being at, for availability purposes: the current
+   * time-of-day, projected onto that date. For today this is just the real current time; for
+   * a past or future date it's "if it were this time of day, on that date" — the only reading
+   * of "is this room free right now" that makes sense once you're not looking at today.
+   */
+  static getReferenceNow(selectedDate: Date): Date {
+    const real = new Date();
+    const reference = new Date(selectedDate);
+    reference.setHours(real.getHours(), real.getMinutes(), real.getSeconds(), real.getMilliseconds());
+    return reference;
+  }
+
+  /**
    * Download and parse iCal data for a department
    */
-  static async downloadICalData(department: Department, selectedDate?: Date): Promise<Department> {
+  static async downloadICalData(department: Department, selectedDate: Date = new Date()): Promise<Department> {
     try {
       const url = this.generateICalUrl(department.id, selectedDate);
       const response = await fetch(url);
@@ -56,8 +69,8 @@ export class DepartmentService {
         rooms: this.createRooms(department, icalData)
       };
 
-      // Calculate room availability
-      this.calculateAvailability(updatedDepartment);
+      // Calculate room availability relative to the selected date, not the real current moment
+      this.calculateAvailability(updatedDepartment, this.getReferenceNow(selectedDate));
 
       return updatedDepartment;
 
@@ -205,14 +218,13 @@ export class DepartmentService {
   }
 
   /**
-   * Calculate room availability based on current time and events
+   * Calculate room availability based on `now` (defaults to the real current time) and events.
+   * Pass the result of `getReferenceNow(selectedDate)` when computing for a non-today date.
    */
-  static calculateAvailability(department: Department): void {
+  static calculateAvailability(department: Department, now: Date = new Date()): void {
     if (!department.rooms) {
       return;
     }
-
-    const now = new Date();
 
     department.rooms.forEach(room => {
       // Find if there's an event happening RIGHT NOW

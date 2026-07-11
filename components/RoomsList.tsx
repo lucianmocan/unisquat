@@ -1,6 +1,7 @@
-import { EmptyState } from '@/components/ui/empty-state';
 import { Card, CardSeparator, Row } from '@/components/ui/card';
+import { EmptyState } from '@/components/ui/empty-state';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { DepartmentService } from '@/services/DepartmentService';
 import { Department, Room } from '@/types';
 import { router } from 'expo-router';
 import { Fragment } from 'react';
@@ -12,31 +13,47 @@ interface RoomsListProps {
   rooms: Room[];
   now: boolean;
   department: Department;
+  selectedDate: Date;
   isRefreshing?: boolean;
   onRefresh?: () => void;
 }
 
-/** A short, relative "how long until this changes" label — e.g. "<30 min", "1h+", "3h+". */
-function formatRelativeAvailability(timeString?: string) {
+function formatDuration(totalMinutes: number): string {
+  const minutes = Math.max(totalMinutes, 0);
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const remainder = minutes % 60;
+  return remainder === 0 ? `${hours}h` : `${hours}h${String(remainder).padStart(2, '0')}`;
+}
+
+/**
+ * A direction-explicit availability label: "< {duration}" for a room that's free now
+ * (counting down to when it'll next be occupied), "dans {duration}" for a room that's
+ * occupied now (counting down to when it'll be free). Which tab you're looking at
+ * (Maintenant/Prochainement) already establishes "free" vs "busy", so the label only needs
+ * to carry the countdown and its direction, not repeat "Libre" every row.
+ * `referenceNow` must be the same reference moment `calculateAvailability` used to compute
+ * `timeData` (today's real time for today, or that time-of-day projected onto another date) —
+ * otherwise a past/future date's `timeData` gets compared against the wrong "now".
+ */
+function formatAvailability(timeString: string | undefined, referenceNow: Date, isFreeNow: boolean) {
   if (!timeString) return '';
 
-  const now = new Date();
-  const endOfDay = new Date(now);
+  const endOfDay = new Date(referenceNow);
   endOfDay.setHours(23, 59, 59, 999);
 
   const target = new Date(timeString);
   if (target.getTime() >= endOfDay.getTime()) {
-    return 'la fermeture';
+    return 'Libre';
   }
 
-  const diffMinutes = Math.round((target.getTime() - now.getTime()) / 60000);
-  if (diffMinutes <= 0) return 'maintenant';
-  if (diffMinutes < 30) return '<30 min';
-  if (diffMinutes < 60) return '<1h';
-  return `${Math.floor(diffMinutes / 60)}h+`;
+  const diffMinutes = Math.round((target.getTime() - referenceNow.getTime()) / 60000);
+  const duration = formatDuration(diffMinutes);
+  return isFreeNow ? `< ${duration}` : `dans ${duration}`;
 }
 
-export default function RoomsList({ rooms, now, department, isRefreshing = false, onRefresh }: RoomsListProps) {
+export default function RoomsList({ rooms, now, department, selectedDate, isRefreshing = false, onRefresh }: RoomsListProps) {
+  const referenceNow = DepartmentService.getReferenceNow(selectedDate);
   const errorColor = useThemeColor({}, 'error');
   const tintColor = useThemeColor({}, 'tint');
   const insets = useSafeAreaInsets();
@@ -85,7 +102,7 @@ export default function RoomsList({ rooms, now, department, isRefreshing = false
               right={
                 room.timeData ? (
                   <View style={styles.timeInfo}>
-                    <ThemedText style={styles.timeText}>{formatRelativeAvailability(room.timeData)}</ThemedText>
+                    <ThemedText style={styles.timeText}>{formatAvailability(room.timeData, referenceNow, now)}</ThemedText>
                     <ThemedText type="caption" style={{ color: tintColor }}>
                       {room.roomEvents?.length || 0} événements
                     </ThemedText>
