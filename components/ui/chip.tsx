@@ -1,6 +1,7 @@
 import { ThemedText } from '@/components/themed-text';
 import { Radius, Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import * as Haptics from 'expo-haptics';
 import { ReactNode } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
@@ -17,10 +18,15 @@ export function Chip({ label, selected, onPress, icon }: ChipProps) {
   const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
   const textColor = useThemeColor({}, 'icon');
 
+  const handlePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    onPress();
+  };
+
   return (
     <TouchableOpacity
       style={[styles.chip, { backgroundColor: selected ? tintColor : backgroundColor }]}
-      onPress={onPress}
+      onPress={handlePress}
       activeOpacity={0.7}
       accessibilityRole="button"
       accessibilityState={{ selected }}>

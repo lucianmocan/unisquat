@@ -17,13 +17,12 @@ export default function SettingsScreen() {
   const successColor = useThemeColor({}, 'success');
   const infoColor = useThemeColor({}, 'info');
 
+  // Row already fires its own haptic on press for all the handlers below.
   const handleAbout = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     router.push('/settings/about');
   };
 
   const handleLanguage = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     Alert.alert(
       'Language Settings',
       'Language selection feature coming soon!\nCurrently supporting English.',
@@ -32,7 +31,6 @@ export default function SettingsScreen() {
   };
 
   const handleTime = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     Alert.alert(
       'Time Settings',
       'Time configuration feature coming soon!\nCurrently using device timezone & time format.',
@@ -41,7 +39,6 @@ export default function SettingsScreen() {
   };
 
   const handleReportIssue = async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const email = 'support@unisquat.app';
     const subject = 'Issue Report - UniSquat App';
     const body = 'Please describe the issue you encountered:\n\n';
@@ -52,6 +49,7 @@ export default function SettingsScreen() {
     if (canOpen) {
       await Linking.openURL(url);
     } else {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
       Alert.alert(
         'Unable to open email',
         `Please send your issue report to: ${email}`,
@@ -61,7 +59,6 @@ export default function SettingsScreen() {
   };
 
   const handleSuggestion = async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     const email = 'feedback@unisquat.app';
     const subject = 'Feature Suggestion - UniSquat App';
     const body = 'I would like to suggest the following feature:\n\n';
@@ -72,6 +69,7 @@ export default function SettingsScreen() {
     if (canOpen) {
       await Linking.openURL(url);
     } else {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
       Alert.alert(
         'Unable to open email',
         `Please send your suggestion to: ${email}`,
@@ -81,7 +79,6 @@ export default function SettingsScreen() {
   };
 
   const handlePrivacyPolicy = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     Alert.alert(
       'Privacy Policy',
       'Privacy policy feature coming soon!\nWe take your privacy seriously.',
@@ -90,7 +87,6 @@ export default function SettingsScreen() {
   };
 
   const handleTermsOfService = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     Alert.alert(
       'Terms of Service',
       'Terms of service feature coming soon!\nPlease use the app responsibly.',

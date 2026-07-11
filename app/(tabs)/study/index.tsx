@@ -46,14 +46,18 @@ export default function StudyScreen() {
     toggleFavorite(departmentId);
   };
 
+  // Chip and Row already fire their own haptic on press.
   const toggleFavoritesFilter = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setShowFavoritesOnly(!showFavoritesOnly);
   };
 
   const handleDepartmentPress = (department: Department) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     router.push({ pathname: '/study/[departmentId]', params: { departmentId: department.id } });
+  };
+
+  const handleClearSearch = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setSearchQuery('');
   };
 
   return (
@@ -73,7 +77,7 @@ export default function StudyScreen() {
         />
         {searchQuery.length > 0 && (
           <TouchableOpacity
-            onPress={() => setSearchQuery('')}
+            onPress={handleClearSearch}
             style={styles.clearButton}
             activeOpacity={0.7}
             accessibilityRole="button"

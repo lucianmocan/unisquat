@@ -7,7 +7,7 @@ export default function StudyLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: 'Study',
+          title: 'Squat',
           headerLargeTitle: true,
           headerTransparent: Platform.OS === 'ios',
         }}

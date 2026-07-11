@@ -108,10 +108,18 @@ export default function DepartmentDetail({
       setDownloadSuccess(success);
       setHasError(!success);
       setLastDownloadKey(downloadKey);
+      // Only signal the outcome for an explicit refresh (pull-to-refresh, error retry) — the
+      // initial silent load on screen-open shouldn't buzz the phone.
+      if (force) {
+        Haptics.notificationAsync(success ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Error);
+      }
     } catch (error) {
       console.error('Error fetching department data:', error);
       setDownloadSuccess(false);
       setHasError(true);
+      if (force) {
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      }
     } finally {
       setIsRefreshing(false);
     }
@@ -127,14 +135,23 @@ export default function DepartmentDetail({
     return ['Toutes', ...types];
   }, [department.roomLabels]);
 
+  // SegmentedControl and Chip already fire their own haptic on change/press.
   const handleViewChange = (view: number) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setSelectedView(view);
   };
 
   const handleFilterChange = (filter: string) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setSelectedFilter(filter);
+  };
+
+  const handleOpenDatePicker = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setShowDatePicker(true);
+  };
+
+  const handleOpenTimePicker = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setShowTimePicker(true);
   };
 
   // Picking any part of the date/time control freezes it there — see `isLive` above.
@@ -231,7 +248,7 @@ export default function DepartmentDetail({
               ) : (
                 <>
                   <TouchableOpacity
-                    onPress={() => setShowDatePicker(true)}
+                    onPress={handleOpenDatePicker}
                     style={[styles.androidDateButton, { backgroundColor, borderColor }]}
                     activeOpacity={0.7}
                     accessibilityRole="button"
@@ -240,7 +257,7 @@ export default function DepartmentDetail({
                     <ThemedText style={styles.pickerText}>{formatShortDate(selectedDate)}</ThemedText>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => setShowTimePicker(true)}
+                    onPress={handleOpenTimePicker}
                     style={[styles.androidDateButton, { backgroundColor, borderColor }]}
                     activeOpacity={0.7}
                     accessibilityRole="button"

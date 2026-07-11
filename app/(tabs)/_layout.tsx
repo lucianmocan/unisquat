@@ -10,7 +10,7 @@ export default function TabLayout() {
     <NativeTabs tintColor={Colors.light.tint}>
       <NativeTabs.Trigger name="study">
         <Icon sf="magnifyingglass" androidSrc={<VectorIcon family={MaterialIcons} name="search" />} />
-        <Label>Study</Label>
+        <Label>Squat</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="settings">
         <Icon sf="gearshape.fill" androidSrc={<VectorIcon family={MaterialIcons} name="settings" />} />

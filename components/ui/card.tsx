@@ -2,6 +2,7 @@ import { ThemedText } from '@/components/themed-text';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Radius } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import * as Haptics from 'expo-haptics';
 import { ReactNode } from 'react';
 import { LayoutChangeEvent, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
@@ -63,6 +64,13 @@ export function Row({
 }: RowProps) {
   const iconColor = useThemeColor({}, 'icon');
 
+  const handlePress = onPress
+    ? () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        onPress();
+      }
+    : undefined;
+
   const textContent = (
     <>
       {icon && <View style={styles.icon}>{icon}</View>}
@@ -83,7 +91,7 @@ export function Row({
     return (
       <TouchableOpacity
         style={[styles.row, styles.content]}
-        onPress={onPress}
+        onPress={handlePress}
         activeOpacity={0.7}
         accessibilityRole="button"
         accessibilityLabel={accessibilityLabel ?? title}>
@@ -100,7 +108,7 @@ export function Row({
     <View style={styles.row}>
       <Content
         style={styles.content}
-        onPress={onPress}
+        onPress={handlePress}
         activeOpacity={onPress ? 0.7 : undefined}
         accessibilityRole={onPress ? 'button' : undefined}
         accessibilityLabel={accessibilityLabel ?? title}>
