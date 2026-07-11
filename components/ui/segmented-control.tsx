@@ -42,7 +42,7 @@ export function SegmentedControl({ options, selectedIndex, onChange }: Segmented
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderRadius: Radius.sm,
+    borderRadius: Radius.md,
     borderWidth: 1,
     overflow: 'hidden',
   },

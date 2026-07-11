@@ -29,7 +29,11 @@ export default function AboutScreen() {
         </ThemedText>
       </Card>
 
-      <TouchableOpacity onPress={handleOpenCredit} activeOpacity={0.7}>
+      <TouchableOpacity
+        onPress={handleOpenCredit}
+        activeOpacity={0.7}
+        accessibilityRole="link"
+        accessibilityLabel="Open unisquat.alwaysdata.net">
         <ThemedText type="caption">
           Inspired by <ThemedText type="link" style={{ color: tintColor }}>unisquat.alwaysdata.net</ThemedText>
         </ThemedText>

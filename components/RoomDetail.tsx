@@ -1,5 +1,6 @@
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Radius } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { cleanDescription } from '@/services/DepartmentService';
 import { Room, RoomEvent } from '@/types';
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   },
   eventItem: {
     padding: 16,
-    borderRadius: 12,
+    borderRadius: Radius.md,
     borderWidth: 0.5,
     gap: 8,
   },

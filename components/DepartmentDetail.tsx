@@ -1,16 +1,19 @@
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Chip } from '@/components/ui/chip';
+import { EmptyState } from '@/components/ui/empty-state';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SegmentedControl } from '@/components/ui/segmented-control';
+import { RoomsListSkeleton } from '@/components/ui/skeleton';
+import { Radius } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { DepartmentService } from '@/services/DepartmentService';
 import { Department } from '@/types';
-import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { Stack } from 'expo-router';
 import * as Haptics from 'expo-haptics';
-import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import RoomsList from './RoomsList';
 
 interface DepartmentDetailProps {
@@ -24,13 +27,12 @@ export default function DepartmentDetail({
   onFavoriteToggle,
   onDepartmentUpdate
 }: DepartmentDetailProps) {
-  const navigation = useNavigation();
-
   const [selectedView, setSelectedView] = useState(0); // 0: Now, 1: Later
   const [selectedFilter, setSelectedFilter] = useState('Toutes');
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [isPickerVisible, setIsPickerVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -51,25 +53,31 @@ export default function DepartmentDetail({
   }, []);
 
   // Native header: title + favorite/filter toolbar buttons, matching the Swift app's nav bar
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: department.name,
-      headerRight: () => (
-        <View style={styles.headerButtons}>
-          <TouchableOpacity onPress={handleFavoritePress} activeOpacity={0.7}>
-            <IconSymbol
-              name={department.isFavorite ? 'heart.fill' : 'heart'}
-              size={24}
-              color={department.isFavorite ? favoriteColor : iconColor}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleFilterToggle} activeOpacity={0.7}>
-            <IconSymbol name="line.3.horizontal.decrease.circle" size={22} color={iconColor} />
-          </TouchableOpacity>
-        </View>
-      ),
-    });
-  }, [navigation, department.name, department.isFavorite, iconColor, favoriteColor, handleFavoritePress, handleFilterToggle]);
+  const renderHeaderRight = useCallback(
+    () => (
+      <View style={styles.headerButtons}>
+        <TouchableOpacity
+          onPress={handleFavoritePress}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel={department.isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
+          <IconSymbol
+            name={department.isFavorite ? 'heart.fill' : 'heart'}
+            size={24}
+            color={department.isFavorite ? favoriteColor : iconColor}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={handleFilterToggle}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="Filter by room type">
+          <IconSymbol name="line.3.horizontal.decrease.circle" size={22} color={iconColor} />
+        </TouchableOpacity>
+      </View>
+    ),
+    [department.isFavorite, iconColor, favoriteColor, handleFavoritePress, handleFilterToggle]
+  );
 
   // Filter rooms based on selected filter
   const filteredRooms = useMemo(() => {
@@ -84,26 +92,29 @@ export default function DepartmentDetail({
 
   // Track if we've already downloaded data for this department/date combination
   const [lastDownloadKey, setLastDownloadKey] = useState<string>('');
-  
-  // Run data download task
-  const runDataTask = useCallback(async () => {
+
+  // Fetch (or recompute) room data. `force` bypasses the 30-min cache and the
+  // already-attempted guard — used for pull-to-refresh and the error retry button.
+  const fetchData = useCallback(async (force: boolean) => {
     const downloadKey = `${department.id}-${selectedDate.toDateString()}`;
-    
+
     // Skip if we've already attempted a download for this department/date combination
     // (regardless of success) — otherwise a failed fetch (offline, server error) retries every render.
-    if (lastDownloadKey === downloadKey) {
+    if (!force && lastDownloadKey === downloadKey) {
       return;
     }
-    
-    setIsLoading(true);
+
+    setIsRefreshing(force);
     setDownloadSuccess(false);
-    
+    setHasError(false);
+
     try {
-      // Check if data needs to be downloaded
-      if (DepartmentService.shouldDownloadData(department)) {
+      if (force || DepartmentService.shouldDownloadData(department)) {
         const updatedDepartment = await DepartmentService.downloadICalData(department, selectedDate);
         onDepartmentUpdate(updatedDepartment);
-        setDownloadSuccess(updatedDepartment.downloadSuccess || false);
+        const success = updatedDepartment.downloadSuccess || false;
+        setDownloadSuccess(success);
+        setHasError(!success);
         setLastDownloadKey(downloadKey);
       } else {
         // Data is already fresh, just calculate availability
@@ -114,12 +125,17 @@ export default function DepartmentDetail({
         setLastDownloadKey(downloadKey);
       }
     } catch (error) {
-      console.error('Error in runDataTask:', error);
+      console.error('Error fetching department data:', error);
       setDownloadSuccess(false);
+      setHasError(true);
     } finally {
-      setIsLoading(false);
+      setIsRefreshing(false);
     }
   }, [department, selectedDate, onDepartmentUpdate, lastDownloadKey]);
+
+  const handleRefresh = useCallback(() => {
+    fetchData(true);
+  }, [fetchData]);
 
   // Get unique room type descriptions for filter
   const roomTypeOptions = useMemo(() => {
@@ -146,8 +162,6 @@ export default function DepartmentDetail({
     setShowDatePicker(false);
     if (date) {
       setSelectedDate(date);
-      // Trigger data reload with new date
-      setDownloadSuccess(false);
     }
   };
 
@@ -162,17 +176,19 @@ export default function DepartmentDetail({
 
   // Download and process iCal data when component mounts or department/date changes
   useEffect(() => {
-    runDataTask();
-  }, [runDataTask]);
+    fetchData(false);
+  }, [fetchData]);
 
   // Reset download status and key when department or date changes
   useEffect(() => {
     setDownloadSuccess(false);
+    setHasError(false);
     setLastDownloadKey('');
   }, [department.id, selectedDate]);
 
   return (
     <ThemedView style={styles.container}>
+      <Stack.Screen options={{ title: department.name, headerRight: renderHeaderRight }} />
       {/* Header */}
       <ThemedView style={styles.header}>
         {/* Date Selector */}
@@ -181,7 +197,9 @@ export default function DepartmentDetail({
           <TouchableOpacity
             onPress={handleDatePress}
             style={[styles.dateButton, { backgroundColor, borderColor }]}
-            activeOpacity={0.7}>
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Choose a date">
             <IconSymbol name="calendar" size={20} color={iconColor} />
             <ThemedText style={styles.dateText}>
               {formatSelectedDate(selectedDate)}
@@ -192,10 +210,7 @@ export default function DepartmentDetail({
           {/* Quick Date Options */}
           <ThemedView style={styles.quickDateOptions}>
             <TouchableOpacity
-              onPress={() => {
-                setSelectedDate(new Date());
-                setDownloadSuccess(false);
-              }}
+              onPress={() => setSelectedDate(new Date())}
               style={[
                 styles.quickDateButton,
                 {
@@ -218,7 +233,6 @@ export default function DepartmentDetail({
                 const tomorrow = new Date();
                 tomorrow.setDate(tomorrow.getDate() + 1);
                 setSelectedDate(tomorrow);
-                setDownloadSuccess(false);
               }}
               style={[
                 styles.quickDateButton,
@@ -293,14 +307,19 @@ export default function DepartmentDetail({
             rooms={filteredRooms}
             now={selectedView === 0}
             department={department}
+            isRefreshing={isRefreshing}
+            onRefresh={handleRefresh}
+          />
+        ) : hasError ? (
+          <EmptyState
+            icon="xmark.circle.fill"
+            title="Impossible de charger les données"
+            subtitle="Vérifiez votre connexion et réessayez"
+            actionLabel="Réessayer"
+            onAction={handleRefresh}
           />
         ) : (
-          <ThemedView style={styles.loadingContainer}>
-            <ActivityIndicator size="large" color={tintColor} />
-            <ThemedText style={styles.loadingText}>
-              {isLoading ? 'Téléchargement des données...' : 'Préparation...'}
-            </ThemedText>
-          </ThemedView>
+          <RoomsListSkeleton />
         )}
       </ThemedView>
     </ThemedView>
@@ -351,16 +370,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 16,
-  },
-  loadingText: {
-    fontSize: 16,
-    opacity: 0.7,
-  },
   dateContainer: {
     marginTop: 16,
   },
@@ -369,7 +378,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    borderRadius: 12,
+    borderRadius: Radius.md,
     borderWidth: 1,
     gap: 12,
   },
@@ -392,7 +401,7 @@ const styles = StyleSheet.create({
   quickDateButton: {
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 20,
+    borderRadius: Radius.pill,
     borderWidth: 1,
   },
   quickDateText: {

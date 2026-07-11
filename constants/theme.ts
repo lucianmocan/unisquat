@@ -5,17 +5,18 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#5EA614';
-const tintColorDark = '#8DC63F';
+// One brand accent shared by both modes — a muted mid-tone green reads calmly against
+// both light and dark backgrounds, instead of needing a brighter "neon" variant for dark mode.
+const tintColor = '#6FA83A';
 
 export const Colors = {
   light: {
     text: '#11181C',
     background: '#fff',
-    tint: tintColorLight,
+    tint: tintColor,
     icon: '#687076',
     tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    tabIconSelected: tintColor,
     card: '#ffffff',
     border: 'rgba(0,0,0,0.1)',
     success: '#4CAF50',
@@ -27,10 +28,10 @@ export const Colors = {
   dark: {
     text: '#ECEDEE',
     background: '#151718',
-    tint: tintColorDark,
+    tint: tintColor,
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    tabIconSelected: tintColor,
     card: '#1E2021',
     border: 'rgba(255,255,255,0.15)',
     success: '#4CAF50',
@@ -50,10 +51,11 @@ export const Spacing = {
   xxl: 32,
 };
 
+// Two radii, used consistently everywhere: containers/cards/inputs/buttons all share `md`;
+// fully-rounded toggles/chips use `pill`. (The About screen's app-icon image is a deliberate
+// one-off matching the OS icon mask, not part of this scale.)
 export const Radius = {
-  sm: 6,
-  md: 10,
-  lg: 16,
+  md: 12,
   pill: 999,
 };
 

@@ -2,12 +2,14 @@ import { ThemedText } from '@/components/themed-text';
 import { Card, CardSeparator, Row } from '@/components/ui/card';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Spacing } from '@/constants/theme';
+import { useTabHaptics } from '@/hooks/use-tab-haptics';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { router } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { Alert, Linking, ScrollView, StyleSheet } from 'react-native';
 
 export default function SettingsScreen() {
+  useTabHaptics();
   const iconColor = useThemeColor({}, 'icon');
   const tintColor = useThemeColor({}, 'tint');
   const errorColor = useThemeColor({}, 'error');
@@ -97,7 +99,7 @@ export default function SettingsScreen() {
   };
 
   return (
-    <ScrollView style={styles.list} contentContainerStyle={styles.listContent}>
+    <ScrollView style={styles.list} contentContainerStyle={styles.listContent} contentInsetAdjustmentBehavior="automatic">
       <ThemedText type="caption" style={styles.sectionHeader}>General</ThemedText>
       <Card>
         <Row

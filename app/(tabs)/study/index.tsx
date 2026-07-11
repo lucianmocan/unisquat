@@ -6,13 +6,16 @@ import { ScrollView, StyleSheet, TextInput, TouchableOpacity, View } from 'react
 import { ThemedText } from '@/components/themed-text';
 import { Card, CardSeparator, Row } from '@/components/ui/card';
 import { Chip } from '@/components/ui/chip';
+import { EmptyState } from '@/components/ui/empty-state';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { useDepartments } from '@/contexts/DepartmentsContext';
+import { useTabHaptics } from '@/hooks/use-tab-haptics';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { Department } from '@/types';
 
 export default function StudyScreen() {
+  useTabHaptics();
   const [searchQuery, setSearchQuery] = useState('');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const { departments, toggleFavorite } = useDepartments();
@@ -50,11 +53,15 @@ export default function StudyScreen() {
 
   const handleDepartmentPress = (department: Department) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    router.push(`/study/${department.id}`);
+    router.push({ pathname: '/study/[departmentId]', params: { departmentId: department.id } });
   };
 
   return (
-    <ScrollView style={styles.list} contentContainerStyle={styles.listContent} keyboardShouldPersistTaps="handled">
+    <ScrollView
+      style={styles.list}
+      contentContainerStyle={styles.listContent}
+      keyboardShouldPersistTaps="handled"
+      contentInsetAdjustmentBehavior="automatic">
       <View style={[styles.searchInputContainer, { backgroundColor: inputBackgroundColor, borderColor }]}>
         <IconSymbol name="magnifyingglass" size={20} color={iconColor} style={styles.searchIcon} />
         <TextInput
@@ -89,17 +96,15 @@ export default function StudyScreen() {
       </View>
 
       {filteredDepartments.length === 0 ? (
-        <View style={styles.emptyState}>
-          <IconSymbol name="graduationcap" size={64} color={iconColor + '40'} />
-          <ThemedText style={styles.emptyStateText}>
-            {showFavoritesOnly ? 'No favorite buildings yet' : 'No buildings found'}
-          </ThemedText>
-          <ThemedText type="caption" style={styles.emptyStateSubtext}>
-            {showFavoritesOnly
+        <EmptyState
+          icon="graduationcap"
+          title={showFavoritesOnly ? 'No favorite buildings yet' : 'No buildings found'}
+          subtitle={
+            showFavoritesOnly
               ? 'Add buildings to favorites by tapping the heart icon'
-              : 'Try adjusting your search terms'}
-          </ThemedText>
-        </View>
+              : 'Try adjusting your search terms'
+          }
+        />
       ) : (
         <Card>
           {filteredDepartments.map((item, index) => (
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
-    borderRadius: 12,
+    borderRadius: Radius.md,
     borderWidth: 1,
   },
   searchIcon: {
@@ -167,20 +172,5 @@ const styles = StyleSheet.create({
   },
   favoriteButton: {
     padding: 4,
-  },
-  emptyState: {
-    alignItems: 'center',
-    paddingVertical: 48,
-    gap: Spacing.lg,
-  },
-  emptyStateText: {
-    fontSize: 18,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  emptyStateSubtext: {
-    textAlign: 'center',
-    paddingHorizontal: 32,
-    lineHeight: 20,
   },
 });

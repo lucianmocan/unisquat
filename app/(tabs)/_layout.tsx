@@ -1,35 +1,21 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Icon, Label, NativeTabs, VectorIcon } from 'expo-router/unstable-native-tabs';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
+// Real native tab bar (UITabBarController / Material Tabs) — gets iOS 26's Liquid Glass
+// automatically, falls back to the classic tab bar on iOS 18 and earlier, for free.
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="study"
-        options={{
-          title: 'Study',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="magnifyingglass" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gearshape.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <NativeTabs tintColor={Colors.light.tint}>
+      <NativeTabs.Trigger name="study">
+        <Icon sf="magnifyingglass" androidSrc={<VectorIcon family={MaterialIcons} name="search" />} />
+        <Label>Study</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <Icon sf="gearshape.fill" androidSrc={<VectorIcon family={MaterialIcons} name="settings" />} />
+        <Label>Settings</Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
