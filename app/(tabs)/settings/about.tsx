@@ -4,11 +4,14 @@ import { Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { haptics } from '@/services/haptics';
 import { Image } from 'expo-image';
+import { useTranslation } from 'react-i18next';
 import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const CREDIT_URL = 'https://unisquat.alwaysdata.net/';
+const APP_VERSION = '1.0.0';
 
 export default function AboutScreen() {
+  const { t } = useTranslation();
   const tintColor = useThemeColor({}, 'tint');
 
   const handleOpenCredit = () => {
@@ -20,22 +23,20 @@ export default function AboutScreen() {
     <View style={styles.container}>
       <Image source={require('@/assets/images/icon.png')} style={styles.icon} />
       <ThemedText type="title">UniSquat</ThemedText>
-      <ThemedText type="caption">Version 1.0.0</ThemedText>
+      <ThemedText type="caption">{t('aboutScreen.version', { version: APP_VERSION })}</ThemedText>
 
       <Card style={styles.descriptionCard}>
-        <ThemedText style={styles.description}>
-          Find an empty room to study or work in at Université de Strasbourg — UniSquat checks the
-          university&apos;s room-booking schedules and shows you which rooms are free right now.
-        </ThemedText>
+        <ThemedText style={styles.description}>{t('aboutScreen.description')}</ThemedText>
       </Card>
 
       <TouchableOpacity
         onPress={handleOpenCredit}
         activeOpacity={0.7}
         accessibilityRole="link"
-        accessibilityLabel="Open unisquat.alwaysdata.net">
+        accessibilityLabel={t('aboutScreen.openCreditA11y')}>
         <ThemedText type="caption">
-          Inspired by <ThemedText type="link" style={{ color: tintColor }}>unisquat.alwaysdata.net</ThemedText>
+          {t('aboutScreen.inspiredBy')}
+          <ThemedText type="link" style={{ color: tintColor }}>unisquat.alwaysdata.net</ThemedText>
         </ThemedText>
       </TouchableOpacity>
     </View>

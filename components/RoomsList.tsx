@@ -3,7 +3,9 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { Department, Room } from '@/types';
 import { router } from 'expo-router';
+import { TFunction } from 'i18next';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemedText } from './themed-text';
@@ -17,25 +19,27 @@ interface RoomsListProps {
   onRefresh?: () => void;
 }
 
-function formatDuration(totalMinutes: number): string {
+function formatDuration(totalMinutes: number, t: TFunction): string {
   const minutes = Math.max(totalMinutes, 0);
-  if (minutes < 60) return `${minutes} min`;
+  if (minutes < 60) return t('roomsList.minutes', { count: minutes });
   const hours = Math.floor(minutes / 60);
   const remainder = minutes % 60;
-  return remainder === 0 ? `${hours}h` : `${hours}h${String(remainder).padStart(2, '0')}`;
+  return remainder === 0
+    ? t('roomsList.hours', { count: hours })
+    : t('roomsList.hoursMinutes', { hours, minutes: String(remainder).padStart(2, '0') });
 }
 
 /**
  * A direction-explicit availability label: "< {duration}" for a room that's free now
- * (counting down to when it'll next be occupied), "dans {duration}" for a room that's
+ * (counting down to when it'll next be occupied), "in {duration}" for a room that's
  * occupied now (counting down to when it'll be free). Which tab you're looking at
- * (Maintenant/Prochainement) already establishes "free" vs "busy", so the label only needs
- * to carry the countdown and its direction, not repeat "Libre" every row.
+ * (Now/Later) already establishes "free" vs "busy", so the label only needs to carry the
+ * countdown and its direction, not repeat "Free" every row.
  * `referenceNow` must be the same reference moment `calculateAvailability` used to compute
  * `timeData` (today's real time for today, or that time-of-day projected onto another date) —
  * otherwise a past/future date's `timeData` gets compared against the wrong "now".
  */
-function formatAvailability(timeString: string | undefined, referenceNow: Date, isFreeNow: boolean) {
+function formatAvailability(timeString: string | undefined, referenceNow: Date, isFreeNow: boolean, t: TFunction) {
   if (!timeString) return '';
 
   const endOfDay = new Date(referenceNow);
@@ -43,24 +47,25 @@ function formatAvailability(timeString: string | undefined, referenceNow: Date, 
 
   const target = new Date(timeString);
   if (target.getTime() >= endOfDay.getTime()) {
-    return 'Libre';
+    return t('roomsList.free');
   }
 
   // Floor, not round — a countdown should never claim more time remains than actually does
   // (rounding up would show e.g. "3h06" when only 3h05m20s is genuinely left).
   const diffMinutes = Math.floor((target.getTime() - referenceNow.getTime()) / 60000);
-  const duration = formatDuration(diffMinutes);
-  return isFreeNow ? `< ${duration}` : `dans ${duration}`;
+  const duration = formatDuration(diffMinutes, t);
+  return isFreeNow ? t('roomsList.busyIn', { duration }) : t('roomsList.freeIn', { duration });
 }
 
 export default function RoomsList({ rooms, now, department, selectedDate, isRefreshing = false, onRefresh }: RoomsListProps) {
+  const { t } = useTranslation();
   // `selectedDate` already carries the exact reference moment (live "now" or a user-picked
   // date/time) that `calculateAvailability`/`computeAvailability` used to derive `timeData`.
   const referenceNow = selectedDate;
   const tintColor = useThemeColor({}, 'tint');
   const insets = useSafeAreaInsets();
 
-  // "Maintenant" shows rooms currently free; "Prochainement" shows rooms currently occupied
+  // "Now" shows rooms currently free; "Later" shows rooms currently occupied
   const availableRooms = rooms.filter(room => room.isFree === now);
 
   const handleRoomPress = (room: Room) => {
@@ -74,12 +79,8 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
     return (
       <EmptyState
         icon={now ? 'magnifyingglass' : 'checkmark.circle.fill'}
-        title={now ? "Aucune salle libre n'a été trouvée" : 'Toutes les salles sont libres'}
-        subtitle={
-          now
-            ? 'Essayez "Prochainement" ou une autre date'
-            : "Aucune salle n'est actuellement occupée"
-        }
+        title={now ? t('roomsList.noFreeRoomsFound') : t('roomsList.allRoomsFree')}
+        subtitle={now ? t('roomsList.tryLaterOrOtherDate') : t('roomsList.noRoomsOccupied')}
       />
     );
   }
@@ -103,9 +104,9 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
               right={
                 room.timeData ? (
                   <View style={styles.timeInfo}>
-                    <ThemedText style={styles.timeText}>{formatAvailability(room.timeData, referenceNow, now)}</ThemedText>
+                    <ThemedText style={styles.timeText}>{formatAvailability(room.timeData, referenceNow, now, t)}</ThemedText>
                     <ThemedText type="caption" style={{ color: tintColor }}>
-                      {room.roomEvents?.length || 0} événements
+                      {t('roomsList.eventsCount', { count: room.roomEvents?.length || 0 })}
                     </ThemedText>
                   </View>
                 ) : undefined

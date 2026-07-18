@@ -1,4 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 
 import RoomDetail from '@/components/RoomDetail';
@@ -7,6 +8,7 @@ import { ThemedView } from '@/components/themed-view';
 import { useDepartments } from '@/contexts/DepartmentsContext';
 
 export default function RoomDetailScreen() {
+  const { t } = useTranslation();
   const { departmentId, roomId, referenceDate } = useLocalSearchParams<{
     departmentId: string;
     roomId: string;
@@ -20,7 +22,7 @@ export default function RoomDetailScreen() {
   if (!room) {
     return (
       <ThemedView style={styles.notFound}>
-        <ThemedText>Room not found.</ThemedText>
+        <ThemedText>{t('roomScreen.roomNotFound')}</ThemedText>
       </ThemedView>
     );
   }

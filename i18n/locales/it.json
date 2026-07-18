@@ -1,0 +1,130 @@
+{
+  "tabs": {
+    "browse": "Esplora",
+    "settings": "Impostazioni"
+  },
+  "common": {
+    "ok": "OK",
+    "all": "Tutti"
+  },
+  "study": {
+    "searchPlaceholder": "Cerca edifici...",
+    "favorites": "Preferiti",
+    "favoritesOnlyA11y": "Solo preferiti",
+    "filterByCampusA11y": "Filtra per campus",
+    "filter": "Filtra",
+    "chooseCampus": "Scegli un campus:",
+    "noFavoriteBuildings": "Nessun edificio preferito",
+    "noBuildingsFound": "Nessun edificio trovato",
+    "addToFavoritesHint": "Aggiungi edifici ai preferiti toccando il cuore",
+    "adjustSearchOrFilters": "Prova a modificare la ricerca o i filtri",
+    "removeFromFavoritesA11y": "Rimuovi dai preferiti",
+    "addToFavoritesA11y": "Aggiungi ai preferiti",
+    "buildingNotFound": "Edificio non trovato."
+  },
+  "roomScreen": {
+    "roomNotFound": "Aula non trovata."
+  },
+  "departmentDetail": {
+    "chooseRoomType": "Scegli un tipo di aula:",
+    "chooseDateA11y": "Scegli una data",
+    "chooseTimeA11y": "Scegli un orario",
+    "resetToNowA11y": "Torna a adesso",
+    "filterByRoomTypeA11y": "Filtra per tipo di aula",
+    "filter": "Filtra",
+    "now": "Adesso",
+    "later": "In seguito",
+    "loadErrorTitle": "Impossibile caricare i dati",
+    "loadErrorSubtitle": "Controlla la connessione e riprova",
+    "retry": "Riprova",
+    "removeFromFavoritesA11y": "Rimuovi dai preferiti",
+    "addToFavoritesA11y": "Aggiungi ai preferiti"
+  },
+  "roomDetail": {
+    "past": "Passati",
+    "current": "In corso",
+    "future": "In arrivo",
+    "eventsCount_one": "{{count}} evento",
+    "eventsCount_other": "{{count}} eventi",
+    "noEvents": "Nessun evento programmato per questa aula"
+  },
+  "roomsList": {
+    "minutes": "{{count}} min",
+    "hours": "{{count}}h",
+    "hoursMinutes": "{{hours}}h{{minutes}}",
+    "free": "Libera",
+    "freeIn": "tra {{duration}}",
+    "busyIn": "< {{duration}}",
+    "noFreeRoomsFound": "Nessuna aula libera trovata",
+    "allRoomsFree": "Tutte le aule sono libere",
+    "tryLaterOrOtherDate": "Prova \"In seguito\" o un'altra data",
+    "noRoomsOccupied": "Nessuna aula è attualmente occupata",
+    "eventsCount_one": "{{count}} evento",
+    "eventsCount_other": "{{count}} eventi"
+  },
+  "settingsScreen": {
+    "general": "Generale",
+    "language": "Lingua",
+    "chooseLanguage": "Scegli la lingua preferita",
+    "personalization": "Personalizzazione",
+    "personalizationSubtitle": "Personalizza il comportamento dell'app",
+    "support": "Assistenza",
+    "reportIssue": "Segnala un problema",
+    "reportIssueSubtitle": "Facci sapere se qualcosa non funziona",
+    "suggestions": "Suggerimenti",
+    "suggestionsSubtitle": "Condividi le tue idee per migliorare l'app",
+    "about": "Informazioni",
+    "aboutTitle": "Informazioni su UniSquat",
+    "aboutSubtitle": "Versione e informazioni sull'app",
+    "legal": "Informazioni legali",
+    "privacyPolicy": "Informativa sulla privacy",
+    "privacyPolicySubtitle": "Come trattiamo i tuoi dati",
+    "termsOfService": "Termini di servizio",
+    "termsSubtitle": "Condizioni d'uso dell'app",
+    "unableToOpenEmailTitle": "Impossibile aprire la posta",
+    "sendIssueReportTo": "Invia la segnalazione a: {{email}}",
+    "sendSuggestionTo": "Invia il suggerimento a: {{email}}",
+    "privacyPolicyComingSoonMessage": "Funzionalità in arrivo!\nLa tua privacy è importante per noi.",
+    "termsComingSoonMessage": "Funzionalità in arrivo!\nUsa l'app in modo responsabile.",
+    "issueReportSubject": "Segnalazione problema - App UniSquat",
+    "issueReportBody": "Descrivi il problema riscontrato:\n\n",
+    "suggestionSubject": "Suggerimento funzionalità - App UniSquat",
+    "suggestionBody": "Vorrei suggerire la seguente funzionalità:\n\n"
+  },
+  "languageScreen": {
+    "systemDefault": "Predefinita di sistema",
+    "systemDefaultSubtitle": "Usa la lingua del tuo dispositivo"
+  },
+  "personalizationScreen": {
+    "filters": "Filtri",
+    "autoCollapseSearch": "Chiudi automaticamente in Ricerca",
+    "autoCollapseSearchSubtitle": "Nascondi il pannello del filtro campus dopo aver scelto un'opzione",
+    "autoCollapseBuilding": "Chiudi automaticamente nella pagina edificio",
+    "autoCollapseBuildingSubtitle": "Nascondi il pannello del filtro tipo aula dopo aver scelto un'opzione",
+    "haptics": "Feedback aptico",
+    "hapticFeedback": "Feedback aptico",
+    "hapticFeedbackSubtitle": "Vibra al tocco e alla selezione in tutta l'app",
+    "accentColor": "Colore di accento"
+  },
+  "accentColors": {
+    "purple": "Viola",
+    "blue": "Blu",
+    "indigo": "Indaco",
+    "pink": "Rosa",
+    "red": "Rosso",
+    "orange": "Arancione",
+    "green": "Verde",
+    "teal": "Verde acqua"
+  },
+  "aboutScreen": {
+    "version": "Versione {{version}}",
+    "description": "Trova un'aula libera per studiare o lavorare all'Università di Strasburgo — UniSquat controlla gli orari di prenotazione delle aule dell'università e ti mostra quali sono libere in questo momento.",
+    "inspiredBy": "Ispirato da ",
+    "openCreditA11y": "Apri unisquat.alwaysdata.net"
+  },
+  "modal": {
+    "title": "Questa è una finestra modale",
+    "goHome": "Vai alla schermata principale",
+    "headerTitle": "Modale"
+  }
+}

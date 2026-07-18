@@ -1,5 +1,6 @@
 import { router, useNavigation } from "expo-router";
 import { Fragment, useLayoutEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
@@ -15,10 +16,14 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { haptics } from "@/services/haptics";
 import { Department } from "@/types";
 
-const ALL_CAMPUSES = "Tous";
+// Internal sentinel — never displayed directly. The "All campuses" Chip's actual label is
+// `t('common.all')`, resolved at render time so it's translated; every other campus option is
+// real department data (French building/campus names), which stays untranslated.
+const ALL_CAMPUSES = "__ALL__";
 
 export default function StudyScreen() {
   useTabHaptics();
+  const { t } = useTranslation();
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState("");
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
@@ -42,13 +47,13 @@ export default function StudyScreen() {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerSearchBarOptions: {
-        placeholder: "Search buildings...",
+        placeholder: t("study.searchPlaceholder"),
         autoCapitalize: "none",
         onChangeText: (event: { nativeEvent: { text: string } }) =>
           setSearchQuery(event.nativeEvent.text),
       },
     });
-  }, [navigation]);
+  }, [navigation, t]);
 
   const campusOptions = useMemo(() => {
     const campuses = Array.from(
@@ -133,7 +138,7 @@ export default function StudyScreen() {
           ]}
           activeOpacity={0.7}
           accessibilityRole="button"
-          accessibilityLabel="Favorites only"
+          accessibilityLabel={t("study.favoritesOnlyA11y")}
           accessibilityState={{ selected: showFavoritesOnly }}
         >
           <IconSymbol
@@ -147,7 +152,7 @@ export default function StudyScreen() {
               showFavoritesOnly && { color: "#ffffff" },
             ]}
           >
-            Favorites
+            {t("study.favorites")}
           </ThemedText>
         </TouchableOpacity>
         <TouchableOpacity
@@ -162,7 +167,7 @@ export default function StudyScreen() {
           ]}
           activeOpacity={0.7}
           accessibilityRole="button"
-          accessibilityLabel="Filter by campus"
+          accessibilityLabel={t("study.filterByCampusA11y")}
           accessibilityState={{ selected: isCampusFilterActive }}
         >
           <IconSymbol
@@ -176,7 +181,7 @@ export default function StudyScreen() {
               isCampusFilterActive && { color: "#ffffff" },
             ]}
           >
-            {isCampusFilterActive ? selectedCampus : "Filtrer"}
+            {isCampusFilterActive ? selectedCampus : t("study.filter")}
           </ThemedText>
         </TouchableOpacity>
       </View>
@@ -184,13 +189,13 @@ export default function StudyScreen() {
       {isCampusPickerVisible && (
         <View style={styles.campusFilterContainer}>
           <ThemedText style={styles.campusFilterLabel}>
-            Choisir un campus:
+            {t("study.chooseCampus")}
           </ThemedText>
           <View style={styles.campusFilterOptions}>
             {campusOptions.map((option) => (
               <Chip
                 key={option}
-                label={option}
+                label={option === ALL_CAMPUSES ? t("common.all") : option}
                 selected={selectedCampus === option}
                 onPress={() => handleCampusChange(option)}
               />
@@ -204,13 +209,13 @@ export default function StudyScreen() {
           icon="graduationcap"
           title={
             showFavoritesOnly
-              ? "No favorite buildings yet"
-              : "No buildings found"
+              ? t("study.noFavoriteBuildings")
+              : t("study.noBuildingsFound")
           }
           subtitle={
             showFavoritesOnly
-              ? "Add buildings to favorites by tapping the heart icon"
-              : "Try adjusting your search or filters"
+              ? t("study.addToFavoritesHint")
+              : t("study.adjustSearchOrFilters")
           }
         />
       ) : (
@@ -230,8 +235,8 @@ export default function StudyScreen() {
                     accessibilityRole="button"
                     accessibilityLabel={
                       item.isFavorite
-                        ? "Remove from favorites"
-                        : "Add to favorites"
+                        ? t("study.removeFromFavoritesA11y")
+                        : t("study.addToFavoritesA11y")
                     }
                   >
                     <IconSymbol

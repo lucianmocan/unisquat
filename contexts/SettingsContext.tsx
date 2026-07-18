@@ -2,19 +2,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { DEFAULT_ACCENT_COLOR } from '@/constants/theme';
+import i18next, { resolveLanguage } from '@/i18n';
 import { setHapticsEnabled } from '@/services/haptics';
 import { AppSettings } from '@/types';
 
 const STORAGE_KEY = '@unisquat/settings';
 
 // Defaults preserve today's behavior (panels stay open after a selection, haptics on, the
-// existing purple accent) — turning any of these into something else is an opt-in, not a change
-// existing users see unprompted.
+// existing purple accent, device language) — turning any of these into something else is an
+// opt-in, not a change existing users see unprompted.
 const DEFAULT_SETTINGS: AppSettings = {
   autoCollapseSearchFilters: false,
   autoCollapseDepartmentFilters: false,
   hapticsEnabled: true,
   accentColor: DEFAULT_ACCENT_COLOR,
+  language: 'system',
 };
 
 type SettingsContextValue = {
@@ -50,6 +52,11 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setHapticsEnabled(settings.hapticsEnabled);
   }, [settings.hapticsEnabled]);
+
+  // Bridges the reactive setting into i18next — 'system' resolves to the device's language.
+  useEffect(() => {
+    i18next.changeLanguage(resolveLanguage(settings.language));
+  }, [settings.language]);
 
   const persist = useCallback((next: AppSettings) => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next)).catch(error => {

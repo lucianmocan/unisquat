@@ -9,6 +9,7 @@ import { Room, RoomEvent } from '@/types';
 import { formatShortWeekdayDate, formatTime } from '@/utils/date-format';
 import { useTheme } from '@react-navigation/native';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FlatList, LayoutChangeEvent, Platform, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -19,18 +20,12 @@ interface RoomDetailProps {
 
 type EventSectionKey = 'past' | 'current' | 'future';
 
-const SECTION_TITLES: Record<EventSectionKey, string> = {
-  past: 'Passé',
-  current: 'En cours',
-  future: 'À venir',
-};
-
 type ListRow =
-  | { type: 'header'; key: string; label: string; sectionKey: EventSectionKey }
+  | { type: 'header'; key: string; sectionKey: EventSectionKey }
   | { type: 'event'; key: string; event: RoomEvent; status: EventSectionKey };
 
 /**
- * Flattens events into Passé/En cours/À venir groups (an inset-grouped-list layout, iOS
+ * Flattens events into past/current/future groups (an inset-grouped-list layout, iOS
  * Settings-style) as one row array — header rows mark `stickyHeaderIndices` — classified once
  * against `referenceDate`, the moment the picker/live clock held when this screen was opened.
  * Also returns the index of the row to scroll to on open: the current event, or the first
@@ -60,7 +55,7 @@ function buildRows(
     if (groupEvents.length === 0) return;
 
     stickyHeaderIndices.push(rows.length);
-    rows.push({ type: 'header', key: `header-${key}`, label: SECTION_TITLES[key], sectionKey: key });
+    rows.push({ type: 'header', key: `header-${key}`, sectionKey: key });
 
     groupEvents.forEach(event => {
       if (targetIndex === null && (key === 'current' || key === 'future')) {
@@ -77,6 +72,7 @@ function buildRows(
 }
 
 export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   // The screen's actual root background is React Navigation's own theme (set in
   // app/_layout.tsx), not constants/theme.ts's 'background' token — reading it straight from
@@ -137,7 +133,7 @@ export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
               styles.sectionHeaderText,
               { color: item.sectionKey === 'current' ? textColor : sectionHeaderColor },
             ]}>
-            {item.label}
+            {t(`roomDetail.${item.sectionKey}`)}
           </ThemedText>
         </View>
       );
@@ -203,13 +199,13 @@ export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
       {/* Events List */}
       <View style={styles.eventsContainer}>
         <ThemedText type="subtitle" style={styles.eventsTitle}>
-          Événements ({events.length})
+          {t('roomDetail.eventsCount', { count: events.length })}
         </ThemedText>
 
         {events.length === 0 ? (
           <EmptyState
             icon="checkmark.circle.fill"
-            title="Aucun événement planifié pour cette salle"
+            title={t('roomDetail.noEvents')}
           />
         ) : (
           <FlatList

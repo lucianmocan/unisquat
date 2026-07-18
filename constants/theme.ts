@@ -17,15 +17,17 @@ const tintColor = '#6a5acd';
 // intentionally deviate from Apple's stock system colors — e.g. green/orange/teal are Apple's
 // system colors in dark mode, but darkened in light mode — because the light-mode stock values
 // don't clear ~4.5:1 contrast against white when used as a filled chip background with white text).
+// Display names live in i18n/locales/*.json under `accentColors.<key>` — not here — so they're
+// translated; this key set and i18n/locales/*.json's `accentColors` keys must stay in sync.
 export const ACCENT_COLORS = {
-  purple: { label: 'Purple', light: tintColor, dark: tintColor },
-  blue: { label: 'Blue', light: '#007AFF', dark: '#0A84FF' },
-  indigo: { label: 'Indigo', light: '#5856D6', dark: '#5E5CE6' },
-  pink: { label: 'Pink', light: '#FF2D55', dark: '#FF375F' },
-  red: { label: 'Red', light: '#FF3B30', dark: '#FF453A' },
-  orange: { label: 'Orange', light: '#C1660A', dark: '#FF9F0A' },
-  green: { label: 'Green', light: '#248A3D', dark: '#30D158' },
-  teal: { label: 'Teal', light: '#007A8C', dark: '#40C8E0' },
+  purple: { light: tintColor, dark: tintColor },
+  blue: { light: '#007AFF', dark: '#0A84FF' },
+  indigo: { light: '#5856D6', dark: '#5E5CE6' },
+  pink: { light: '#FF2D55', dark: '#FF375F' },
+  red: { light: '#FF3B30', dark: '#FF453A' },
+  orange: { light: '#C1660A', dark: '#FF9F0A' },
+  green: { light: '#248A3D', dark: '#30D158' },
+  teal: { light: '#007A8C', dark: '#40C8E0' },
 } as const;
 
 export type AccentColorKey = keyof typeof ACCENT_COLORS;

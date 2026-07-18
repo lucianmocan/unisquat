@@ -1,4 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 import DepartmentDetail from '@/components/DepartmentDetail';
 import { ThemedText } from '@/components/themed-text';
@@ -7,6 +8,7 @@ import { useDepartments } from '@/contexts/DepartmentsContext';
 import { StyleSheet } from 'react-native';
 
 export default function DepartmentDetailScreen() {
+  const { t } = useTranslation();
   const { departmentId } = useLocalSearchParams<{ departmentId: string }>();
   const { getDepartment, toggleFavorite, updateDepartment } = useDepartments();
 
@@ -15,7 +17,7 @@ export default function DepartmentDetailScreen() {
   if (!department) {
     return (
       <ThemedView style={styles.notFound}>
-        <ThemedText>Building not found.</ThemedText>
+        <ThemedText>{t('study.buildingNotFound')}</ThemedText>
       </ThemedView>
     );
   }

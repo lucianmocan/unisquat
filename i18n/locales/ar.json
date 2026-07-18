@@ -1,0 +1,138 @@
+{
+  "tabs": {
+    "browse": "استكشاف",
+    "settings": "الإعدادات"
+  },
+  "common": {
+    "ok": "حسنًا",
+    "all": "الكل"
+  },
+  "study": {
+    "searchPlaceholder": "البحث عن المباني...",
+    "favorites": "المفضلة",
+    "favoritesOnlyA11y": "المفضلة فقط",
+    "filterByCampusA11y": "التصفية حسب الحرم الجامعي",
+    "filter": "تصفية",
+    "chooseCampus": "اختر حرمًا جامعيًا:",
+    "noFavoriteBuildings": "لا توجد مبانٍ مفضلة بعد",
+    "noBuildingsFound": "لم يتم العثور على مبانٍ",
+    "addToFavoritesHint": "أضف مبانٍ إلى المفضلة بالنقر على القلب",
+    "adjustSearchOrFilters": "حاول تعديل البحث أو عوامل التصفية",
+    "removeFromFavoritesA11y": "إزالة من المفضلة",
+    "addToFavoritesA11y": "إضافة إلى المفضلة",
+    "buildingNotFound": "المبنى غير موجود."
+  },
+  "roomScreen": {
+    "roomNotFound": "القاعة غير موجودة."
+  },
+  "departmentDetail": {
+    "chooseRoomType": "اختر نوع القاعة:",
+    "chooseDateA11y": "اختيار تاريخ",
+    "chooseTimeA11y": "اختيار وقت",
+    "resetToNowA11y": "العودة إلى الآن",
+    "filterByRoomTypeA11y": "التصفية حسب نوع القاعة",
+    "filter": "تصفية",
+    "now": "الآن",
+    "later": "لاحقًا",
+    "loadErrorTitle": "تعذّر تحميل البيانات",
+    "loadErrorSubtitle": "تحقق من اتصالك وحاول مرة أخرى",
+    "retry": "إعادة المحاولة",
+    "removeFromFavoritesA11y": "إزالة من المفضلة",
+    "addToFavoritesA11y": "إضافة إلى المفضلة"
+  },
+  "roomDetail": {
+    "past": "السابقة",
+    "current": "جارية الآن",
+    "future": "القادمة",
+    "eventsCount_zero": "لا توجد أحداث",
+    "eventsCount_one": "حدث واحد",
+    "eventsCount_two": "حدثان",
+    "eventsCount_few": "{{count}} أحداث",
+    "eventsCount_many": "{{count}} حدثًا",
+    "eventsCount_other": "{{count}} حدث",
+    "noEvents": "لا توجد أحداث مجدولة لهذه القاعة"
+  },
+  "roomsList": {
+    "minutes": "{{count}} د",
+    "hours": "{{count}} س",
+    "hoursMinutes": "{{hours}} س {{minutes}} د",
+    "free": "شاغرة",
+    "freeIn": "خلال {{duration}}",
+    "busyIn": "< {{duration}}",
+    "noFreeRoomsFound": "لم يتم العثور على قاعات شاغرة",
+    "allRoomsFree": "جميع القاعات شاغرة",
+    "tryLaterOrOtherDate": "جرّب \"لاحقًا\" أو تاريخًا آخر",
+    "noRoomsOccupied": "لا توجد قاعة مشغولة حاليًا",
+    "eventsCount_zero": "لا توجد أحداث",
+    "eventsCount_one": "حدث واحد",
+    "eventsCount_two": "حدثان",
+    "eventsCount_few": "{{count}} أحداث",
+    "eventsCount_many": "{{count}} حدثًا",
+    "eventsCount_other": "{{count}} حدث"
+  },
+  "settingsScreen": {
+    "general": "عام",
+    "language": "اللغة",
+    "chooseLanguage": "اختر لغتك المفضلة",
+    "personalization": "التخصيص",
+    "personalizationSubtitle": "خصّص طريقة عمل التطبيق",
+    "support": "الدعم",
+    "reportIssue": "الإبلاغ عن مشكلة",
+    "reportIssueSubtitle": "أخبرنا إذا كان هناك شيء لا يعمل",
+    "suggestions": "الاقتراحات",
+    "suggestionsSubtitle": "شارك أفكارك لتحسين التطبيق",
+    "about": "حول",
+    "aboutTitle": "حول UniSquat",
+    "aboutSubtitle": "إصدار التطبيق ومعلوماته",
+    "legal": "قانوني",
+    "privacyPolicy": "سياسة الخصوصية",
+    "privacyPolicySubtitle": "كيف نتعامل مع بياناتك",
+    "termsOfService": "شروط الخدمة",
+    "termsSubtitle": "شروط استخدام التطبيق",
+    "unableToOpenEmailTitle": "تعذّر فتح البريد الإلكتروني",
+    "sendIssueReportTo": "يرجى إرسال تقرير المشكلة إلى: {{email}}",
+    "sendSuggestionTo": "يرجى إرسال اقتراحك إلى: {{email}}",
+    "privacyPolicyComingSoonMessage": "هذه الميزة قادمة قريبًا!\nنحن نأخذ خصوصيتك على محمل الجد.",
+    "termsComingSoonMessage": "هذه الميزة قادمة قريبًا!\nيرجى استخدام التطبيق بمسؤولية.",
+    "issueReportSubject": "تقرير مشكلة - تطبيق UniSquat",
+    "issueReportBody": "يرجى وصف المشكلة التي واجهتها:\n\n",
+    "suggestionSubject": "اقتراح ميزة - تطبيق UniSquat",
+    "suggestionBody": "أود اقتراح الميزة التالية:\n\n"
+  },
+  "languageScreen": {
+    "systemDefault": "لغة النظام",
+    "systemDefaultSubtitle": "استخدام لغة جهازك"
+  },
+  "personalizationScreen": {
+    "filters": "عوامل التصفية",
+    "autoCollapseSearch": "الطي التلقائي في البحث",
+    "autoCollapseSearchSubtitle": "إخفاء لوحة تصفية الحرم الجامعي بعد اختيار خيار",
+    "autoCollapseBuilding": "الطي التلقائي في صفحة المبنى",
+    "autoCollapseBuildingSubtitle": "إخفاء لوحة تصفية نوع القاعة بعد اختيار خيار",
+    "haptics": "الاستجابة اللمسية",
+    "hapticFeedback": "الاستجابة اللمسية",
+    "hapticFeedbackSubtitle": "الاهتزاز عند اللمس والاختيار في جميع أنحاء التطبيق",
+    "accentColor": "لون التمييز"
+  },
+  "accentColors": {
+    "purple": "أرجواني",
+    "blue": "أزرق",
+    "indigo": "نيلي",
+    "pink": "وردي",
+    "red": "أحمر",
+    "orange": "برتقالي",
+    "green": "أخضر",
+    "teal": "أزرق مخضر"
+  },
+  "aboutScreen": {
+    "version": "الإصدار {{version}}",
+    "description": "ابحث عن قاعة شاغرة للدراسة أو العمل في جامعة ستراسبورغ — يتحقق UniSquat من جداول حجز القاعات في الجامعة ويعرض لك القاعات الشاغرة حاليًا.",
+    "inspiredBy": "مستوحى من ",
+    "openCreditA11y": "فتح unisquat.alwaysdata.net"
+  },
+  "modal": {
+    "title": "هذه نافذة منبثقة",
+    "goHome": "الذهاب إلى الشاشة الرئيسية",
+    "headerTitle": "نافذة منبثقة"
+  }
+}

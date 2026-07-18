@@ -1,6 +1,7 @@
 // Type definitions for the app
 
 import { AccentColorKey } from '@/constants/theme';
+import { LanguageCode } from '@/i18n/languages';
 
 export type Department = {
   name: string;
@@ -44,4 +45,5 @@ export type AppSettings = {
   autoCollapseDepartmentFilters: boolean;
   hapticsEnabled: boolean;
   accentColor: AccentColorKey;
+  language: LanguageCode | 'system';
 };

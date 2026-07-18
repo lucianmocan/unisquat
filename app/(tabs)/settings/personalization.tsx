@@ -7,9 +7,11 @@ import { useSettings } from '@/contexts/SettingsContext';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { haptics } from '@/services/haptics';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 export default function PersonalizationScreen() {
+  const { t } = useTranslation();
   const { settings, updateSetting } = useSettings();
   const iconColor = useThemeColor({}, 'icon');
   const textColor = useThemeColor({}, 'text');
@@ -22,12 +24,12 @@ export default function PersonalizationScreen() {
 
   return (
     <ScrollView style={styles.list} contentContainerStyle={styles.listContent} contentInsetAdjustmentBehavior="automatic">
-      <ThemedText type="caption" style={styles.sectionHeader}>Filters</ThemedText>
+      <ThemedText type="caption" style={styles.sectionHeader}>{t('personalizationScreen.filters')}</ThemedText>
       <Card>
         <Row
           icon={<IconSymbol name="line.3.horizontal.decrease.circle" size={22} color={iconColor} />}
-          title="Auto-Collapse on Search"
-          subtitle="Hide the campus filter panel once you pick an option"
+          title={t('personalizationScreen.autoCollapseSearch')}
+          subtitle={t('personalizationScreen.autoCollapseSearchSubtitle')}
           right={
             <Switch
               value={settings.autoCollapseSearchFilters}
@@ -38,8 +40,8 @@ export default function PersonalizationScreen() {
         <CardSeparator />
         <Row
           icon={<IconSymbol name="line.3.horizontal.decrease.circle" size={22} color={iconColor} />}
-          title="Auto-Collapse on Building Page"
-          subtitle="Hide the room-type filter panel once you pick an option"
+          title={t('personalizationScreen.autoCollapseBuilding')}
+          subtitle={t('personalizationScreen.autoCollapseBuildingSubtitle')}
           right={
             <Switch
               value={settings.autoCollapseDepartmentFilters}
@@ -49,12 +51,12 @@ export default function PersonalizationScreen() {
         />
       </Card>
 
-      <ThemedText type="caption" style={styles.sectionHeader}>Haptics</ThemedText>
+      <ThemedText type="caption" style={styles.sectionHeader}>{t('personalizationScreen.haptics')}</ThemedText>
       <Card>
         <Row
           icon={<IconSymbol name="hand.tap.fill" size={22} color={iconColor} />}
-          title="Haptic Feedback"
-          subtitle="Vibrate on taps and selections throughout the app"
+          title={t('personalizationScreen.hapticFeedback')}
+          subtitle={t('personalizationScreen.hapticFeedbackSubtitle')}
           right={
             <Switch
               value={settings.hapticsEnabled}
@@ -64,11 +66,12 @@ export default function PersonalizationScreen() {
         />
       </Card>
 
-      <ThemedText type="caption" style={styles.sectionHeader}>Accent Color</ThemedText>
+      <ThemedText type="caption" style={styles.sectionHeader}>{t('personalizationScreen.accentColor')}</ThemedText>
       <Card style={styles.swatchCard}>
         <View style={styles.swatchGrid}>
           {(Object.keys(ACCENT_COLORS) as AccentColorKey[]).map((key) => {
             const config = ACCENT_COLORS[key];
+            const label = t(`accentColors.${key}`);
             const isSelected = settings.accentColor === key;
             const swatchColor = config[colorScheme];
 
@@ -79,13 +82,13 @@ export default function PersonalizationScreen() {
                 style={styles.swatchButton}
                 activeOpacity={0.7}
                 accessibilityRole="button"
-                accessibilityLabel={config.label}
+                accessibilityLabel={label}
                 accessibilityState={{ selected: isSelected }}>
                 <View style={[styles.swatchRing, { borderColor: isSelected ? textColor : 'transparent' }]}>
                   <View style={[styles.swatch, { backgroundColor: swatchColor }]} />
                 </View>
                 <ThemedText type="caption" numberOfLines={1}>
-                  {config.label}
+                  {label}
                 </ThemedText>
               </TouchableOpacity>
             );

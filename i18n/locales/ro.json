@@ -1,0 +1,132 @@
+{
+  "tabs": {
+    "browse": "Explorează",
+    "settings": "Setări"
+  },
+  "common": {
+    "ok": "OK",
+    "all": "Toate"
+  },
+  "study": {
+    "searchPlaceholder": "Caută clădiri...",
+    "favorites": "Favorite",
+    "favoritesOnlyA11y": "Doar favorite",
+    "filterByCampusA11y": "Filtrează după campus",
+    "filter": "Filtrează",
+    "chooseCampus": "Alege un campus:",
+    "noFavoriteBuildings": "Încă nu ai clădiri favorite",
+    "noBuildingsFound": "Nu s-au găsit clădiri",
+    "addToFavoritesHint": "Adaugă clădiri la favorite apăsând pe inimă",
+    "adjustSearchOrFilters": "Încearcă să ajustezi căutarea sau filtrele",
+    "removeFromFavoritesA11y": "Elimină din favorite",
+    "addToFavoritesA11y": "Adaugă la favorite",
+    "buildingNotFound": "Clădirea nu a fost găsită."
+  },
+  "roomScreen": {
+    "roomNotFound": "Sala nu a fost găsită."
+  },
+  "departmentDetail": {
+    "chooseRoomType": "Alege un tip de sală:",
+    "chooseDateA11y": "Alege o dată",
+    "chooseTimeA11y": "Alege o oră",
+    "resetToNowA11y": "Revino la acum",
+    "filterByRoomTypeA11y": "Filtrează după tipul sălii",
+    "filter": "Filtrează",
+    "now": "Acum",
+    "later": "Mai târziu",
+    "loadErrorTitle": "Datele nu au putut fi încărcate",
+    "loadErrorSubtitle": "Verifică-ți conexiunea și încearcă din nou",
+    "retry": "Încearcă din nou",
+    "removeFromFavoritesA11y": "Elimină din favorite",
+    "addToFavoritesA11y": "Adaugă la favorite"
+  },
+  "roomDetail": {
+    "past": "Trecute",
+    "current": "În desfășurare",
+    "future": "Viitoare",
+    "eventsCount_one": "{{count}} eveniment",
+    "eventsCount_few": "{{count}} evenimente",
+    "eventsCount_other": "{{count}} evenimente",
+    "noEvents": "Niciun eveniment programat pentru această sală"
+  },
+  "roomsList": {
+    "minutes": "{{count}} min",
+    "hours": "{{count}}h",
+    "hoursMinutes": "{{hours}}h{{minutes}}",
+    "free": "Liberă",
+    "freeIn": "peste {{duration}}",
+    "busyIn": "< {{duration}}",
+    "noFreeRoomsFound": "Nu s-a găsit nicio sală liberă",
+    "allRoomsFree": "Toate sălile sunt libere",
+    "tryLaterOrOtherDate": "Încearcă \"Mai târziu\" sau o altă dată",
+    "noRoomsOccupied": "Nicio sală nu este ocupată în prezent",
+    "eventsCount_one": "{{count}} eveniment",
+    "eventsCount_few": "{{count}} evenimente",
+    "eventsCount_other": "{{count}} evenimente"
+  },
+  "settingsScreen": {
+    "general": "General",
+    "language": "Limbă",
+    "chooseLanguage": "Alege limba preferată",
+    "personalization": "Personalizare",
+    "personalizationSubtitle": "Personalizează comportamentul aplicației",
+    "support": "Asistență",
+    "reportIssue": "Raportează o problemă",
+    "reportIssueSubtitle": "Anunță-ne dacă ceva nu funcționează",
+    "suggestions": "Sugestii",
+    "suggestionsSubtitle": "Distribuie ideile tale pentru a îmbunătăți aplicația",
+    "about": "Despre",
+    "aboutTitle": "Despre UniSquat",
+    "aboutSubtitle": "Versiunea și informații despre aplicație",
+    "legal": "Legal",
+    "privacyPolicy": "Politica de confidențialitate",
+    "privacyPolicySubtitle": "Cum îți gestionăm datele",
+    "termsOfService": "Termeni de utilizare",
+    "termsSubtitle": "Condiții de utilizare a aplicației",
+    "unableToOpenEmailTitle": "E-mailul nu a putut fi deschis",
+    "sendIssueReportTo": "Trimite raportul tău la: {{email}}",
+    "sendSuggestionTo": "Trimite sugestia ta la: {{email}}",
+    "privacyPolicyComingSoonMessage": "Funcție disponibilă în curând!\nLuăm în serios confidențialitatea ta.",
+    "termsComingSoonMessage": "Funcție disponibilă în curând!\nTe rugăm să folosești aplicația responsabil.",
+    "issueReportSubject": "Raport de problemă - Aplicația UniSquat",
+    "issueReportBody": "Te rugăm să descrii problema întâmpinată:\n\n",
+    "suggestionSubject": "Sugestie de funcție - Aplicația UniSquat",
+    "suggestionBody": "Aș dori să sugerez următoarea funcție:\n\n"
+  },
+  "languageScreen": {
+    "systemDefault": "Implicit sistem",
+    "systemDefaultSubtitle": "Folosește limba dispozitivului tău"
+  },
+  "personalizationScreen": {
+    "filters": "Filtre",
+    "autoCollapseSearch": "Restrângere automată la Căutare",
+    "autoCollapseSearchSubtitle": "Ascunde panoul filtrului de campus după ce alegi o opțiune",
+    "autoCollapseBuilding": "Restrângere automată pe pagina clădirii",
+    "autoCollapseBuildingSubtitle": "Ascunde panoul filtrului de tip de sală după ce alegi o opțiune",
+    "haptics": "Feedback haptic",
+    "hapticFeedback": "Feedback haptic",
+    "hapticFeedbackSubtitle": "Vibrează la atingeri și selecții în întreaga aplicație",
+    "accentColor": "Culoare de accent"
+  },
+  "accentColors": {
+    "purple": "Violet",
+    "blue": "Albastru",
+    "indigo": "Indigo",
+    "pink": "Roz",
+    "red": "Roșu",
+    "orange": "Portocaliu",
+    "green": "Verde",
+    "teal": "Turcoaz"
+  },
+  "aboutScreen": {
+    "version": "Versiunea {{version}}",
+    "description": "Găsește o sală liberă pentru a studia sau a lucra la Universitatea din Strasbourg — UniSquat verifică programul de rezervare a sălilor universității și îți arată care sunt libere chiar acum.",
+    "inspiredBy": "Inspirat de ",
+    "openCreditA11y": "Deschide unisquat.alwaysdata.net"
+  },
+  "modal": {
+    "title": "Aceasta este o fereastră modală",
+    "goHome": "Mergi la ecranul principal",
+    "headerTitle": "Modal"
+  }
+}

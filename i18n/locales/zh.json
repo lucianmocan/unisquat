@@ -1,0 +1,128 @@
+{
+  "tabs": {
+    "browse": "浏览",
+    "settings": "设置"
+  },
+  "common": {
+    "ok": "好",
+    "all": "全部"
+  },
+  "study": {
+    "searchPlaceholder": "搜索建筑物...",
+    "favorites": "收藏",
+    "favoritesOnlyA11y": "仅显示收藏",
+    "filterByCampusA11y": "按校区筛选",
+    "filter": "筛选",
+    "chooseCampus": "选择校区：",
+    "noFavoriteBuildings": "暂无收藏的建筑物",
+    "noBuildingsFound": "未找到建筑物",
+    "addToFavoritesHint": "点击心形图标即可将建筑物添加到收藏",
+    "adjustSearchOrFilters": "请尝试调整搜索内容或筛选条件",
+    "removeFromFavoritesA11y": "取消收藏",
+    "addToFavoritesA11y": "添加到收藏",
+    "buildingNotFound": "未找到该建筑物。"
+  },
+  "roomScreen": {
+    "roomNotFound": "未找到该教室。"
+  },
+  "departmentDetail": {
+    "chooseRoomType": "选择教室类型：",
+    "chooseDateA11y": "选择日期",
+    "chooseTimeA11y": "选择时间",
+    "resetToNowA11y": "回到当前时间",
+    "filterByRoomTypeA11y": "按教室类型筛选",
+    "filter": "筛选",
+    "now": "当前",
+    "later": "稍后",
+    "loadErrorTitle": "无法加载数据",
+    "loadErrorSubtitle": "请检查网络连接后重试",
+    "retry": "重试",
+    "removeFromFavoritesA11y": "取消收藏",
+    "addToFavoritesA11y": "添加到收藏"
+  },
+  "roomDetail": {
+    "past": "已结束",
+    "current": "进行中",
+    "future": "即将开始",
+    "eventsCount_other": "{{count}} 个活动",
+    "noEvents": "该教室暂无安排的活动"
+  },
+  "roomsList": {
+    "minutes": "{{count}} 分钟",
+    "hours": "{{count}} 小时",
+    "hoursMinutes": "{{hours}} 小时 {{minutes}} 分钟",
+    "free": "空闲",
+    "freeIn": "{{duration}}后",
+    "busyIn": "< {{duration}}",
+    "noFreeRoomsFound": "未找到空闲教室",
+    "allRoomsFree": "所有教室均空闲",
+    "tryLaterOrOtherDate": "请尝试“稍后”或选择其他日期",
+    "noRoomsOccupied": "目前没有教室被占用",
+    "eventsCount_other": "{{count}} 个活动"
+  },
+  "settingsScreen": {
+    "general": "通用",
+    "language": "语言",
+    "chooseLanguage": "选择您偏好的语言",
+    "personalization": "个性化",
+    "personalizationSubtitle": "自定义应用的行为方式",
+    "support": "支持",
+    "reportIssue": "报告问题",
+    "reportIssueSubtitle": "如果遇到问题，请告诉我们",
+    "suggestions": "建议",
+    "suggestionsSubtitle": "分享您改进此应用的想法",
+    "about": "关于",
+    "aboutTitle": "关于 UniSquat",
+    "aboutSubtitle": "应用版本与信息",
+    "legal": "法律信息",
+    "privacyPolicy": "隐私政策",
+    "privacyPolicySubtitle": "我们如何处理您的数据",
+    "termsOfService": "服务条款",
+    "termsSubtitle": "应用使用条款",
+    "unableToOpenEmailTitle": "无法打开邮件应用",
+    "sendIssueReportTo": "请将您的问题报告发送至：{{email}}",
+    "sendSuggestionTo": "请将您的建议发送至：{{email}}",
+    "privacyPolicyComingSoonMessage": "该功能即将推出！\n我们非常重视您的隐私。",
+    "termsComingSoonMessage": "该功能即将推出！\n请合理使用本应用。",
+    "issueReportSubject": "问题报告 - UniSquat 应用",
+    "issueReportBody": "请描述您遇到的问题：\n\n",
+    "suggestionSubject": "功能建议 - UniSquat 应用",
+    "suggestionBody": "我想建议以下功能：\n\n"
+  },
+  "languageScreen": {
+    "systemDefault": "系统默认",
+    "systemDefaultSubtitle": "使用您设备的语言"
+  },
+  "personalizationScreen": {
+    "filters": "筛选",
+    "autoCollapseSearch": "搜索页自动收起",
+    "autoCollapseSearchSubtitle": "选择选项后自动隐藏校区筛选面板",
+    "autoCollapseBuilding": "建筑详情页自动收起",
+    "autoCollapseBuildingSubtitle": "选择选项后自动隐藏教室类型筛选面板",
+    "haptics": "触感反馈",
+    "hapticFeedback": "触感反馈",
+    "hapticFeedbackSubtitle": "在应用中点击和选择时振动反馈",
+    "accentColor": "强调色"
+  },
+  "accentColors": {
+    "purple": "紫色",
+    "blue": "蓝色",
+    "indigo": "靛蓝色",
+    "pink": "粉色",
+    "red": "红色",
+    "orange": "橙色",
+    "green": "绿色",
+    "teal": "青色"
+  },
+  "aboutScreen": {
+    "version": "版本 {{version}}",
+    "description": "在斯特拉斯堡大学寻找空闲教室学习或工作 — UniSquat 会查询学校的教室预约时间表，为您显示当前空闲的教室。",
+    "inspiredBy": "灵感来源：",
+    "openCreditA11y": "打开 unisquat.alwaysdata.net"
+  },
+  "modal": {
+    "title": "这是一个弹出窗口",
+    "goHome": "返回主屏幕",
+    "headerTitle": "弹出窗口"
+  }
+}

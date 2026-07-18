@@ -1,0 +1,130 @@
+{
+  "tabs": {
+    "browse": "Durchsuchen",
+    "settings": "Einstellungen"
+  },
+  "common": {
+    "ok": "OK",
+    "all": "Alle"
+  },
+  "study": {
+    "searchPlaceholder": "Gebäude suchen...",
+    "favorites": "Favoriten",
+    "favoritesOnlyA11y": "Nur Favoriten",
+    "filterByCampusA11y": "Nach Campus filtern",
+    "filter": "Filtern",
+    "chooseCampus": "Campus auswählen:",
+    "noFavoriteBuildings": "Noch keine Favoriten",
+    "noBuildingsFound": "Keine Gebäude gefunden",
+    "addToFavoritesHint": "Füge Gebäude zu deinen Favoriten hinzu, indem du auf das Herz tippst",
+    "adjustSearchOrFilters": "Versuche, deine Suche oder Filter anzupassen",
+    "removeFromFavoritesA11y": "Aus Favoriten entfernen",
+    "addToFavoritesA11y": "Zu Favoriten hinzufügen",
+    "buildingNotFound": "Gebäude nicht gefunden."
+  },
+  "roomScreen": {
+    "roomNotFound": "Raum nicht gefunden."
+  },
+  "departmentDetail": {
+    "chooseRoomType": "Raumtyp auswählen:",
+    "chooseDateA11y": "Datum auswählen",
+    "chooseTimeA11y": "Uhrzeit auswählen",
+    "resetToNowA11y": "Zurück zu jetzt",
+    "filterByRoomTypeA11y": "Nach Raumtyp filtern",
+    "filter": "Filtern",
+    "now": "Jetzt",
+    "later": "Später",
+    "loadErrorTitle": "Daten konnten nicht geladen werden",
+    "loadErrorSubtitle": "Überprüfe deine Verbindung und versuche es erneut",
+    "retry": "Erneut versuchen",
+    "removeFromFavoritesA11y": "Aus Favoriten entfernen",
+    "addToFavoritesA11y": "Zu Favoriten hinzufügen"
+  },
+  "roomDetail": {
+    "past": "Vergangen",
+    "current": "Laufend",
+    "future": "Bevorstehend",
+    "eventsCount_one": "{{count}} Termin",
+    "eventsCount_other": "{{count}} Termine",
+    "noEvents": "Keine Termine für diesen Raum geplant"
+  },
+  "roomsList": {
+    "minutes": "{{count}} Min",
+    "hours": "{{count}} Std",
+    "hoursMinutes": "{{hours}} Std {{minutes}} Min",
+    "free": "Frei",
+    "freeIn": "in {{duration}}",
+    "busyIn": "< {{duration}}",
+    "noFreeRoomsFound": "Keine freien Räume gefunden",
+    "allRoomsFree": "Alle Räume sind frei",
+    "tryLaterOrOtherDate": "Versuche \"Später\" oder ein anderes Datum",
+    "noRoomsOccupied": "Derzeit ist kein Raum belegt",
+    "eventsCount_one": "{{count}} Termin",
+    "eventsCount_other": "{{count}} Termine"
+  },
+  "settingsScreen": {
+    "general": "Allgemein",
+    "language": "Sprache",
+    "chooseLanguage": "Wähle deine bevorzugte Sprache",
+    "personalization": "Personalisierung",
+    "personalizationSubtitle": "Passe das Verhalten der App an",
+    "support": "Support",
+    "reportIssue": "Problem melden",
+    "reportIssueSubtitle": "Sag uns Bescheid, wenn etwas nicht funktioniert",
+    "suggestions": "Vorschläge",
+    "suggestionsSubtitle": "Teile deine Ideen zur Verbesserung der App",
+    "about": "Info",
+    "aboutTitle": "Über UniSquat",
+    "aboutSubtitle": "App-Version und Informationen",
+    "legal": "Rechtliches",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "privacyPolicySubtitle": "Wie wir mit deinen Daten umgehen",
+    "termsOfService": "Nutzungsbedingungen",
+    "termsSubtitle": "Nutzungsbedingungen der App",
+    "unableToOpenEmailTitle": "E-Mail konnte nicht geöffnet werden",
+    "sendIssueReportTo": "Bitte sende deine Problemmeldung an: {{email}}",
+    "sendSuggestionTo": "Bitte sende deinen Vorschlag an: {{email}}",
+    "privacyPolicyComingSoonMessage": "Funktion demnächst verfügbar!\nWir nehmen deinen Datenschutz ernst.",
+    "termsComingSoonMessage": "Funktion demnächst verfügbar!\nBitte nutze die App verantwortungsvoll.",
+    "issueReportSubject": "Problemmeldung - UniSquat App",
+    "issueReportBody": "Bitte beschreibe das aufgetretene Problem:\n\n",
+    "suggestionSubject": "Funktionsvorschlag - UniSquat App",
+    "suggestionBody": "Ich möchte folgende Funktion vorschlagen:\n\n"
+  },
+  "languageScreen": {
+    "systemDefault": "Systemstandard",
+    "systemDefaultSubtitle": "Sprache des Geräts verwenden"
+  },
+  "personalizationScreen": {
+    "filters": "Filter",
+    "autoCollapseSearch": "Automatisch einklappen bei Suche",
+    "autoCollapseSearchSubtitle": "Das Campus-Filterfeld nach Auswahl einer Option ausblenden",
+    "autoCollapseBuilding": "Automatisch einklappen auf Gebäudeseite",
+    "autoCollapseBuildingSubtitle": "Das Raumtyp-Filterfeld nach Auswahl einer Option ausblenden",
+    "haptics": "Haptisches Feedback",
+    "hapticFeedback": "Haptisches Feedback",
+    "hapticFeedbackSubtitle": "Bei Tipps und Auswahlen in der gesamten App vibrieren",
+    "accentColor": "Akzentfarbe"
+  },
+  "accentColors": {
+    "purple": "Lila",
+    "blue": "Blau",
+    "indigo": "Indigo",
+    "pink": "Pink",
+    "red": "Rot",
+    "orange": "Orange",
+    "green": "Grün",
+    "teal": "Petrol"
+  },
+  "aboutScreen": {
+    "version": "Version {{version}}",
+    "description": "Finde einen freien Raum zum Lernen oder Arbeiten an der Universität Straßburg — UniSquat prüft die Raumbelegungspläne der Universität und zeigt dir, welche Räume gerade frei sind.",
+    "inspiredBy": "Inspiriert von ",
+    "openCreditA11y": "unisquat.alwaysdata.net öffnen"
+  },
+  "modal": {
+    "title": "Dies ist ein modales Fenster",
+    "goHome": "Zum Startbildschirm",
+    "headerTitle": "Modal"
+  }
+}

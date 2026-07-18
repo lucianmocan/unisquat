@@ -14,6 +14,7 @@ import { Department } from '@/types';
 import { formatShortDate, formatTime } from '@/utils/date-format';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppState, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import RoomsList from './RoomsList';
@@ -24,13 +25,19 @@ interface DepartmentDetailProps {
   onDepartmentUpdate: (department: Department) => void;
 }
 
+// Internal sentinel — never displayed directly. The "All room types" Chip's actual label is
+// `t('common.all')`, resolved at render time so it's translated; every other option comes from
+// `department.roomLabels` (real French room-category data), which stays untranslated.
+const ALL_ROOM_TYPES = '__ALL__';
+
 export default function DepartmentDetail({
   department,
   onFavoriteToggle,
   onDepartmentUpdate
 }: DepartmentDetailProps) {
+  const { t } = useTranslation();
   const [selectedView, setSelectedView] = useState(0); // 0: Now, 1: Later
-  const [selectedFilter, setSelectedFilter] = useState('Toutes');
+  const [selectedFilter, setSelectedFilter] = useState(ALL_ROOM_TYPES);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isPickerVisible, setIsPickerVisible] = useState(false);
@@ -50,7 +57,7 @@ export default function DepartmentDetail({
   const favoriteColor = useThemeColor({}, 'favorite');
   const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
   const borderColor = useThemeColor({ light: 'rgba(0,0,0,0.1)', dark: 'rgba(255,255,255,0.15)' }, 'background');
-  const isFilterActive = selectedFilter !== 'Toutes';
+  const isFilterActive = selectedFilter !== ALL_ROOM_TYPES;
 
   const handleFavoritePress = useCallback(() => {
     haptics.impact();
@@ -64,14 +71,14 @@ export default function DepartmentDetail({
 
   // Re-bucket rooms against `selectedDate` — ticked live below when the user hasn't picked a
   // specific moment — without waiting for a network refresh, so a room whose class just
-  // started moves out of "Maintenant" on its own.
+  // started moves out of "Now" on its own.
   const roomsWithFreshAvailability = useMemo(() => {
     return department.rooms ? DepartmentService.computeAvailability(department.rooms, selectedDate) : [];
   }, [department.rooms, selectedDate]);
 
   // Filter rooms based on selected filter
   const filteredRooms = useMemo(() => {
-    if (selectedFilter === 'Toutes') {
+    if (selectedFilter === ALL_ROOM_TYPES) {
       return roomsWithFreshAvailability;
     }
     return roomsWithFreshAvailability.filter(room => room.typeDescription === selectedFilter);
@@ -134,7 +141,7 @@ export default function DepartmentDetail({
   // Get unique room type descriptions for filter
   const roomTypeOptions = useMemo(() => {
     const types = Object.values(department.roomLabels).sort();
-    return ['Toutes', ...types];
+    return [ALL_ROOM_TYPES, ...types];
   }, [department.roomLabels]);
 
   // SegmentedControl and Chip already fire their own haptic on change/press.
@@ -190,7 +197,7 @@ export default function DepartmentDetail({
   }, [department.id, selectedDateKey]);
 
   // While live, re-tick `selectedDate` every second so the displayed clock never visibly lags
-  // behind the device's real clock, and any Maintenant/Prochainement boundary crossing is
+  // behind the device's real clock, and any Now/Later boundary crossing is
   // picked up almost immediately. Also re-ticks right away when the app returns to the
   // foreground, so a device clock change made while backgrounded is picked up instantly rather
   // than waiting for the next tick.
@@ -224,7 +231,7 @@ export default function DepartmentDetail({
               onPress={handleFavoritePress}
               activeOpacity={0.7}
               accessibilityRole="button"
-              accessibilityLabel={department.isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
+              accessibilityLabel={department.isFavorite ? t('departmentDetail.removeFromFavoritesA11y') : t('departmentDetail.addToFavoritesA11y')}>
               <IconSymbol
                 name={department.isFavorite ? 'heart.fill' : 'heart'}
                 size={24}
@@ -257,7 +264,7 @@ export default function DepartmentDetail({
                     style={[styles.androidDateButton, { backgroundColor, borderColor }]}
                     activeOpacity={0.7}
                     accessibilityRole="button"
-                    accessibilityLabel="Choose a date">
+                    accessibilityLabel={t('departmentDetail.chooseDateA11y')}>
                     <IconSymbol name="calendar" size={16} color={iconColor} />
                     <ThemedText style={styles.pickerText}>{formatShortDate(selectedDate)}</ThemedText>
                   </TouchableOpacity>
@@ -266,7 +273,7 @@ export default function DepartmentDetail({
                     style={[styles.androidDateButton, { backgroundColor, borderColor }]}
                     activeOpacity={0.7}
                     accessibilityRole="button"
-                    accessibilityLabel="Choose a time">
+                    accessibilityLabel={t('departmentDetail.chooseTimeA11y')}>
                     <IconSymbol name="clock" size={16} color={iconColor} />
                     <ThemedText style={styles.pickerText}>{formatTime(selectedDate)}</ThemedText>
                   </TouchableOpacity>
@@ -300,7 +307,7 @@ export default function DepartmentDetail({
                   onPress={handleResetToNow}
                   activeOpacity={0.7}
                   accessibilityRole="button"
-                  accessibilityLabel="Reset to now">
+                  accessibilityLabel={t('departmentDetail.resetToNowA11y')}>
                   <IconSymbol name="arrow.clockwise" size={18} color={tintColor} />
                 </TouchableOpacity>
               )}
@@ -313,26 +320,26 @@ export default function DepartmentDetail({
               ]}
               activeOpacity={0.7}
               accessibilityRole="button"
-              accessibilityLabel="Filter by room type"
+              accessibilityLabel={t('departmentDetail.filterByRoomTypeA11y')}
               accessibilityState={{ selected: isFilterActive }}>
               <IconSymbol
                 name="line.3.horizontal.decrease.circle"
                 size={16}
                 color={isFilterActive ? '#ffffff' : iconColor}
               />
-              <ThemedText style={[styles.pickerText, isFilterActive && { color: '#ffffff' }]}>Filtrer</ThemedText>
+              <ThemedText style={[styles.pickerText, isFilterActive && { color: '#ffffff' }]}>{t('departmentDetail.filter')}</ThemedText>
             </TouchableOpacity>
           </View>
 
           {/* Room Type Filter */}
           {isPickerVisible && (
             <View style={styles.filterContainer}>
-              <ThemedText style={styles.filterLabel}>Choisir un type de salle:</ThemedText>
+              <ThemedText style={styles.filterLabel}>{t('departmentDetail.chooseRoomType')}</ThemedText>
               <View style={styles.filterOptions}>
                 {roomTypeOptions.map((option) => (
                   <Chip
                     key={option}
-                    label={option}
+                    label={option === ALL_ROOM_TYPES ? t('common.all') : option}
                     selected={selectedFilter === option}
                     onPress={() => handleFilterChange(option)}
                   />
@@ -346,7 +353,7 @@ export default function DepartmentDetail({
       {/* Time Period Selector */}
       <View style={styles.timeSelectorContainer}>
         <SegmentedControl
-          options={['Maintenant', 'Prochainement']}
+          options={[t('departmentDetail.now'), t('departmentDetail.later')]}
           selectedIndex={selectedView}
           onChange={handleViewChange}
         />
@@ -366,9 +373,9 @@ export default function DepartmentDetail({
         ) : hasError ? (
           <EmptyState
             icon="xmark.circle.fill"
-            title="Impossible de charger les données"
-            subtitle="Vérifiez votre connexion et réessayez"
-            actionLabel="Réessayer"
+            title={t('departmentDetail.loadErrorTitle')}
+            subtitle={t('departmentDetail.loadErrorSubtitle')}
+            actionLabel={t('departmentDetail.retry')}
             onAction={handleRefresh}
           />
         ) : (
