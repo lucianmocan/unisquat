@@ -671,7 +671,7 @@
     }
   },
   {
-    "name": "Pôle Lansad",
+    "name": "C.R.L. - Pôle Lansad",
     "id": 11715,
     "isFavorite": false,
     "roomLabels": {
@@ -742,139 +742,6 @@
         "104",
         "Salle Info MNI1",
         "Salle Info MNI2"
-      ]
-    }
-  },
-  {
-    "name": "INSPÉ Colmar",
-    "id": 30622,
-    "isFavorite": false,
-    "roomLabels": {
-      "gymnase": "Salles de sport",
-      "aile-joffre": "Aile Joffre",
-      "batiment-principal": "Bâtiment Principal"
-    },
-    "roomNames": {
-      "gymnase": [
-        "Gymnase"
-      ],
-      "aile-joffre": [
-        "Aile Joffre - 015 (1er etage)",
-        "Aile Joffre - 016 (1er etage)",
-        "Aile Joffre - 017 (1er etage)"
-      ],
-      "batiment-principal": [
-        ".Bureau 006",
-        ".Léonard de Vinci (RDC)",
-        "002 Sciences",
-        "003 Amphi",
-        "004",
-        "008",
-        "009",
-        "012",
-        "101 (autonomie)",
-        "102 Info",
-        "103 Info",
-        "104",
-        "110",
-        "200",
-        "201",
-        "202",
-        "203 (Salle d'autonomie)",
-        "204",
-        "205",
-        "208",
-        "209",
-        "211",
-        "212",
-        "300",
-        "300 bis",
-        "Aile Joffre - Bibliothèque",
-        "Hall/couloir",
-        "Salle d'arts Visuels",
-        "Salle de musique"
-      ]
-    }
-  },
-  {
-    "name": "Campus Cronenbourg",
-    "id": 316,
-    "isFavorite": false,
-    "roomLabels": {
-      "ecpm-enseignement": "E.C.P.M. - Enseignement",
-      "ecpm-hall-technologie": "E.C.P.M. - Hall de Technologie",
-      "ecpm-tp": "E.C.P.M. - TP",
-      "ecpm-tutorat": "E.C.P.M. - Tutorat",
-      "iphc": "I.P.H.C. - Bâtiment 26",
-      "iness": "INESS"
-    },
-    "roomNames": {
-      "ecpm-enseignement": [
-        "A Fermi",
-        "A Forestier",
-        "A Lambla",
-        "Bureau 12",
-        "LAN L1",
-        "LAN L2",
-        "LAN L3",
-        "LAN L4",
-        "LAN L5",
-        "LAN L6",
-        "MEDIAT",
-        "Plateau Examen EX01",
-        "Salle GOLDSTAUB SC1",
-        "Salle HIRN",
-        "Salle WERNER",
-        "Salle WURTZ",
-        "Salle du Conseil"
-      ],
-      "ecpm-hall-technologie": [
-        "Mise en forme TP",
-        "Salle Blanche TP"
-      ],
-      "ecpm-tp": [
-        "TP CA LB01",
-        "TP CA LB02",
-        "TP CA LB03",
-        "TP CA LB04",
-        "TP CA LB05",
-        "TP CA LB06",
-        "TP CA1 TP01 Niv0",
-        "TP CA2 TP02 Niv 0",
-        "TP GC1 RE2 Niv 0",
-        "TP GC1 TP03 Niv 0",
-        "TP GC2 TP04 Niv 0",
-        "TP O LB01 N2",
-        "TP O LB02 N2",
-        "TP O1 TP01 Niv 2",
-        "TP O2 TP02 Niv 2",
-        "TP Pol TP04 Niv 2",
-        "TP Pol TP05 Niv 2",
-        "TP Pol TP06 Niv 2",
-        "TP SMI LB01 Niv 1",
-        "TP SMI LB03 Niv 1",
-        "TP SMI LB05 Niv 1",
-        "TP SMI1 TP01 Niv1",
-        "TP SMI2 TP02 Niv 1",
-        "TP SPI 2A LB6 Niv 1",
-        "TP SPI 2A TP03 Niv 1",
-        "TP SPI 2A TP04 Niv 1",
-        "TP SPI LB08"
-      ],
-      "ecpm-tutorat": [
-        "STRAC1",
-        "STRAC2",
-        "Salle Forêt Noire",
-        "Salle REYNOLDS",
-        "Salle Vosges",
-        "Salle WIPPLER"
-      ],
-      "iphc": [
-        "Campus Cronenbourg IPHC_Salle n°130",
-        "Salle n°115c"
-      ],
-      "iness": [
-        "INESS"
       ]
     }
   },
@@ -1737,6 +1604,1141 @@
         "Office de réchauffage",
         "Salle de réunion 0.20 (ex visio)",
         "Salle Séminaire"
+      ]
+    }
+  },
+  {
+    "name": "Pôle API - Bâtiment A (Central)",
+    "id": 30602,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours",
+      "info": "Salles TP informatique"
+    },
+    "roomNames": {
+      "salle": [
+        ".CRL",
+        "A101 - salle polyvalente",
+        "A207 - Amphi",
+        "A301 - Amphi",
+        "A302 - Amphi",
+        "A410 - salle DTMI",
+        "A501 visio-conf.",
+        "A504",
+        "A508",
+        "Cafétéria",
+        "Hall batA",
+        "Hall batA côté droit pt de RDV",
+        "Salle MIGREST A412"
+      ],
+      "info": [
+        "A202",
+        "A401 (Linux)",
+        "A402",
+        "A404",
+        "A502",
+        "A503"
+      ]
+    }
+  },
+  {
+    "name": "Pôle API - Bâtiment B (Télécom)",
+    "id": 18442,
+    "isFavorite": false,
+    "roomLabels": {
+      "lansad": "Pôle Lansad"
+    },
+    "roomNames": {
+      "lansad": [
+        "B104 (green room)",
+        "B105 (orange room)",
+        "B106 (purple room)",
+        "B107 (blue room)",
+        "B109-CL1",
+        "B109-CL2"
+      ]
+    }
+  },
+  {
+    "name": "Pôle API - Bâtiment C (Télécom)",
+    "id": 30653,
+    "isFavorite": false,
+    "roomLabels": {
+      "autres": "Autres",
+      "innovlab": "InnovLab / FabLab",
+      "projet": "Salles Projet Génie",
+      "td_mai": "Salles TD - UFR Math-Info",
+      "tp_mai": "Salles TP - UFR Math-Info",
+      "tp_auto": "Salles TP Automatique",
+      "tp_elec": "Salles TP Électronique",
+      "tp_electro": "Salles TP Électrotechnique",
+      "diverses": "Salles diverses",
+      "tp_physique": "Salles TP Physique",
+      "td": "Salles Travaux Dirigés"
+    },
+    "roomNames": {
+      "autres": [
+        "C006 InnovLab",
+        "C011 Salle Info",
+        "C212",
+        "C416",
+        "C419",
+        "C434 Salle Info"
+      ],
+      "innovlab": [
+        "C001B Fablab",
+        "C002 Fablab",
+        "C007 Fablab",
+        "C008 Fablab Co-working",
+        "C106 Fablab",
+        "C305 salle de travail",
+        "C310 Fablab"
+      ],
+      "projet": [
+        "C303 salle de TP automatique",
+        "C312 salle de travail",
+        "C313 salle de travail"
+      ],
+      "td_mai": [
+        "C420",
+        "C427"
+      ],
+      "tp_mai": [
+        "C306",
+        "C315"
+      ],
+      "tp_auto": [
+        "C003",
+        "C138",
+        "C304"
+      ],
+      "tp_elec": [
+        "C101 TP électro.",
+        "C104 Proj. électro.",
+        "C107 TP élec."
+      ],
+      "tp_electro": [
+        "C001A"
+      ],
+      "diverses": [
+        "C218",
+        "C414"
+      ],
+      "tp_physique": [
+        "Phys. C201 à C207"
+      ],
+      "td": [
+        "C301",
+        "C302",
+        "C307",
+        "C309",
+        "C311",
+        "C316",
+        "C410",
+        "C413",
+        "C429"
+      ]
+    }
+  },
+  {
+    "name": "École Supérieure de Biotechnologie de Strasbourg (ESBS) - Bâtiment D",
+    "id": 30634,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "D109",
+        "D111",
+        "D112",
+        "D113",
+        "D212",
+        "D227",
+        "TP D226",
+        "TP D228",
+        "TP D229",
+        "TP D230"
+      ]
+    }
+  },
+  {
+    "name": "Pôle API - Bâtiment E (CEBGS)",
+    "id": 30651,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "E222"
+      ]
+    }
+  },
+  {
+    "name": "SERTIT (Bâtiment I)",
+    "id": 19336,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "I005",
+        "I006",
+        "I010",
+        "Salle JF LEFEVRE"
+      ]
+    }
+  },
+  {
+    "name": "Pôle API - Hall Technologique (Bâtiment J)",
+    "id": 30688,
+    "isFavorite": false,
+    "roomLabels": {
+      "autres": "Autres",
+      "td_mai": "Salles TD - UFR Math-Info",
+      "tp_mai": "Salles TP - UFR Math-Info"
+    },
+    "roomNames": {
+      "autres": [
+        "Atelier-J010",
+        "Automatisme-J011",
+        "Projet-J008-J009"
+      ],
+      "td_mai": [
+        "J0a",
+        "J1",
+        "J5"
+      ],
+      "tp_mai": [
+        "J2",
+        "J3",
+        "J4"
+      ]
+    }
+  },
+  {
+    "name": "Bibliothèque IUT-Pharmacie",
+    "id": 37765,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Bibliothèque IUT-Pharma-formation"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Pharmacie",
+    "id": 5095,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphithéâtres",
+      "experimentale": "Pharmacie Expérimentale",
+      "info": "Salles Info",
+      "td": "Salles de TD",
+      "tp_bio": "Salles de TP Biologie",
+      "tp_chimie": "Salles de TP de Chimie",
+      "reunion": "Salles de Réunions",
+      "divers": "Divers"
+    },
+    "roomNames": {
+      "amphi": [
+        "Amphi Gerhardt",
+        "Amphi Laustriat B002",
+        "Amphi Métais B102",
+        "Amphi Pasteur"
+      ],
+      "experimentale": [
+        "C005_PEPS"
+      ],
+      "info": [
+        "B100",
+        "F 101"
+      ],
+      "td": [
+        "A001",
+        "A003",
+        "A005",
+        "A007",
+        "A105",
+        "A106",
+        "B000",
+        "B001",
+        "B101"
+      ],
+      "tp_bio": [
+        "C 002_TP verte",
+        "C 003 _TP pistache",
+        "C 006 _TP bleue",
+        "C 008_TP orange",
+        "D 003 / D 005_ TP Blanche et Grise",
+        "D 005 - TP grise",
+        "D 007 / D 009_TP Microscope",
+        "D 009 - TP Microscope"
+      ],
+      "tp_chimie": [
+        "C 212 _TP",
+        "F 102 _TP",
+        "F 103_TP",
+        "F 104_TP",
+        "F 107_TP",
+        "F 203_TP",
+        "F 203. - TP",
+        "F 203.. - TP",
+        "F 206_TP",
+        "F 207_TP"
+      ],
+      "reunion": [
+        "G001",
+        "HALL A-B",
+        "HALL C-D",
+        "HALL E-F",
+        "S. Ledoux (A107)"
+      ],
+      "divers": [
+        "G002",
+        "K'fet",
+        "Open space (C302/304)",
+        "S. Convivialité (A116)"
+      ]
+    }
+  },
+  {
+    "name": "IUT Robert Schuman - Bloc Central",
+    "id": 30658,
+    "isFavorite": false,
+    "roomLabels": {
+      "info_com": "Salles INFO-COM",
+      "tc": "Salles Tronc Commun",
+      "communes": "Salles communes"
+    },
+    "roomNames": {
+      "info_com": [
+        "EAD",
+        "ICTC 101",
+        "ICTC 106",
+        "ICTC 107",
+        "ICTC 108",
+        "ICTC 109",
+        "ICTC 201",
+        "ICTC 202",
+        "ICTC 206",
+        "ICTC 208",
+        "ICTC 209",
+        "ICTC 211",
+        "ICTC 310",
+        "ICTC 312",
+        "ICTC 316",
+        "ICTC 401",
+        "ICTC 410",
+        "ICTC 414"
+      ],
+      "tc": [
+        "ICTC 008",
+        "ICTC 009",
+        "ICTC 010",
+        "ICTC 102",
+        "ICTC 110",
+        "ICTC 111",
+        "ICTC 207",
+        "ICTC 302",
+        "ICTC 303",
+        "ICTC 407",
+        "ICTC 408",
+        "ICTC 415"
+      ],
+      "communes": [
+        "Amphi 1",
+        "Amphi 2",
+        "C@fé - Learning lab",
+        "ICTC 212",
+        "ICTC 402",
+        "ICTC 411"
+      ]
+    }
+  },
+  {
+    "name": "IUT Chimie",
+    "id": 30661,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Hall GC",
+        "ICH 001",
+        "ICH 002",
+        "ICH 003",
+        "ICH 007",
+        "ICH 008",
+        "ICH 009",
+        "ICH 101",
+        "ICH 102",
+        "ICH 103",
+        "ICH 105",
+        "ICH 106",
+        "ICH 107",
+        "ICH 108",
+        "ICH 201",
+        "ICH 203",
+        "ICH 205",
+        "ICH 206",
+        "ICH 207",
+        "ICH 208",
+        "ICH 301",
+        "ICH 303",
+        "ICH 304",
+        "ICH 306",
+        "ICH 307",
+        "ICH 308",
+        "ICH 309",
+        "Labo GC"
+      ]
+    }
+  },
+  {
+    "name": "IUT Génie Civil",
+    "id": 30667,
+    "isFavorite": false,
+    "roomLabels": {
+      "info": "Salles Info",
+      "td": "Salles TD",
+      "tp": "Salles TP",
+      "diverses": "Salles diverses"
+    },
+    "roomNames": {
+      "info": [
+        "IGC 106",
+        "IGC 107",
+        "IGC 112",
+        "IGC 203",
+        "IGC 206",
+        "IGC 208"
+      ],
+      "td": [
+        "IGC 004",
+        "IGC 009",
+        "IGC 108",
+        "IGC 204",
+        "IGC 205"
+      ],
+      "tp": [
+        "Hall Fabrication",
+        "Hall Matériaux",
+        "Hall Structures",
+        "TP Acoustique1 |H127",
+        "TP Acoustique2 |H128",
+        "TP Eclairage |H122",
+        "TP Electricité |H130",
+        "TP Energie 1 |H28",
+        "TP Energie 2 |H124",
+        "TP Energie 3 |H125",
+        "TP Energie 4 |H126",
+        "TP Hydraulique |H123",
+        "TP MX Gran |H27",
+        "TP MX Sols |H26",
+        "TP Structures |H32"
+      ],
+      "diverses": [
+        "Bruyante |H25",
+        "Conservation |H31",
+        "IGC 001 |BYOD",
+        "IGC 002",
+        "IGC 003 |COM",
+        "IGC 008 |TOPO",
+        "IGC 010 |BUT3",
+        "IGC 013 |BYOD",
+        "IGC 111 |ANG",
+        "IGC 113",
+        "Matériauthèque |H121",
+        "Salle d'examen |H001",
+        "Salle d'examen |H129",
+        "Salle ENSAS"
+      ]
+    }
+  },
+  {
+    "name": "IUT Informatique",
+    "id": 30678,
+    "isFavorite": false,
+    "roomLabels": {
+      "td": "Salles TD",
+      "tp": "Salles TP",
+      "special": "Spécial"
+    },
+    "roomNames": {
+      "td": [
+        "IIN 103",
+        "IIN 104",
+        "IIN 109",
+        "IIN 110",
+        "IIN 111",
+        "IIN 218"
+      ],
+      "tp": [
+        "IIN 005",
+        "IIN 017",
+        "IIN 105",
+        "IIN 106",
+        "IIN 202",
+        "IIN 203",
+        "IIN 215"
+      ],
+      "special": [
+        "IIN 016",
+        "IIN 209",
+        "IIN Reunion"
+      ]
+    }
+  },
+  {
+    "name": "IUT Léonardo",
+    "id": 30610,
+    "isFavorite": false,
+    "roomLabels": {
+      "autres": "Autres",
+      "chimie": "Salles Chimie",
+      "info_com": "Salles INFO-COM",
+      "tc": "Salles Tronc Commun",
+      "communes": "Salles communes"
+    },
+    "roomNames": {
+      "autres": [
+        "LEO 009"
+      ],
+      "chimie": [
+        "LEO 003",
+        "LEO 006"
+      ],
+      "info_com": [
+        "LEO 007"
+      ],
+      "tc": [
+        "LEO 001",
+        "LEO 002",
+        "LEO 004",
+        "LEO 005"
+      ],
+      "communes": [
+        "LEO 008",
+        "LEO Amphi",
+        "LEO Examen"
+      ]
+    }
+  },
+  {
+    "name": "Salles Extérieures (Illkirch)",
+    "id": 209,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles partenaires"
+    },
+    "roomNames": {
+      "salle": [
+        "Centre Paul Strauss",
+        "Cronenbourg CESQ",
+        "Hop.Civ. IPB 1er ét.",
+        "ICANS",
+        "IHU - SALLE FORMATION 1",
+        "IPCMS",
+        "IRCAD (IHU)",
+        "IRCAD IHU",
+        "NHC Rad. Inter.",
+        "NHC-méd. nucl."
+      ]
+    }
+  },
+  {
+    "name": "Manufacture des Tabacs",
+    "id": 9,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphithéâtres",
+      "salle30": "Salles 30 places",
+      "salle60": "Salles 60 places",
+      "double": "Salles Double",
+      "icube": "Salles I-Cube",
+      "info": "Salles Info",
+      "projet": "Salles Projet",
+      "tp": "Salles TP"
+    },
+    "roomNames": {
+      "amphi": [
+        "AMPHI 003 Eau",
+        "AMPHI 005 Terre"
+      ],
+      "salle30": [
+        "106 (Visio GEDE réservée)",
+        "205",
+        "310",
+        "M04"
+      ],
+      "salle60": [
+        "103",
+        "104",
+        "311"
+      ],
+      "double": [
+        "001 (Dble)",
+        "002 (Dble)",
+        "101 (Dble)",
+        "102 (Dble)",
+        "201 (Dble)",
+        "202 (Dble)",
+        "M 01 (Dble)",
+        "M 02 (Dble)"
+      ],
+      "icube": [
+        "M15 MNI"
+      ],
+      "info": [
+        "301 Petrel",
+        "302 Info",
+        "303 Info",
+        "304 info",
+        "305 info",
+        "306 info"
+      ],
+      "projet": [
+        "105 Projet",
+        "203 Projet",
+        "204 Projet"
+      ],
+      "tp": [
+        "015 TP PROCES GDP",
+        "016 TP EAUX USEES ICUBE",
+        "134 TP CHIMIE",
+        "312 TP OPT",
+        "315 TP PETRO/CARTO",
+        "316 TP HYDRO"
+      ]
+    }
+  },
+  {
+    "name": "Boulevard Lefebvre (ex IPST)",
+    "id": 8108,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "P-002",
+        "P-104",
+        "P-106",
+        "P-110",
+        "P-112",
+        "P-114",
+        "P-204",
+        "P-210",
+        "P-212",
+        "P-214",
+        "P-216(salle Meinau)",
+        "P-Amphi Lefèvre"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Meinau - Nouveau Bâtiment",
+    "id": 30605,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        ".Amphi Louise Weiss (ex C001 - Amphi)",
+        ".Amphi Michel Tardy (ex Amphi Meinau)",
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A006",
+        "A102",
+        "A103",
+        "A104",
+        "A105",
+        "A106",
+        "B001 Bio",
+        "B002 Bio",
+        "B102",
+        "B103",
+        "B104",
+        "B106",
+        "C007",
+        "C008",
+        "C009",
+        "C019 - Salle d'évolution / EPS",
+        "C021 - Salle de physique / techno (paillasse)",
+        "C116 - Salle de réunion",
+        "C121",
+        "C122",
+        "C123",
+        "C129 - Salle d'arts plastiques",
+        "C130 - Salle de musique",
+        "C132 - Salle informatique",
+        "CAREL - S.Conversation n°1",
+        "CAREL - S.Conversation n°2",
+        "CAREL - S.Conversation n°3",
+        "CAREL - Salle de Formation",
+        "CAREL - Salle Informatique",
+        "S.informatique Bibliothèque",
+        "S.Travail en group. Bibliothèque",
+        "Salle 133 Info Plot3 étage1",
+        "Salle 231 Plot3 étage2",
+        "Salle ADN 1",
+        "Salle de réception*",
+        "Salle des commissions",
+        "Salle des Conseils (1.11)",
+        "Salle L'@telier"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Neudorf - École Annexe",
+    "id": 98,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "005",
+        "006",
+        "007",
+        "008",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109",
+        "110",
+        "205",
+        "207",
+        "208",
+        "209",
+        "210",
+        "211",
+        "L001",
+        "L002",
+        "L003",
+        "L004"
+      ]
+    }
+  },
+  {
+    "name": "S.F.C. (Meinau)",
+    "id": 30665,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "2 SCHLUMBERGER",
+        "028",
+        "108 SIMONE VEIL",
+        "110 OLYMPES DE GOUGES",
+        "111  SIMONE DE BEAUVOIR",
+        "118 BRAUN",
+        "120 MATHIS Emile",
+        "122 PELLETIER Roger",
+        "122b OURISSON Guy",
+        "124 LAUSTRIAT Gilbert",
+        "126 THOM René",
+        "214 DOLLFUS Jean",
+        "220 KASTLER",
+        "222 DE DIETRICH Jean",
+        "226 LEHN Jean Marie",
+        "BLOCH",
+        "SCHUMAN"
+      ]
+    }
+  },
+  {
+    "name": "IUT Louis Pasteur (Schiltigheim)",
+    "id": 30619,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphithéâtres",
+      "reunion": "Salles de Réunion & CDI",
+      "td": "Salles TD",
+      "tp": "Salles TP"
+    },
+    "roomNames": {
+      "amphi": [
+        "Amphi 3",
+        "Amphi Annie Cheminat (EX. Amphi 2)",
+        "Amphi Bernard Obrecht (EX. Amphi 4)",
+        "Amphi Michel Genevaux ( EX. Amphi 1)",
+        "Salle d'examen B1.25"
+      ],
+      "reunion": [
+        "A0.02 Réunion GB",
+        "A0.52 DHPI - Bur",
+        "A1.28 Salle de réunion",
+        "A2.06 Salle du conseil",
+        "B1.07 - Salle  MP/GIM"
+      ],
+      "td": [
+        "A0.55 Rx Vp",
+        "A0.57 TD Vp",
+        "A0.59 TD Vp",
+        "B1.08 TD Rx Vp",
+        "B1.09 TD Vp",
+        "B1.10 TD Vp",
+        "B1.11 TD Vp",
+        "B1.12 TD Vp Rx So",
+        "B1.13 TD Vp",
+        "B1.14 TD Vp",
+        "B1.15 TD Vp",
+        "B1.16 TD Rx Vp",
+        "B1.17 TD Vp",
+        "B1.18 TD Vp",
+        "B1.19 TD Vp",
+        "B1.21 TD TbIA Rx",
+        "B1.23 TD Rx Vp",
+        "B1.24 TD Rx Vp"
+      ],
+      "tp": [
+        "A0.08 Cult Cell Rx",
+        "A0.11 Bio PC Rx",
+        "A0.14 DHPI - Labo",
+        "A0.27 Chana",
+        "A0.29a Plateforme Brasserie",
+        "A0.29b Plateforme Eaux Usées",
+        "A0.33 TP Microbio",
+        "A0.35 TP Microbio-Ferm",
+        "A0.39 TP Bio",
+        "A0.41 TP Bio",
+        "A0.45 TP Bioc/Ch",
+        "A0.47 TP Chimie",
+        "A0.48 TP Manip",
+        "A0.53 Capteurs",
+        "A1.08 Lab Lg",
+        "A1.09 Lab Lg",
+        "A1.10 Lab Lg",
+        "A1.12 Informatique",
+        "A1.13 Informatique So",
+        "A1.14 Informatique",
+        "A1.16 Informatique",
+        "A1.18 Informatique",
+        "A1.24 Electricité",
+        "A1.26 Electronique",
+        "A1.27 Info instru",
+        "A2.07 S. Ressources",
+        "B0.14 Matériaux",
+        "B0.16 Conc tech",
+        "B0.18 Poly thermo",
+        "B0.20 Atelier",
+        "B0.25 Plateforme tech",
+        "B0.27 TM - sécu élec",
+        "B0.28 Thermique",
+        "B0.31 TM - info indus",
+        "B0.32 Méca flu",
+        "B0.34 RDM",
+        "B0.35 TM - méca",
+        "B0.38 Nucléaire",
+        "B0.39 Electrotech",
+        "B0.47 Metro",
+        "B0.51 Optique"
+      ]
+    }
+  },
+  {
+    "name": "CFMI (Sélestat)",
+    "id": 41470,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "034",
+        "131",
+        "132",
+        "133",
+        "134",
+        "231 (Instrument)",
+        "232 (Lutherie)",
+        "233",
+        "Chapelle"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Sélestat - Bâtiment Principal",
+    "id": 30601,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "005",
+        "010",
+        "012",
+        "021",
+        "022",
+        "027",
+        "029",
+        "101",
+        "102",
+        "105",
+        "106",
+        "108",
+        "109",
+        "111",
+        "121",
+        "122",
+        "124",
+        "127",
+        "129",
+        "202",
+        "218",
+        "221",
+        "222",
+        "224",
+        "225",
+        "226",
+        "227",
+        "229",
+        "257",
+        "302",
+        "303",
+        "305",
+        "306",
+        "308",
+        "Amphi - 2ème étage",
+        "Salle des fêtes"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Sélestat - Gymnase",
+    "id": 30675,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Gymnase"
+      ]
+    }
+  },
+  {
+    "name": "Villa Knopf",
+    "id": 4408,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Villa Knopf"
+      ]
+    }
+  },
+  {
+    "name": "Gymnases INSPÉ Colmar",
+    "id": 30715,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de sport"
+    },
+    "roomNames": {
+      "salle": [
+        "Gymnase"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Colmar - Aile Joffre",
+    "id": 30623,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Aile Joffre - 015 (1er etage)",
+        "Aile Joffre - 016 (1er etage)",
+        "Aile Joffre - 017 (1er etage)"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Colmar - Bâtiment Principal",
+    "id": 30628,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        ".Bureau 006",
+        ".Léonard de Vinci (RDC)",
+        "002 Sciences",
+        "003 Amphi",
+        "004",
+        "008",
+        "009",
+        "012",
+        "101 (autonomie)",
+        "102 Info",
+        "103 Info",
+        "104",
+        "110",
+        "200",
+        "201",
+        "202",
+        "203 (Salle d'autonomie)",
+        "204",
+        "205",
+        "208",
+        "209",
+        "211",
+        "212",
+        "300",
+        "300 bis",
+        "Aile Joffre - Bibliothèque",
+        "Hall/couloir",
+        "Salle d'arts Visuels",
+        "Salle de musique"
+      ]
+    }
+  },
+  {
+    "name": "E.C.P.M. - Enseignement",
+    "id": 327,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "A Fermi",
+        "A Forestier",
+        "A Lambla",
+        "Bureau 12",
+        "LAN L1",
+        "LAN L2",
+        "LAN L3",
+        "LAN L4",
+        "LAN L5",
+        "LAN L6",
+        "MEDIAT",
+        "Plateau Examen EX01",
+        "Salle GOLDSTAUB SC1",
+        "Salle HIRN",
+        "Salle WERNER",
+        "Salle WURTZ",
+        "Salle du Conseil"
+      ]
+    }
+  },
+  {
+    "name": "E.C.P.M. - Hall de Technologie",
+    "id": 328,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Mise en forme TP",
+        "Salle Blanche TP"
+      ]
+    }
+  },
+  {
+    "name": "E.C.P.M. - TP",
+    "id": 334,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de TP"
+    },
+    "roomNames": {
+      "salle": [
+        "TP CA LB01",
+        "TP CA LB02",
+        "TP CA LB03",
+        "TP CA LB04",
+        "TP CA LB05",
+        "TP CA LB06",
+        "TP CA1 TP01 Niv0",
+        "TP CA2 TP02 Niv 0",
+        "TP GC1 RE2 Niv 0",
+        "TP GC1 TP03 Niv 0",
+        "TP GC2 TP04 Niv 0",
+        "TP O LB01 N2",
+        "TP O LB02 N2",
+        "TP O1 TP01 Niv 2",
+        "TP O2 TP02 Niv 2",
+        "TP Pol TP04 Niv 2",
+        "TP Pol TP05 Niv 2",
+        "TP Pol TP06 Niv 2",
+        "TP SMI LB01 Niv 1",
+        "TP SMI LB03 Niv 1",
+        "TP SMI LB05 Niv 1",
+        "TP SMI1 TP01 Niv1",
+        "TP SMI2 TP02 Niv 1",
+        "TP SPI 2A LB6 Niv 1",
+        "TP SPI 2A TP03 Niv 1",
+        "TP SPI 2A TP04 Niv 1",
+        "TP SPI LB08"
+      ]
+    }
+  },
+  {
+    "name": "E.C.P.M. - Tutorat",
+    "id": 335,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "STRAC1",
+        "STRAC2",
+        "Salle Forêt Noire",
+        "Salle REYNOLDS",
+        "Salle Vosges",
+        "Salle WIPPLER"
+      ]
+    }
+  },
+  {
+    "name": "I.P.H.C. - Bâtiment 26",
+    "id": 46489,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Campus Cronenbourg IPHC_Salle n°130",
+        "Salle n°115c"
+      ]
+    }
+  },
+  {
+    "name": "INESS",
+    "id": 16267,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "INESS"
       ]
     }
   }
