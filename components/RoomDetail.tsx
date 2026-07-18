@@ -2,7 +2,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Card, CardSeparator } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Spacing } from '@/constants/theme';
+import { Spacing, TAB_BAR_CLEARANCE } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { cleanDescription } from '@/services/DepartmentService';
 import { Room, RoomEvent } from '@/types';
@@ -195,7 +195,14 @@ export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
   return (
     <View style={styles.container}>
       {/* Room hero */}
-      <View style={[styles.heroSection, Platform.OS === 'ios' && { paddingTop: insets.top + 52 }]}>
+      <View
+        style={[
+          styles.heroSection,
+          // iOS: header floats over content (headerTransparent), so the hero needs its own
+          // clearance below the status bar + header. Android's header is opaque and reserves its
+          // own space instead, so it doesn't need `insets.top` added again — just a flat gap.
+          { paddingTop: Platform.OS === 'ios' ? insets.top + 52 : Spacing.lg },
+        ]}>
         <Card style={styles.heroCard}>
           <ThemedText type="title" style={styles.heroTitle}>
             {room.location}
@@ -235,7 +242,7 @@ export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
             // which is exactly what we're trying to do in the first place.
             initialNumToRender={rows.length}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}
+            contentContainerStyle={{ paddingBottom: insets.bottom + TAB_BAR_CLEARANCE }}
             onLayout={event => setListHeight(event.nativeEvent.layout.height)}
           />
         )}

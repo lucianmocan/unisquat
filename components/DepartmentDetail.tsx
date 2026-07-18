@@ -225,7 +225,14 @@ export default function DepartmentDetail({
   return (
     <View style={styles.container}>
       {/* Hero card — no title in the native header, just the back button */}
-      <View style={[styles.heroSection, Platform.OS === 'ios' && { paddingTop: insets.top + 68 }]}>
+      <View
+        style={[
+          styles.heroSection,
+          // iOS: header floats over content (headerTransparent), so the hero needs its own
+          // clearance below the status bar + header. Android's header is opaque and reserves its
+          // own space instead, so it doesn't need `insets.top` added again — just a flat gap.
+          { paddingTop: Platform.OS === 'ios' ? insets.top + 68 : Spacing.lg },
+        ]}>
         <Card style={styles.heroCard}>
           <View style={styles.heroTopRow}>
             <ThemedText type="title" style={styles.heroTitle} numberOfLines={2}>

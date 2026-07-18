@@ -1,13 +1,14 @@
 import { ThemedText } from '@/components/themed-text';
 import { Card, CardSeparator, Row } from '@/components/ui/card';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Spacing } from '@/constants/theme';
+import { Spacing, TAB_BAR_CLEARANCE } from '@/constants/theme';
 import { useTabHaptics } from '@/hooks/use-tab-haptics';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { haptics, NotificationFeedbackType } from '@/services/haptics';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Alert, Linking, ScrollView, StyleSheet } from 'react-native';
+import { Alert, Linking, Platform, ScrollView, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const GITHUB_REPO_URL = 'https://github.com/lucianmocan/unisquat';
 const GITHUB_NEW_ISSUE_URL = `${GITHUB_REPO_URL}/issues/new`;
@@ -20,6 +21,7 @@ export default function SettingsScreen() {
   const errorColor = useThemeColor({}, 'error');
   const successColor = useThemeColor({}, 'success');
   const infoColor = useThemeColor({}, 'info');
+  const insets = useSafeAreaInsets();
 
   // Row already fires its own haptic on press for all the handlers below.
   const handleAbout = () => {
@@ -61,7 +63,15 @@ export default function SettingsScreen() {
   };
 
   return (
-    <ScrollView style={styles.list} contentContainerStyle={styles.listContent} contentInsetAdjustmentBehavior="automatic">
+    <ScrollView
+      style={styles.list}
+      contentContainerStyle={[
+        styles.listContent,
+        // contentInsetAdjustmentBehavior is iOS-only and already clears the tab bar there —
+        // Android gets no such adjustment, so it needs explicit clearance added here.
+        Platform.OS === 'android' && { paddingBottom: insets.bottom + TAB_BAR_CLEARANCE },
+      ]}
+      contentInsetAdjustmentBehavior="automatic">
       <ThemedText type="caption" style={styles.sectionHeader}>{t('settingsScreen.general')}</ThemedText>
       <Card>
         <Row

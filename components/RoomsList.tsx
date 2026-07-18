@@ -1,5 +1,6 @@
 import { Card, CardSeparator, Row } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
+import { TAB_BAR_CLEARANCE } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { Department, Room } from '@/types';
 import { router } from 'expo-router';
@@ -88,7 +89,7 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
   return (
     <ScrollView
       style={styles.list}
-      contentContainerStyle={[styles.listContent, { paddingBottom: insets.bottom + 80 }]}
+      contentContainerStyle={[styles.listContent, { paddingBottom: insets.bottom + TAB_BAR_CLEARANCE }]}
       refreshControl={
         onRefresh ? <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} tintColor={tintColor} /> : undefined
       }>

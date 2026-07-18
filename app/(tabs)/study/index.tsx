@@ -1,14 +1,15 @@
 import { router, useNavigation } from "expo-router";
 import { Fragment, useLayoutEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Platform, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
 import { Card, CardSeparator, Row } from "@/components/ui/card";
 import { Chip } from "@/components/ui/chip";
 import { EmptyState } from "@/components/ui/empty-state";
 import { IconSymbol } from "@/components/ui/icon-symbol";
-import { Radius, Spacing } from "@/constants/theme";
+import { Radius, Spacing, TAB_BAR_CLEARANCE } from "@/constants/theme";
 import { useDepartments } from "@/contexts/DepartmentsContext";
 import { useSettings } from "@/contexts/SettingsContext";
 import { useTabHaptics } from "@/hooks/use-tab-haptics";
@@ -39,8 +40,10 @@ export default function StudyScreen() {
   const [isCampusPickerVisible, setIsCampusPickerVisible] = useState(false);
   const { departments, toggleFavorite } = useDepartments();
   const { settings } = useSettings();
+  const insets = useSafeAreaInsets();
 
   const iconColor = useThemeColor({}, "icon");
+  const textColor = useThemeColor({}, "text");
   const tintColor = useThemeColor({}, "tint");
   const favoriteColor = useThemeColor({}, "favorite");
   const chipBackgroundColor = useThemeColor(
@@ -51,17 +54,22 @@ export default function StudyScreen() {
 
   // Native header search bar (a real UISearchController on iOS) instead of a custom TextInput —
   // options must be set imperatively since headerSearchBarOptions needs to call back into this
-  // screen's own state.
+  // screen's own state. iOS's search bar follows the system light/dark appearance on its own;
+  // Android's doesn't — it defaults to dark-on-light regardless of the app's theme unless told
+  // otherwise, so textColor/hintTextColor/headerIconColor need to be set explicitly here.
   useLayoutEffect(() => {
     navigation.setOptions({
       headerSearchBarOptions: {
         placeholder: t("study.searchPlaceholder"),
         autoCapitalize: "none",
+        textColor,
+        hintTextColor: iconColor,
+        headerIconColor: iconColor,
         onChangeText: (event: { nativeEvent: { text: string } }) =>
           setSearchQuery(event.nativeEvent.text),
       },
     });
-  }, [navigation, t]);
+  }, [navigation, t, textColor, iconColor]);
 
   const campusOptions = useMemo(() => {
     const campuses = Array.from(
@@ -129,7 +137,14 @@ export default function StudyScreen() {
   return (
     <ScrollView
       style={styles.list}
-      contentContainerStyle={styles.listContent}
+      contentContainerStyle={[
+        styles.listContent,
+        // `contentInsetAdjustmentBehavior` is iOS-only — it already auto-clears both the large-
+        // title header and the tab bar there, so `listContent`'s own padding is just decorative
+        // extra breathing room on iOS. Android gets neither adjustment automatically, so it needs
+        // explicit clearance for the tab bar sitting below this screen.
+        Platform.OS === "android" && { paddingBottom: insets.bottom + TAB_BAR_CLEARANCE },
+      ]}
       keyboardShouldPersistTaps="handled"
       contentInsetAdjustmentBehavior="automatic"
     >
@@ -272,7 +287,10 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingHorizontal: Spacing.xl,
-    paddingTop: Spacing.xs,
+    // iOS: the large-title header + native search bar auto-collapse/inset via
+    // contentInsetAdjustmentBehavior, so this is just a small extra nudge. Android's header
+    // doesn't collapse and isn't auto-inset for, so it needs a much bigger gap below it.
+    paddingTop: Platform.OS === "ios" ? Spacing.xs : Spacing.xl,
     paddingBottom: 40,
     gap: Spacing.lg,
   },

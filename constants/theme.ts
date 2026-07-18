@@ -78,6 +78,13 @@ export const Spacing = {
   xxl: 32,
 };
 
+// Extra bottom clearance (beyond the safe-area inset) so scrollable list content doesn't end up
+// hidden behind the native bottom tab bar (`NativeTabs`). A platform-specific approximation, not
+// a measured value — neither expo-router nor the underlying native-tabs implementation expose the
+// bar's actual rendered height to JS. Android's Material 3 bottom nav bar generally sits taller
+// than iOS's tab bar, hence the larger number.
+export const TAB_BAR_CLEARANCE = Platform.select({ ios: 80, android: 100 }) ?? 80;
+
 // Two radii, used consistently everywhere: containers/cards/inputs/buttons all share `md`;
 // fully-rounded toggles/chips use `pill`. (The About screen's app-icon image is a deliberate
 // one-off matching the OS icon mask, not part of this scale.)
