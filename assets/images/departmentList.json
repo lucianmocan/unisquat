@@ -67,7 +67,8 @@
         "S.128",
         "Salle de Khölles"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "EOST (Descartes) - École et Observatoire des Sciences de la Terre",
@@ -84,7 +85,8 @@
       "specif": [
         "Salle R02"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Atrium",
@@ -108,7 +110,8 @@
       "hall": [
         "HALL ATRIUM"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Faculté de Chimie",
@@ -157,7 +160,8 @@
       "cafet": [
         "Cafétéria"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Escarpe",
@@ -211,7 +215,8 @@
         "S.420",
         "Salle Master Arts Visuels"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Faculté de Droit",
@@ -265,7 +270,8 @@
       "info": [
         "305 (Info)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "I.P.C.B",
@@ -292,7 +298,8 @@
         "Salle de TP S25 - Philippe Miahle",
         "Salle de TP S26 - Paul Feltz"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Institut Le Bel",
@@ -361,7 +368,8 @@
         "147H ILB (ex 171H)",
         "161H ILB (ex 175H)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Le Portique",
@@ -410,7 +418,8 @@
         "Salle d'évolution",
         "HALL PORTIQUE"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Pangloss",
@@ -459,7 +468,8 @@
         "Salle Zazie (208)",
         "Salle d'Artagnan (R03)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Ensemble Saint Georges",
@@ -492,7 +502,8 @@
         "S.323",
         "S.416"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Lycée Franco-Allemand (Ex Galileo)",
@@ -512,7 +523,8 @@
         "109",
         "111"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "École de Management Strasbourg",
@@ -597,7 +609,8 @@
         "Salle info D 212",
         "Salle info D 224"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Faculté des Sciences Économiques et de Gestion",
@@ -668,7 +681,8 @@
         "B 318",
         "C 205"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "C.R.L. - Pôle Lansad",
@@ -685,7 +699,8 @@
         "A215",
         "CL-A216"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Salles Communes (P.E.G.E.)",
@@ -705,7 +720,8 @@
       "3eme-etage": [
         "B 314 (PEGE)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Faculté de Géographie",
@@ -728,7 +744,8 @@
         "Géo salle 114",
         "Géo salle 116 (ex 114)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Institut de Mécanique des Fluides et des Solides",
@@ -743,7 +760,8 @@
         "Salle Info MNI1",
         "Salle Info MNI2"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Athena",
@@ -756,7 +774,8 @@
       "salle": [
         "Amphi Danièle Huet-Weiller (Ex. AMPHI ATHENA)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Algéco Alinéa",
@@ -769,7 +788,8 @@
       "salle": [
         "Algéco Alinéa (ex R13 Zool)"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "M.I.S.H.A.",
@@ -791,7 +811,8 @@
         "Salle des délibérations",
         "Table-Ronde MISHA"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "MDP Maison des Personnels",
@@ -806,7 +827,8 @@
         "Salle 1-05  postes informatique FC"
       ]
     },
-    "isFavorite": false
+    "isFavorite": false,
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Patio",
@@ -909,7 +931,8 @@
         "Salle de réunion à UFR Langues 4105 PATIO4"
       ]
     },
-    "isFavorite": false
+    "isFavorite": false,
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Plateforme de Biologie",
@@ -933,7 +956,8 @@
         "PLF BIO TRANSFERT 210"
       ]
     },
-    "isFavorite": false
+    "isFavorite": false,
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Présidence",
@@ -949,7 +973,8 @@
         "S.3-22"
       ]
     },
-    "isFavorite": false
+    "isFavorite": false,
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Parc Esplanade",
@@ -970,7 +995,8 @@
         "Place des Nobels"
       ]
     },
-    "isFavorite": false
+    "isFavorite": false,
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Studium",
@@ -1009,7 +1035,8 @@
         "Salle Handivie"
       ]
     },
-    "isFavorite": false
+    "isFavorite": false,
+    "campus": "Campus Esplanade"
   },
   {
     "name": "IUT Haguenau",
@@ -1119,7 +1146,8 @@
         "B0TP11_Lean2Ergo",
         "B0TP11_Lean4.H"
       ]
-    }
+    },
+    "campus": "Campus Haguenau"
   },
   {
     "name": "Faculté de Philosophie",
@@ -1135,7 +1163,8 @@
         "CDE interne",
         "salle de cours 7 Rue de l'Université"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Faculté de Psychologie",
@@ -1166,7 +1195,8 @@
         "Wallon salle TD",
         "Warrington salle TD"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "EOST (Rue Blessig) - École et Observatoire des Sciences de la Terre",
@@ -1185,7 +1215,8 @@
         "SALLE OPTIQUE 149",
         "SALLE ORANGE 144"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Institut Botanique",
@@ -1219,7 +1250,8 @@
         "CL-1",
         "CL-2"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Institut de Physique",
@@ -1276,7 +1308,8 @@
         "CL-366",
         "CL-367"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Institut de Zoologie",
@@ -1299,7 +1332,8 @@
         "Salle R27",
         "SV-20  R17"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Jardin (Campus Historique)",
@@ -1317,7 +1351,8 @@
         "Zone verte Extension physique",
         "Zone verte Transfo"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Palais Universitaire",
@@ -1382,7 +1417,8 @@
         "Salle 106 Informatique",
         "Salle 129  (Salle info)"
       ]
-    }
+    },
+    "campus": "Campus Historique"
   },
   {
     "name": "Cardo",
@@ -1448,7 +1484,8 @@
         "214 Salon de travail",
         "218 Salon de travail"
       ]
-    }
+    },
+    "campus": "Campus Hôpital Civil"
   },
   {
     "name": "Faculté de Chirurgie Dentaire",
@@ -1478,7 +1515,8 @@
         "Simulateurs 1-301 - J",
         "Simulateurs 201 - RDC"
       ]
-    }
+    },
+    "campus": "Campus Hôpital Civil"
   },
   {
     "name": "Faculté de Médecine (Hôpital Civil)",
@@ -1587,7 +1625,8 @@
       "unisimes": [
         "Salle UNISIMES"
       ]
-    }
+    },
+    "campus": "Campus Hôpital Civil"
   },
   {
     "name": "Collège Doctoral Européen",
@@ -1605,7 +1644,8 @@
         "Salle de réunion 0.20 (ex visio)",
         "Salle Séminaire"
       ]
-    }
+    },
+    "campus": "Campus Esplanade"
   },
   {
     "name": "Pôle API - Bâtiment A (Central)",
@@ -1639,7 +1679,8 @@
         "A502",
         "A503"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Pôle API - Bâtiment B (Télécom)",
@@ -1657,7 +1698,8 @@
         "B109-CL1",
         "B109-CL2"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Pôle API - Bâtiment C (Télécom)",
@@ -1738,7 +1780,8 @@
         "C413",
         "C429"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "École Supérieure de Biotechnologie de Strasbourg (ESBS) - Bâtiment D",
@@ -1760,7 +1803,8 @@
         "TP D229",
         "TP D230"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Pôle API - Bâtiment E (CEBGS)",
@@ -1773,7 +1817,8 @@
       "salle": [
         "E222"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "SERTIT (Bâtiment I)",
@@ -1789,7 +1834,8 @@
         "I010",
         "Salle JF LEFEVRE"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Pôle API - Hall Technologique (Bâtiment J)",
@@ -1816,7 +1862,8 @@
         "J3",
         "J4"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Bibliothèque IUT-Pharmacie",
@@ -1829,7 +1876,8 @@
       "salle": [
         "Bibliothèque IUT-Pharma-formation"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Faculté de Pharmacie",
@@ -1905,7 +1953,8 @@
         "Open space (C302/304)",
         "S. Convivialité (A116)"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "IUT Robert Schuman - Bloc Central",
@@ -1959,7 +2008,8 @@
         "ICTC 402",
         "ICTC 411"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "IUT Chimie",
@@ -1999,7 +2049,8 @@
         "ICH 309",
         "Labo GC"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "IUT Génie Civil",
@@ -2060,7 +2111,8 @@
         "Salle d'examen |H129",
         "Salle ENSAS"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "IUT Informatique",
@@ -2094,7 +2146,8 @@
         "IIN 209",
         "IIN Reunion"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "IUT Léonardo",
@@ -2129,7 +2182,8 @@
         "LEO Amphi",
         "LEO Examen"
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Salles Extérieures (Illkirch)",
@@ -2151,7 +2205,8 @@
         "NHC Rad. Inter.",
         "NHC-méd. nucl."
       ]
-    }
+    },
+    "campus": "Campus Illkirch"
   },
   {
     "name": "Manufacture des Tabacs",
@@ -2217,7 +2272,8 @@
         "315 TP PETRO/CARTO",
         "316 TP HYDRO"
       ]
-    }
+    },
+    "campus": "Manufacture des Tabacs"
   },
   {
     "name": "Boulevard Lefebvre (ex IPST)",
@@ -2241,7 +2297,8 @@
         "P-216(salle Meinau)",
         "P-Amphi Lefèvre"
       ]
-    }
+    },
+    "campus": "Site Meinau"
   },
   {
     "name": "INSPÉ Meinau - Nouveau Bâtiment",
@@ -2297,7 +2354,8 @@
         "Salle des Conseils (1.11)",
         "Salle L'@telier"
       ]
-    }
+    },
+    "campus": "Site Meinau"
   },
   {
     "name": "INSPÉ Neudorf - École Annexe",
@@ -2330,7 +2388,8 @@
         "L003",
         "L004"
       ]
-    }
+    },
+    "campus": "Site Meinau"
   },
   {
     "name": "S.F.C. (Meinau)",
@@ -2359,7 +2418,8 @@
         "BLOCH",
         "SCHUMAN"
       ]
-    }
+    },
+    "campus": "Site Meinau"
   },
   {
     "name": "IUT Louis Pasteur (Schiltigheim)",
@@ -2449,7 +2509,8 @@
         "B0.47 Metro",
         "B0.51 Optique"
       ]
-    }
+    },
+    "campus": "Site Schiltigheim"
   },
   {
     "name": "CFMI (Sélestat)",
@@ -2470,7 +2531,8 @@
         "233",
         "Chapelle"
       ]
-    }
+    },
+    "campus": "Site Sélestat"
   },
   {
     "name": "INSPÉ Sélestat - Bâtiment Principal",
@@ -2518,7 +2580,8 @@
         "Amphi - 2ème étage",
         "Salle des fêtes"
       ]
-    }
+    },
+    "campus": "Site Sélestat"
   },
   {
     "name": "INSPÉ Sélestat - Gymnase",
@@ -2531,7 +2594,8 @@
       "salle": [
         "Gymnase"
       ]
-    }
+    },
+    "campus": "Site Sélestat"
   },
   {
     "name": "Villa Knopf",
@@ -2544,7 +2608,8 @@
       "salle": [
         "Villa Knopf"
       ]
-    }
+    },
+    "campus": "Rue Schiller"
   },
   {
     "name": "Gymnases INSPÉ Colmar",
@@ -2557,7 +2622,8 @@
       "salle": [
         "Gymnase"
       ]
-    }
+    },
+    "campus": "Site Colmar"
   },
   {
     "name": "INSPÉ Colmar - Aile Joffre",
@@ -2572,7 +2638,8 @@
         "Aile Joffre - 016 (1er etage)",
         "Aile Joffre - 017 (1er etage)"
       ]
-    }
+    },
+    "campus": "Site Colmar"
   },
   {
     "name": "INSPÉ Colmar - Bâtiment Principal",
@@ -2613,7 +2680,8 @@
         "Salle d'arts Visuels",
         "Salle de musique"
       ]
-    }
+    },
+    "campus": "Site Colmar"
   },
   {
     "name": "E.C.P.M. - Enseignement",
@@ -2642,7 +2710,8 @@
         "Salle WURTZ",
         "Salle du Conseil"
       ]
-    }
+    },
+    "campus": "Campus Cronenbourg"
   },
   {
     "name": "E.C.P.M. - Hall de Technologie",
@@ -2656,7 +2725,8 @@
         "Mise en forme TP",
         "Salle Blanche TP"
       ]
-    }
+    },
+    "campus": "Campus Cronenbourg"
   },
   {
     "name": "E.C.P.M. - TP",
@@ -2695,7 +2765,8 @@
         "TP SPI 2A TP04 Niv 1",
         "TP SPI LB08"
       ]
-    }
+    },
+    "campus": "Campus Cronenbourg"
   },
   {
     "name": "E.C.P.M. - Tutorat",
@@ -2713,7 +2784,8 @@
         "Salle Vosges",
         "Salle WIPPLER"
       ]
-    }
+    },
+    "campus": "Campus Cronenbourg"
   },
   {
     "name": "I.P.H.C. - Bâtiment 26",
@@ -2727,7 +2799,8 @@
         "Campus Cronenbourg IPHC_Salle n°130",
         "Salle n°115c"
       ]
-    }
+    },
+    "campus": "Campus Cronenbourg"
   },
   {
     "name": "INESS",
@@ -2740,6 +2813,7 @@
       "salle": [
         "INESS"
       ]
-    }
+    },
+    "campus": "Campus Cronenbourg"
   }
 ]

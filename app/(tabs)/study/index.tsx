@@ -14,22 +14,38 @@ import { useTabHaptics } from '@/hooks/use-tab-haptics';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { Department } from '@/types';
 
+const ALL_CAMPUSES = 'Tous';
+
 export default function StudyScreen() {
   useTabHaptics();
   const [searchQuery, setSearchQuery] = useState('');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [selectedCampus, setSelectedCampus] = useState(ALL_CAMPUSES);
+  const [isCampusPickerVisible, setIsCampusPickerVisible] = useState(false);
   const { departments, toggleFavorite } = useDepartments();
 
   const iconColor = useThemeColor({}, 'icon');
+  const tintColor = useThemeColor({}, 'tint');
   const favoriteColor = useThemeColor({}, 'favorite');
   const borderColor = useThemeColor({}, 'border');
   const inputBackgroundColor = useThemeColor({}, 'card');
+  const chipBackgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
+  const isCampusFilterActive = selectedCampus !== ALL_CAMPUSES;
+
+  const campusOptions = useMemo(() => {
+    const campuses = Array.from(new Set(departments.map(dept => dept.campus))).sort();
+    return [ALL_CAMPUSES, ...campuses];
+  }, [departments]);
 
   const filteredDepartments = useMemo(() => {
     let filtered = departments;
 
     if (showFavoritesOnly) {
       filtered = filtered.filter(dept => dept.isFavorite);
+    }
+
+    if (isCampusFilterActive) {
+      filtered = filtered.filter(dept => dept.campus === selectedCampus);
     }
 
     if (searchQuery.trim()) {
@@ -39,16 +55,26 @@ export default function StudyScreen() {
     }
 
     return filtered;
-  }, [departments, searchQuery, showFavoritesOnly]);
+  }, [departments, searchQuery, showFavoritesOnly, selectedCampus, isCampusFilterActive]);
 
   const handleToggleFavorite = (departmentId: number) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     toggleFavorite(departmentId);
   };
 
-  // Chip and Row already fire their own haptic on press.
+  // Row and the campus Chip options already fire their own haptic on press.
   const toggleFavoritesFilter = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setShowFavoritesOnly(!showFavoritesOnly);
+  };
+
+  const handleCampusFilterToggle = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setIsCampusPickerVisible(prev => !prev);
+  };
+
+  const handleCampusChange = (campus: string) => {
+    setSelectedCampus(campus);
   };
 
   const handleDepartmentPress = (department: Department) => {
@@ -88,16 +114,57 @@ export default function StudyScreen() {
       </View>
 
       <View style={styles.filterRow}>
-        <Chip
-          label="Favorites Only"
-          selected={showFavoritesOnly}
+        <TouchableOpacity
           onPress={toggleFavoritesFilter}
-          icon={<IconSymbol name="heart.fill" size={16} color={showFavoritesOnly ? '#ffffff' : iconColor} />}
-        />
-        <ThemedText type="caption">
-          {filteredDepartments.length} building{filteredDepartments.length !== 1 ? 's' : ''}
-        </ThemedText>
+          style={[
+            styles.filterChip,
+            { backgroundColor: showFavoritesOnly ? tintColor : chipBackgroundColor },
+          ]}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="Favorites only"
+          accessibilityState={{ selected: showFavoritesOnly }}>
+          <IconSymbol name="heart.fill" size={16} color={showFavoritesOnly ? '#ffffff' : iconColor} />
+          <ThemedText style={[styles.filterChipText, showFavoritesOnly && { color: '#ffffff' }]}>
+            Favorites
+          </ThemedText>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={handleCampusFilterToggle}
+          style={[
+            styles.filterChip,
+            { backgroundColor: isCampusFilterActive ? tintColor : chipBackgroundColor },
+          ]}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="Filter by campus"
+          accessibilityState={{ selected: isCampusFilterActive }}>
+          <IconSymbol
+            name="line.3.horizontal.decrease.circle"
+            size={16}
+            color={isCampusFilterActive ? '#ffffff' : iconColor}
+          />
+          <ThemedText style={[styles.filterChipText, isCampusFilterActive && { color: '#ffffff' }]}>
+            {isCampusFilterActive ? selectedCampus : 'Filtrer'}
+          </ThemedText>
+        </TouchableOpacity>
       </View>
+
+      {isCampusPickerVisible && (
+        <View style={styles.campusFilterContainer}>
+          <ThemedText style={styles.campusFilterLabel}>Choisir un campus:</ThemedText>
+          <View style={styles.campusFilterOptions}>
+            {campusOptions.map((option) => (
+              <Chip
+                key={option}
+                label={option}
+                selected={selectedCampus === option}
+                onPress={() => handleCampusChange(option)}
+              />
+            ))}
+          </View>
+        </View>
+      )}
 
       {filteredDepartments.length === 0 ? (
         <EmptyState
@@ -106,7 +173,7 @@ export default function StudyScreen() {
           subtitle={
             showFavoritesOnly
               ? 'Add buildings to favorites by tapping the heart icon'
-              : 'Try adjusting your search terms'
+              : 'Try adjusting your search or filters'
           }
         />
       ) : (
@@ -173,6 +240,30 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    gap: Spacing.sm,
+  },
+  filterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.xs,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs,
+    borderRadius: Radius.pill,
+  },
+  filterChipText: {
+    fontSize: 17,
+  },
+  campusFilterContainer: {
+    gap: 12,
+  },
+  campusFilterLabel: {
+    fontSize: 16,
+    fontWeight: '500',
+  },
+  campusFilterOptions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
   },
   favoriteButton: {
     padding: 4,

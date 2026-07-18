@@ -3,6 +3,7 @@
 export type Department = {
   name: string;
   id: number;
+  campus: string;
   isFavorite: boolean;
   roomLabels: Record<string, string>;
   roomNames: Record<string, string[]>;
