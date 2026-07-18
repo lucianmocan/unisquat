@@ -69,10 +69,6 @@
     "personalization": "Personalization",
     "personalizationSubtitle": "Customize how the app behaves",
     "support": "Support",
-    "reportIssue": "Report an Issue",
-    "reportIssueSubtitle": "Let us know if something's not working",
-    "suggestions": "Suggestions",
-    "suggestionsSubtitle": "Share your ideas to improve the app",
     "about": "About",
     "aboutTitle": "About UniSquat",
     "aboutSubtitle": "App version and information",
@@ -81,15 +77,11 @@
     "privacyPolicySubtitle": "How we handle your data",
     "termsOfService": "Terms of Service",
     "termsSubtitle": "App usage terms and conditions",
-    "unableToOpenEmailTitle": "Unable to open email",
-    "sendIssueReportTo": "Please send your issue report to: {{email}}",
-    "sendSuggestionTo": "Please send your suggestion to: {{email}}",
-    "privacyPolicyComingSoonMessage": "Privacy policy feature coming soon!\nWe take your privacy seriously.",
-    "termsComingSoonMessage": "Terms of service feature coming soon!\nPlease use the app responsibly.",
-    "issueReportSubject": "Issue Report - UniSquat App",
-    "issueReportBody": "Please describe the issue you encountered:\n\n",
-    "suggestionSubject": "Feature Suggestion - UniSquat App",
-    "suggestionBody": "I would like to suggest the following feature:\n\n"
+    "unableToOpenLinkTitle": "Unable to open link",
+    "feedback": "Feedback",
+    "feedbackSubtitle": "Report a bug or suggest an idea on GitHub",
+    "viewSource": "View Source",
+    "viewSourceSubtitle": "Browse the code on GitHub"
   },
   "languageScreen": {
     "systemDefault": "System Default",
@@ -126,5 +118,8 @@
     "title": "This is a modal",
     "goHome": "Go to home screen",
     "headerTitle": "Modal"
+  },
+  "legalScreen": {
+    "englishOnlyNotice": "This document is only available in English."
   }
 }

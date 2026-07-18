@@ -71,10 +71,6 @@
     "personalization": "Personalizare",
     "personalizationSubtitle": "Personalizează comportamentul aplicației",
     "support": "Asistență",
-    "reportIssue": "Raportează o problemă",
-    "reportIssueSubtitle": "Anunță-ne dacă ceva nu funcționează",
-    "suggestions": "Sugestii",
-    "suggestionsSubtitle": "Distribuie ideile tale pentru a îmbunătăți aplicația",
     "about": "Despre",
     "aboutTitle": "Despre UniSquat",
     "aboutSubtitle": "Versiunea și informații despre aplicație",
@@ -83,15 +79,11 @@
     "privacyPolicySubtitle": "Cum îți gestionăm datele",
     "termsOfService": "Termeni de utilizare",
     "termsSubtitle": "Condiții de utilizare a aplicației",
-    "unableToOpenEmailTitle": "E-mailul nu a putut fi deschis",
-    "sendIssueReportTo": "Trimite raportul tău la: {{email}}",
-    "sendSuggestionTo": "Trimite sugestia ta la: {{email}}",
-    "privacyPolicyComingSoonMessage": "Funcție disponibilă în curând!\nLuăm în serios confidențialitatea ta.",
-    "termsComingSoonMessage": "Funcție disponibilă în curând!\nTe rugăm să folosești aplicația responsabil.",
-    "issueReportSubject": "Raport de problemă - Aplicația UniSquat",
-    "issueReportBody": "Te rugăm să descrii problema întâmpinată:\n\n",
-    "suggestionSubject": "Sugestie de funcție - Aplicația UniSquat",
-    "suggestionBody": "Aș dori să sugerez următoarea funcție:\n\n"
+    "unableToOpenLinkTitle": "Linkul nu a putut fi deschis",
+    "feedback": "Feedback",
+    "feedbackSubtitle": "Raportează o problemă sau sugerează o idee pe GitHub",
+    "viewSource": "Vezi codul sursă",
+    "viewSourceSubtitle": "Explorează codul pe GitHub"
   },
   "languageScreen": {
     "systemDefault": "Implicit sistem",
@@ -128,5 +120,8 @@
     "title": "Aceasta este o fereastră modală",
     "goHome": "Mergi la ecranul principal",
     "headerTitle": "Modal"
+  },
+  "legalScreen": {
+    "englishOnlyNotice": "Acest document este disponibil doar în limba engleză."
   }
 }

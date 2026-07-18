@@ -79,7 +79,7 @@ export default function StudyScreen() {
       );
     }
 
-    return filtered;
+    return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
   }, [
     departments,
     searchQuery,

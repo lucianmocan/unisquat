@@ -13,7 +13,13 @@ import zh from './locales/zh.json';
 
 import { DEFAULT_LANGUAGE, LanguageCode, resolveDeviceLanguage } from './languages';
 
-export { DEFAULT_LANGUAGE, resolveDeviceLanguage, resolveLanguage, SUPPORTED_LANGUAGES } from './languages';
+export {
+  DEFAULT_LANGUAGE,
+  resolveDeviceLanguage,
+  resolveIOSPickerLocale,
+  resolveLanguage,
+  SUPPORTED_LANGUAGES,
+} from './languages';
 export type { LanguageCode } from './languages';
 
 const resources: Record<LanguageCode, { translation: object }> = {

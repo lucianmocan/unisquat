@@ -67,10 +67,6 @@
     "personalization": "个性化",
     "personalizationSubtitle": "自定义应用的行为方式",
     "support": "支持",
-    "reportIssue": "报告问题",
-    "reportIssueSubtitle": "如果遇到问题，请告诉我们",
-    "suggestions": "建议",
-    "suggestionsSubtitle": "分享您改进此应用的想法",
     "about": "关于",
     "aboutTitle": "关于 UniSquat",
     "aboutSubtitle": "应用版本与信息",
@@ -79,15 +75,11 @@
     "privacyPolicySubtitle": "我们如何处理您的数据",
     "termsOfService": "服务条款",
     "termsSubtitle": "应用使用条款",
-    "unableToOpenEmailTitle": "无法打开邮件应用",
-    "sendIssueReportTo": "请将您的问题报告发送至：{{email}}",
-    "sendSuggestionTo": "请将您的建议发送至：{{email}}",
-    "privacyPolicyComingSoonMessage": "该功能即将推出！\n我们非常重视您的隐私。",
-    "termsComingSoonMessage": "该功能即将推出！\n请合理使用本应用。",
-    "issueReportSubject": "问题报告 - UniSquat 应用",
-    "issueReportBody": "请描述您遇到的问题：\n\n",
-    "suggestionSubject": "功能建议 - UniSquat 应用",
-    "suggestionBody": "我想建议以下功能：\n\n"
+    "unableToOpenLinkTitle": "无法打开链接",
+    "feedback": "反馈",
+    "feedbackSubtitle": "在 GitHub 上报告问题或提出建议",
+    "viewSource": "查看源代码",
+    "viewSourceSubtitle": "在 GitHub 上浏览代码"
   },
   "languageScreen": {
     "systemDefault": "系统默认",
@@ -124,5 +116,8 @@
     "title": "这是一个弹出窗口",
     "goHome": "返回主屏幕",
     "headerTitle": "弹出窗口"
+  },
+  "legalScreen": {
+    "englishOnlyNotice": "本文档仅提供英文版本。"
   }
 }

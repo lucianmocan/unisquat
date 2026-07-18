@@ -77,10 +77,6 @@
     "personalization": "التخصيص",
     "personalizationSubtitle": "خصّص طريقة عمل التطبيق",
     "support": "الدعم",
-    "reportIssue": "الإبلاغ عن مشكلة",
-    "reportIssueSubtitle": "أخبرنا إذا كان هناك شيء لا يعمل",
-    "suggestions": "الاقتراحات",
-    "suggestionsSubtitle": "شارك أفكارك لتحسين التطبيق",
     "about": "حول",
     "aboutTitle": "حول UniSquat",
     "aboutSubtitle": "إصدار التطبيق ومعلوماته",
@@ -89,15 +85,11 @@
     "privacyPolicySubtitle": "كيف نتعامل مع بياناتك",
     "termsOfService": "شروط الخدمة",
     "termsSubtitle": "شروط استخدام التطبيق",
-    "unableToOpenEmailTitle": "تعذّر فتح البريد الإلكتروني",
-    "sendIssueReportTo": "يرجى إرسال تقرير المشكلة إلى: {{email}}",
-    "sendSuggestionTo": "يرجى إرسال اقتراحك إلى: {{email}}",
-    "privacyPolicyComingSoonMessage": "هذه الميزة قادمة قريبًا!\nنحن نأخذ خصوصيتك على محمل الجد.",
-    "termsComingSoonMessage": "هذه الميزة قادمة قريبًا!\nيرجى استخدام التطبيق بمسؤولية.",
-    "issueReportSubject": "تقرير مشكلة - تطبيق UniSquat",
-    "issueReportBody": "يرجى وصف المشكلة التي واجهتها:\n\n",
-    "suggestionSubject": "اقتراح ميزة - تطبيق UniSquat",
-    "suggestionBody": "أود اقتراح الميزة التالية:\n\n"
+    "unableToOpenLinkTitle": "تعذّر فتح الرابط",
+    "feedback": "الملاحظات",
+    "feedbackSubtitle": "أبلغ عن خطأ أو اقترح فكرة على GitHub",
+    "viewSource": "عرض الشيفرة المصدرية",
+    "viewSourceSubtitle": "استعرض الكود على GitHub"
   },
   "languageScreen": {
     "systemDefault": "لغة النظام",
@@ -134,5 +126,8 @@
     "title": "هذه نافذة منبثقة",
     "goHome": "الذهاب إلى الشاشة الرئيسية",
     "headerTitle": "نافذة منبثقة"
+  },
+  "legalScreen": {
+    "englishOnlyNotice": "هذا المستند متوفر باللغة الإنجليزية فقط."
   }
 }

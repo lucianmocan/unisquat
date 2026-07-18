@@ -9,13 +9,15 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Alert, Linking, ScrollView, StyleSheet } from 'react-native';
 
+const GITHUB_REPO_URL = 'https://github.com/lucianmocan/unisquat';
+const GITHUB_NEW_ISSUE_URL = `${GITHUB_REPO_URL}/issues/new`;
+
 export default function SettingsScreen() {
   useTabHaptics();
   const { t } = useTranslation();
   const iconColor = useThemeColor({}, 'icon');
   const tintColor = useThemeColor({}, 'tint');
   const errorColor = useThemeColor({}, 'error');
-  const warningColor = useThemeColor({}, 'warning');
   const successColor = useThemeColor({}, 'success');
   const infoColor = useThemeColor({}, 'info');
 
@@ -32,60 +34,26 @@ export default function SettingsScreen() {
     router.push('/settings/language');
   };
 
-  const handleReportIssue = async () => {
-    const email = 'support@unisquat.app';
-    const subject = t('settingsScreen.issueReportSubject');
-    const body = t('settingsScreen.issueReportBody');
-
-    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+  const handleOpenUrl = async (url: string) => {
     const canOpen = await Linking.canOpenURL(url);
     if (canOpen) {
       await Linking.openURL(url);
     } else {
       haptics.notification(NotificationFeedbackType.Warning);
-      Alert.alert(
-        t('settingsScreen.unableToOpenEmailTitle'),
-        t('settingsScreen.sendIssueReportTo', { email }),
-        [{ text: t('common.ok') }]
-      );
+      Alert.alert(t('settingsScreen.unableToOpenLinkTitle'), url, [{ text: t('common.ok') }]);
     }
   };
 
-  const handleSuggestion = async () => {
-    const email = 'feedback@unisquat.app';
-    const subject = t('settingsScreen.suggestionSubject');
-    const body = t('settingsScreen.suggestionBody');
+  const handleFeedback = () => handleOpenUrl(GITHUB_NEW_ISSUE_URL);
 
-    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    const canOpen = await Linking.canOpenURL(url);
-    if (canOpen) {
-      await Linking.openURL(url);
-    } else {
-      haptics.notification(NotificationFeedbackType.Warning);
-      Alert.alert(
-        t('settingsScreen.unableToOpenEmailTitle'),
-        t('settingsScreen.sendSuggestionTo', { email }),
-        [{ text: t('common.ok') }]
-      );
-    }
-  };
+  const handleViewSource = () => handleOpenUrl(GITHUB_REPO_URL);
 
   const handlePrivacyPolicy = () => {
-    Alert.alert(
-      t('settingsScreen.privacyPolicy'),
-      t('settingsScreen.privacyPolicyComingSoonMessage'),
-      [{ text: t('common.ok') }]
-    );
+    router.push('/settings/privacy-policy');
   };
 
   const handleTermsOfService = () => {
-    Alert.alert(
-      t('settingsScreen.termsOfService'),
-      t('settingsScreen.termsComingSoonMessage'),
-      [{ text: t('common.ok') }]
-    );
+    router.push('/settings/terms-of-service');
   };
 
   return (
@@ -110,17 +78,10 @@ export default function SettingsScreen() {
       <ThemedText type="caption" style={styles.sectionHeader}>{t('settingsScreen.support')}</ThemedText>
       <Card>
         <Row
-          icon={<IconSymbol name="ladybug.fill" size={22} color={errorColor} />}
-          title={t('settingsScreen.reportIssue')}
-          subtitle={t('settingsScreen.reportIssueSubtitle')}
-          onPress={handleReportIssue}
-        />
-        <CardSeparator />
-        <Row
-          icon={<IconSymbol name="lightbulb.fill" size={22} color={warningColor} />}
-          title={t('settingsScreen.suggestions')}
-          subtitle={t('settingsScreen.suggestionsSubtitle')}
-          onPress={handleSuggestion}
+          icon={<IconSymbol name="bubble.left.and.bubble.right.fill" size={22} color={errorColor} />}
+          title={t('settingsScreen.feedback')}
+          subtitle={t('settingsScreen.feedbackSubtitle')}
+          onPress={handleFeedback}
         />
       </Card>
 
@@ -131,6 +92,13 @@ export default function SettingsScreen() {
           title={t('settingsScreen.aboutTitle')}
           subtitle={t('settingsScreen.aboutSubtitle')}
           onPress={handleAbout}
+        />
+        <CardSeparator />
+        <Row
+          icon={<IconSymbol name="chevron.left.forwardslash.chevron.right" size={22} color={iconColor} />}
+          title={t('settingsScreen.viewSource')}
+          subtitle={t('settingsScreen.viewSourceSubtitle')}
+          onPress={handleViewSource}
         />
       </Card>
 

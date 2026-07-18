@@ -6,7 +6,7 @@ import { useSettings } from '@/contexts/SettingsContext';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { LanguageCode, SUPPORTED_LANGUAGES } from '@/i18n';
 import { haptics } from '@/services/haptics';
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet } from 'react-native';
 
@@ -14,6 +14,13 @@ export default function LanguageScreen() {
   const { t } = useTranslation();
   const { settings, updateSetting } = useSettings();
   const tintColor = useThemeColor({}, 'tint');
+
+  // Sorted by native name, not declaration order — each language names itself, so this is a
+  // best-effort alphabetical ordering across mixed scripts rather than a single true alphabet.
+  const sortedLanguages = useMemo(
+    () => [...SUPPORTED_LANGUAGES].sort((a, b) => a.nativeName.localeCompare(b.nativeName)),
+    []
+  );
 
   const handleSelect = (language: LanguageCode | 'system') => {
     haptics.impact();
@@ -30,7 +37,7 @@ export default function LanguageScreen() {
           right={settings.language === 'system' ? <IconSymbol name="checkmark.circle.fill" size={22} color={tintColor} /> : undefined}
         />
         <CardSeparator />
-        {SUPPORTED_LANGUAGES.map((language, index) => (
+        {sortedLanguages.map((language, index) => (
           <Fragment key={language.code}>
             {index > 0 && <CardSeparator />}
             <Row

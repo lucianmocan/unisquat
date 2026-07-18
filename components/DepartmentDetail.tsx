@@ -8,6 +8,7 @@ import { RoomsListSkeleton } from '@/components/ui/skeleton';
 import { Radius, Spacing } from '@/constants/theme';
 import { useSettings } from '@/contexts/SettingsContext';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { resolveIOSPickerLocale } from '@/i18n';
 import { DepartmentService } from '@/services/DepartmentService';
 import { haptics, NotificationFeedbackType } from '@/services/haptics';
 import { Department } from '@/types';
@@ -58,6 +59,9 @@ export default function DepartmentDetail({
   const backgroundColor = useThemeColor({ light: 'rgba(0,0,0,0.05)', dark: 'rgba(255,255,255,0.1)' }, 'background');
   const borderColor = useThemeColor({ light: 'rgba(0,0,0,0.1)', dark: 'rgba(255,255,255,0.15)' }, 'background');
   const isFilterActive = selectedFilter !== ALL_ROOM_TYPES;
+  // iOS's compact DateTimePicker is an in-app UIDatePicker, so it can be told which locale to
+  // render in; Android's is a system dialog with no such override (see i18n/languages.ts).
+  const iosPickerLocale = useMemo(() => resolveIOSPickerLocale(settings.language), [settings.language]);
 
   const handleFavoritePress = useCallback(() => {
     haptics.impact();
@@ -248,6 +252,7 @@ export default function DepartmentDetail({
                   mode="datetime"
                   display="compact"
                   onChange={handleDateChange}
+                  locale={iosPickerLocale}
                   // Without this, the compact toggle's label can render in UTC while the
                   // expanded wheel uses the device's actual calendar/timezone — same instant,
                   // two different-looking times.

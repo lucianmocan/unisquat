@@ -41,6 +41,7 @@ const MAPPING = {
   'hand.tap.fill': 'touch-app',
   'calendar': 'event',
   'arrow.clockwise': 'refresh',
+  'bubble.left.and.bubble.right.fill': 'forum',
 } as IconMapping;
 
 /**

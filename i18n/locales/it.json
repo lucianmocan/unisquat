@@ -69,10 +69,6 @@
     "personalization": "Personalizzazione",
     "personalizationSubtitle": "Personalizza il comportamento dell'app",
     "support": "Assistenza",
-    "reportIssue": "Segnala un problema",
-    "reportIssueSubtitle": "Facci sapere se qualcosa non funziona",
-    "suggestions": "Suggerimenti",
-    "suggestionsSubtitle": "Condividi le tue idee per migliorare l'app",
     "about": "Informazioni",
     "aboutTitle": "Informazioni su UniSquat",
     "aboutSubtitle": "Versione e informazioni sull'app",
@@ -81,15 +77,11 @@
     "privacyPolicySubtitle": "Come trattiamo i tuoi dati",
     "termsOfService": "Termini di servizio",
     "termsSubtitle": "Condizioni d'uso dell'app",
-    "unableToOpenEmailTitle": "Impossibile aprire la posta",
-    "sendIssueReportTo": "Invia la segnalazione a: {{email}}",
-    "sendSuggestionTo": "Invia il suggerimento a: {{email}}",
-    "privacyPolicyComingSoonMessage": "Funzionalità in arrivo!\nLa tua privacy è importante per noi.",
-    "termsComingSoonMessage": "Funzionalità in arrivo!\nUsa l'app in modo responsabile.",
-    "issueReportSubject": "Segnalazione problema - App UniSquat",
-    "issueReportBody": "Descrivi il problema riscontrato:\n\n",
-    "suggestionSubject": "Suggerimento funzionalità - App UniSquat",
-    "suggestionBody": "Vorrei suggerire la seguente funzionalità:\n\n"
+    "unableToOpenLinkTitle": "Impossibile aprire il link",
+    "feedback": "Feedback",
+    "feedbackSubtitle": "Segnala un bug o suggerisci un'idea su GitHub",
+    "viewSource": "Visualizza il codice sorgente",
+    "viewSourceSubtitle": "Esplora il codice su GitHub"
   },
   "languageScreen": {
     "systemDefault": "Predefinita di sistema",
@@ -126,5 +118,8 @@
     "title": "Questa è una finestra modale",
     "goHome": "Vai alla schermata principale",
     "headerTitle": "Modale"
+  },
+  "legalScreen": {
+    "englishOnlyNotice": "Questo documento è disponibile solo in inglese."
   }
 }

@@ -42,3 +42,24 @@ export function resolveDeviceLanguage(): LanguageCode {
 export function resolveLanguage(setting: LanguageCode | 'system'): LanguageCode {
   return setting === 'system' ? resolveDeviceLanguage() : setting;
 }
+
+// `@react-native-community/datetimepicker`'s `locale` prop is forwarded straight to iOS's
+// `UIDatePicker`/`NSLocale` — it only exists on iOS. Android's date/time pickers are system
+// dialogs with no per-app locale override, so they always follow the device's own language
+// regardless of this setting.
+const IOS_LOCALE_IDENTIFIERS: Record<LanguageCode, string> = {
+  en: 'en_US',
+  fr: 'fr_FR',
+  es: 'es_ES',
+  it: 'it_IT',
+  de: 'de_DE',
+  pt: 'pt_PT',
+  ro: 'ro_RO',
+  ar: 'ar',
+  zh: 'zh_Hans_CN',
+};
+
+/** Resolves `settings.language` to the iOS-native locale identifier for `DateTimePicker`. */
+export function resolveIOSPickerLocale(setting: LanguageCode | 'system'): string {
+  return IOS_LOCALE_IDENTIFIERS[resolveLanguage(setting)];
+}

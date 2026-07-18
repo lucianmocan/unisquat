@@ -24,6 +24,14 @@ export default function SettingsLayout() {
         name="language"
         options={{ title: t('settingsScreen.language'), headerTransparent: Platform.OS === 'ios' }}
       />
+      <Stack.Screen
+        name="privacy-policy"
+        options={{ title: t('settingsScreen.privacyPolicy'), headerTransparent: Platform.OS === 'ios' }}
+      />
+      <Stack.Screen
+        name="terms-of-service"
+        options={{ title: t('settingsScreen.termsOfService'), headerTransparent: Platform.OS === 'ios' }}
+      />
     </Stack>
   );
 }

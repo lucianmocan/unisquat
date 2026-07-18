@@ -69,10 +69,6 @@
     "personalization": "Personnalisation",
     "personalizationSubtitle": "Personnalisez le comportement de l'application",
     "support": "Assistance",
-    "reportIssue": "Signaler un problème",
-    "reportIssueSubtitle": "Faites-nous savoir si quelque chose ne fonctionne pas",
-    "suggestions": "Suggestions",
-    "suggestionsSubtitle": "Partagez vos idées pour améliorer l'application",
     "about": "À propos",
     "aboutTitle": "À propos de UniSquat",
     "aboutSubtitle": "Version et informations sur l'application",
@@ -81,15 +77,11 @@
     "privacyPolicySubtitle": "Comment nous traitons vos données",
     "termsOfService": "Conditions d'utilisation",
     "termsSubtitle": "Conditions d'utilisation de l'application",
-    "unableToOpenEmailTitle": "Impossible d'ouvrir la messagerie",
-    "sendIssueReportTo": "Merci d'envoyer votre signalement à : {{email}}",
-    "sendSuggestionTo": "Merci d'envoyer votre suggestion à : {{email}}",
-    "privacyPolicyComingSoonMessage": "Fonctionnalité bientôt disponible !\nNous prenons votre vie privée au sérieux.",
-    "termsComingSoonMessage": "Fonctionnalité bientôt disponible !\nMerci d'utiliser l'application de façon responsable.",
-    "issueReportSubject": "Signalement de problème - Application UniSquat",
-    "issueReportBody": "Merci de décrire le problème rencontré :\n\n",
-    "suggestionSubject": "Suggestion de fonctionnalité - Application UniSquat",
-    "suggestionBody": "Je souhaiterais suggérer la fonctionnalité suivante :\n\n"
+    "unableToOpenLinkTitle": "Impossible d'ouvrir le lien",
+    "feedback": "Commentaires",
+    "feedbackSubtitle": "Signalez un bug ou proposez une idée sur GitHub",
+    "viewSource": "Voir le code source",
+    "viewSourceSubtitle": "Parcourir le code sur GitHub"
   },
   "languageScreen": {
     "systemDefault": "Langue du système",
@@ -126,5 +118,8 @@
     "title": "Ceci est une fenêtre modale",
     "goHome": "Retour à l'écran d'accueil",
     "headerTitle": "Fenêtre modale"
+  },
+  "legalScreen": {
+    "englishOnlyNotice": "Ce document est disponible uniquement en anglais."
   }
 }
