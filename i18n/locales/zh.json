@@ -79,7 +79,9 @@
     "feedback": "反馈",
     "feedbackSubtitle": "在 GitHub 上报告问题或提出建议",
     "viewSource": "查看源代码",
-    "viewSourceSubtitle": "在 GitHub 上浏览代码"
+    "viewSourceSubtitle": "在 GitHub 上浏览代码",
+    "accessibility": "辅助功能",
+    "accessibilitySubtitle": "文本选项"
   },
   "languageScreen": {
     "systemDefault": "系统默认",
@@ -119,5 +121,18 @@
   },
   "legalScreen": {
     "englishOnlyNotice": "本文档仅提供英文版本。"
+  },
+  "accessibilityScreen": {
+    "boldText": "粗体文本",
+    "boldTextSubtitle": "让文本更粗、更易阅读",
+    "footnote": "如果设备的辅助功能设置中已启用粗体文本，它也会自动生效。",
+    "textSection": "文本",
+    "dyslexiaFont": "阅读障碍友好字体",
+    "dyslexiaFontSubtitle": "使用专为便于阅读而设计的 OpenDyslexic 字体",
+    "textSize": "文字大小",
+    "fontSizeSmall": "小",
+    "fontSizeDefault": "默认",
+    "fontSizeLarge": "大",
+    "fontSizeExtraLarge": "特大"
   }
 }

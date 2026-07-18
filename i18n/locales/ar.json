@@ -89,7 +89,9 @@
     "feedback": "الملاحظات",
     "feedbackSubtitle": "أبلغ عن خطأ أو اقترح فكرة على GitHub",
     "viewSource": "عرض الشيفرة المصدرية",
-    "viewSourceSubtitle": "استعرض الكود على GitHub"
+    "viewSourceSubtitle": "استعرض الكود على GitHub",
+    "accessibility": "إمكانية الوصول",
+    "accessibilitySubtitle": "خيارات النص"
   },
   "languageScreen": {
     "systemDefault": "لغة النظام",
@@ -129,5 +131,18 @@
   },
   "legalScreen": {
     "englishOnlyNotice": "هذا المستند متوفر باللغة الإنجليزية فقط."
+  },
+  "accessibilityScreen": {
+    "boldText": "نص عريض",
+    "boldTextSubtitle": "يجعل النص أكثر سماكة وأسهل في القراءة",
+    "footnote": "يتم تفعيل النص العريض تلقائيًا أيضًا إذا كان مفعّلاً في إعدادات إمكانية الوصول في جهازك.",
+    "textSection": "النص",
+    "dyslexiaFont": "خط ملائم لعسر القراءة",
+    "dyslexiaFontSubtitle": "استخدام OpenDyslexic، خط مصمم لتسهيل القراءة",
+    "textSize": "حجم النص",
+    "fontSizeSmall": "صغير",
+    "fontSizeDefault": "افتراضي",
+    "fontSizeLarge": "كبير",
+    "fontSizeExtraLarge": "كبير جدًا"
   }
 }

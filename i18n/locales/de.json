@@ -81,7 +81,9 @@
     "feedback": "Feedback",
     "feedbackSubtitle": "Melde einen Fehler oder schlage eine Idee auf GitHub vor",
     "viewSource": "Quellcode ansehen",
-    "viewSourceSubtitle": "Durchsuche den Code auf GitHub"
+    "viewSourceSubtitle": "Durchsuche den Code auf GitHub",
+    "accessibility": "Bedienungshilfen",
+    "accessibilitySubtitle": "Textoptionen"
   },
   "languageScreen": {
     "systemDefault": "Systemstandard",
@@ -121,5 +123,18 @@
   },
   "legalScreen": {
     "englishOnlyNotice": "Dieses Dokument ist nur auf Englisch verfügbar."
+  },
+  "accessibilityScreen": {
+    "boldText": "Fetter Text",
+    "boldTextSubtitle": "Macht Text kräftiger und leichter lesbar",
+    "footnote": "Fetter Text wird auch automatisch aktiviert, wenn er in den Bedienungshilfen deines Geräts aktiviert ist.",
+    "textSection": "Text",
+    "dyslexiaFont": "Schrift für Legasthenie",
+    "dyslexiaFontSubtitle": "Verwendet OpenDyslexic, eine für leichteres Lesen entwickelte Schriftart",
+    "textSize": "Textgröße",
+    "fontSizeSmall": "Klein",
+    "fontSizeDefault": "Standard",
+    "fontSizeLarge": "Groß",
+    "fontSizeExtraLarge": "Sehr groß"
   }
 }

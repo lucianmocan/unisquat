@@ -81,7 +81,9 @@
     "feedback": "Feedback",
     "feedbackSubtitle": "Segnala un bug o suggerisci un'idea su GitHub",
     "viewSource": "Visualizza il codice sorgente",
-    "viewSourceSubtitle": "Esplora il codice su GitHub"
+    "viewSourceSubtitle": "Esplora il codice su GitHub",
+    "accessibility": "Accessibilità",
+    "accessibilitySubtitle": "Opzioni di testo"
   },
   "languageScreen": {
     "systemDefault": "Predefinita di sistema",
@@ -121,5 +123,18 @@
   },
   "legalScreen": {
     "englishOnlyNotice": "Questo documento è disponibile solo in inglese."
+  },
+  "accessibilityScreen": {
+    "boldText": "Testo in grassetto",
+    "boldTextSubtitle": "Rende il testo più marcato e facile da leggere",
+    "footnote": "Il testo in grassetto si attiva automaticamente anche se abilitato nelle impostazioni di accessibilità del tuo dispositivo.",
+    "textSection": "Testo",
+    "dyslexiaFont": "Carattere per dislessia",
+    "dyslexiaFontSubtitle": "Usa OpenDyslexic, un carattere progettato per facilitare la lettura",
+    "textSize": "Dimensione del testo",
+    "fontSizeSmall": "Piccolo",
+    "fontSizeDefault": "Predefinito",
+    "fontSizeLarge": "Grande",
+    "fontSizeExtraLarge": "Molto grande"
   }
 }

@@ -21,7 +21,7 @@ export default function AboutScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={require('@/assets/images/icon.png')} style={styles.icon} />
+      <Image source={require('@/assets/images/icon.png')} style={styles.icon} accessible={false} />
       <ThemedText type="title">UniSquat</ThemedText>
       <ThemedText type="caption">{t('aboutScreen.version', { version: APP_VERSION })}</ThemedText>
 

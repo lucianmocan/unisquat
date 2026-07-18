@@ -42,6 +42,9 @@ const MAPPING = {
   'calendar': 'event',
   'arrow.clockwise': 'refresh',
   'bubble.left.and.bubble.right.fill': 'forum',
+  'accessibility': 'accessibility-new',
+  'bold': 'format-bold',
+  'textformat': 'text-format',
 } as IconMapping;
 
 /**
@@ -61,5 +64,18 @@ export function IconSymbol({
   style?: StyleProp<TextStyle>;
   weight?: SymbolWeight;
 }) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+  // Always decorative: every call site in this app pairs an icon with a label elsewhere (a Row's
+  // title, a button's own accessibilityLabel), so it should never be independently focusable —
+  // without this, MaterialIcons' Text-based glyph is a stop TalkBack can land on and read as a
+  // nonsense character.
+  return (
+    <MaterialIcons
+      color={color}
+      size={size}
+      name={MAPPING[name]}
+      style={style}
+      accessible={false}
+      importantForAccessibility="no"
+    />
+  );
 }

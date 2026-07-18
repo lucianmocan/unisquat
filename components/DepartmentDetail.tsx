@@ -234,6 +234,7 @@ export default function DepartmentDetail({
             <TouchableOpacity
               onPress={handleFavoritePress}
               activeOpacity={0.7}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               accessibilityRole="button"
               accessibilityLabel={department.isFavorite ? t('departmentDetail.removeFromFavoritesA11y') : t('departmentDetail.addToFavoritesA11y')}>
               <IconSymbol
@@ -268,6 +269,7 @@ export default function DepartmentDetail({
                     onPress={handleOpenDatePicker}
                     style={[styles.androidDateButton, { backgroundColor, borderColor }]}
                     activeOpacity={0.7}
+                    hitSlop={{ top: 4, bottom: 4 }}
                     accessibilityRole="button"
                     accessibilityLabel={t('departmentDetail.chooseDateA11y')}>
                     <IconSymbol name="calendar" size={16} color={iconColor} />
@@ -277,6 +279,7 @@ export default function DepartmentDetail({
                     onPress={handleOpenTimePicker}
                     style={[styles.androidDateButton, { backgroundColor, borderColor }]}
                     activeOpacity={0.7}
+                    hitSlop={{ top: 4, bottom: 4 }}
                     accessibilityRole="button"
                     accessibilityLabel={t('departmentDetail.chooseTimeA11y')}>
                     <IconSymbol name="clock" size={16} color={iconColor} />
@@ -311,6 +314,7 @@ export default function DepartmentDetail({
                 <TouchableOpacity
                   onPress={handleResetToNow}
                   activeOpacity={0.7}
+                  hitSlop={{ top: 13, bottom: 13, left: 13, right: 13 }}
                   accessibilityRole="button"
                   accessibilityLabel={t('departmentDetail.resetToNowA11y')}>
                   <IconSymbol name="arrow.clockwise" size={18} color={tintColor} />
@@ -324,6 +328,7 @@ export default function DepartmentDetail({
                 { backgroundColor: isFilterActive ? tintColor : backgroundColor },
               ]}
               activeOpacity={0.7}
+              hitSlop={{ top: 8, bottom: 8 }}
               accessibilityRole="button"
               accessibilityLabel={t('departmentDetail.filterByRoomTypeA11y')}
               accessibilityState={{ selected: isFilterActive }}>

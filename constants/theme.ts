@@ -43,8 +43,11 @@ export const Colors = {
     tabIconSelected: tintColor,
     card: '#ffffff',
     border: 'rgba(0,0,0,0.1)',
-    success: '#4CAF50',
-    warning: '#ff8800',
+    // Darkened from the dark-mode values below (2.78:1 / 2.39:1 against white — under the 3:1
+    // WCAG non-text contrast minimum for icons). Reuses ACCENT_COLORS.green/orange's already-
+    // vetted light-mode values (4.40:1 / 4.06:1) rather than inventing new hex codes.
+    success: '#248A3D',
+    warning: '#C1660A',
     error: '#ff4444',
     favorite: '#ff4444',
     info: '#2196F3',

@@ -17,6 +17,12 @@ const DEFAULT_SETTINGS: AppSettings = {
   hapticsEnabled: true,
   accentColor: DEFAULT_ACCENT_COLOR,
   language: 'system',
+  // Off by default: the app already respects the device's own Bold Text accessibility setting
+  // (see hooks/use-bold-text.ts) — this is an *additional* opt-in for someone who wants the
+  // effect in this app without changing it system-wide.
+  boldText: false,
+  dyslexiaFont: false,
+  fontScale: 1,
 };
 
 type SettingsContextValue = {

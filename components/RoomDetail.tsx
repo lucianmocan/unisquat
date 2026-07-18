@@ -142,9 +142,24 @@ export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
     const { event, status } = item;
     const isCurrent = status === 'current';
     const isDimmed = status === 'past' || status === 'future';
+    // Grouped into one VoiceOver/TalkBack stop instead of reading summary, status, date,
+    // description, and time range as four or five separate, disconnected stops.
+    const eventLabel = [
+      event.summary,
+      t(`roomDetail.${status}`),
+      formatEventDate(event.start),
+      `${formatEventTime(event.start)} - ${formatEventTime(event.end)}`,
+      event.description ? cleanDescription(event.description) : undefined,
+    ]
+      .filter(Boolean)
+      .join(', ');
 
     return (
-      <Card style={[styles.eventCard, isDimmed && styles.dimmedEvent]} onLayout={handleRowLayout(index)}>
+      <Card
+        style={[styles.eventCard, isDimmed && styles.dimmedEvent]}
+        onLayout={handleRowLayout(index)}
+        accessible
+        accessibilityLabel={eventLabel}>
         <View style={styles.eventHeader}>
           <View style={styles.eventTitleRow}>
             {isCurrent && <IconSymbol name="clock" size={16} color={tintColor} />}

@@ -15,11 +15,15 @@ export function IconSymbol({
   weight?: SymbolWeight;
 }) {
   return (
+    // Always decorative — see the comment in icon-symbol.tsx (the Android/web counterpart) for
+    // why every call site in this app is fine with the icon being invisible to VoiceOver.
     <SymbolView
       weight={weight}
       tintColor={color}
       resizeMode="scaleAspectFit"
       name={name}
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
       style={[
         {
           width: size,

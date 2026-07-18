@@ -21,6 +21,14 @@ import { Department } from "@/types";
 // real department data (French building/campus names), which stays untranslated.
 const ALL_CAMPUSES = "__ALL__";
 
+// Campus values are full names like "Campus Esplanade" or "Manufacture des Tabacs" — trimmed to
+// just the distinctive part for the compact active-filter chip label, which otherwise gets
+// noticeably wide with the dyslexia-friendly font on.
+const CAMPUS_PREFIX_PATTERN = /^(Campus|Site|Rue|Manufacture des?)\s+/i;
+function shortenCampusLabel(campus: string): string {
+  return campus.replace(CAMPUS_PREFIX_PATTERN, "");
+}
+
 export default function StudyScreen() {
   useTabHaptics();
   const { t } = useTranslation();
@@ -137,6 +145,7 @@ export default function StudyScreen() {
             },
           ]}
           activeOpacity={0.7}
+          hitSlop={{ top: 8, bottom: 8 }}
           accessibilityRole="button"
           accessibilityLabel={t("study.favoritesOnlyA11y")}
           accessibilityState={{ selected: showFavoritesOnly }}
@@ -166,6 +175,7 @@ export default function StudyScreen() {
             },
           ]}
           activeOpacity={0.7}
+          hitSlop={{ top: 8, bottom: 8 }}
           accessibilityRole="button"
           accessibilityLabel={t("study.filterByCampusA11y")}
           accessibilityState={{ selected: isCampusFilterActive }}
@@ -181,7 +191,7 @@ export default function StudyScreen() {
               isCampusFilterActive && { color: "#ffffff" },
             ]}
           >
-            {isCampusFilterActive ? selectedCampus : t("study.filter")}
+            {isCampusFilterActive ? shortenCampusLabel(selectedCampus) : t("study.filter")}
           </ThemedText>
         </TouchableOpacity>
       </View>
@@ -232,6 +242,7 @@ export default function StudyScreen() {
                     onPress={() => handleToggleFavorite(item.id)}
                     style={styles.favoriteButton}
                     activeOpacity={0.7}
+                    hitSlop={{ top: 7, bottom: 7, left: 7, right: 7 }}
                     accessibilityRole="button"
                     accessibilityLabel={
                       item.isFavorite

@@ -30,6 +30,10 @@ export default function SettingsScreen() {
     router.push('/settings/personalization');
   };
 
+  const handleAccessibility = () => {
+    router.push('/settings/accessibility');
+  };
+
   const handleLanguage = () => {
     router.push('/settings/language');
   };
@@ -72,6 +76,13 @@ export default function SettingsScreen() {
           title={t('settingsScreen.personalization')}
           subtitle={t('settingsScreen.personalizationSubtitle')}
           onPress={handlePersonalization}
+        />
+        <CardSeparator />
+        <Row
+          icon={<IconSymbol name="accessibility" size={22} color={iconColor} />}
+          title={t('settingsScreen.accessibility')}
+          subtitle={t('settingsScreen.accessibilitySubtitle')}
+          onPress={handleAccessibility}
         />
       </Card>
 

@@ -93,27 +93,39 @@ export default function RoomsList({ rooms, now, department, selectedDate, isRefr
         onRefresh ? <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} tintColor={tintColor} /> : undefined
       }>
       <Card>
-        {availableRooms.map((room, index) => (
-          <Fragment key={`${room.location}-${index}`}>
-            {index > 0 && <CardSeparator />}
-            <Row
-              title={room.location}
-              subtitle={room.warnings}
-              onPress={() => handleRoomPress(room)}
-              rightIsInteractive={false}
-              right={
-                room.timeData ? (
-                  <View style={styles.timeInfo}>
-                    <ThemedText style={styles.timeText}>{formatAvailability(room.timeData, referenceNow, now, t)}</ThemedText>
-                    <ThemedText type="caption" style={{ color: tintColor }}>
-                      {t('roomsList.eventsCount', { count: room.roomEvents?.length || 0 })}
-                    </ThemedText>
-                  </View>
-                ) : undefined
-              }
-            />
-          </Fragment>
-        ))}
+        {availableRooms.map((room, index) => {
+          // `right` is folded inside Row's own accessible touchable (rightIsInteractive={false}),
+          // so without an explicit label here, Row's default (title + subtitle only) would drop
+          // the availability countdown and event count entirely from what VoiceOver announces.
+          const availabilityText = room.timeData ? formatAvailability(room.timeData, referenceNow, now, t) : '';
+          const eventsText = room.timeData ? t('roomsList.eventsCount', { count: room.roomEvents?.length || 0 }) : '';
+          const accessibilityLabel = [room.location, room.warnings, availabilityText, eventsText]
+            .filter(Boolean)
+            .join(', ');
+
+          return (
+            <Fragment key={`${room.location}-${index}`}>
+              {index > 0 && <CardSeparator />}
+              <Row
+                title={room.location}
+                subtitle={room.warnings}
+                onPress={() => handleRoomPress(room)}
+                rightIsInteractive={false}
+                accessibilityLabel={accessibilityLabel}
+                right={
+                  room.timeData ? (
+                    <View style={styles.timeInfo}>
+                      <ThemedText style={styles.timeText}>{availabilityText}</ThemedText>
+                      <ThemedText type="caption" style={{ color: tintColor }}>
+                        {eventsText}
+                      </ThemedText>
+                    </View>
+                  ) : undefined
+                }
+              />
+            </Fragment>
+          );
+        })}
       </Card>
     </ScrollView>
   );

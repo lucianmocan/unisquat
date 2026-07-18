@@ -28,6 +28,7 @@ export function Chip({ label, selected, onPress, icon }: ChipProps) {
       style={[styles.chip, { backgroundColor: selected ? tintColor : backgroundColor }]}
       onPress={handlePress}
       activeOpacity={0.7}
+      hitSlop={{ top: 6, bottom: 6 }}
       accessibilityRole="button"
       accessibilityState={{ selected }}>
       {icon}

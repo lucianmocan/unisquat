@@ -34,6 +34,7 @@ export default function PersonalizationScreen() {
             <Switch
               value={settings.autoCollapseSearchFilters}
               onValueChange={(value) => updateSetting('autoCollapseSearchFilters', value)}
+              accessibilityLabel={t('personalizationScreen.autoCollapseSearch')}
             />
           }
         />
@@ -46,6 +47,7 @@ export default function PersonalizationScreen() {
             <Switch
               value={settings.autoCollapseDepartmentFilters}
               onValueChange={(value) => updateSetting('autoCollapseDepartmentFilters', value)}
+              accessibilityLabel={t('personalizationScreen.autoCollapseBuilding')}
             />
           }
         />
@@ -61,6 +63,7 @@ export default function PersonalizationScreen() {
             <Switch
               value={settings.hapticsEnabled}
               onValueChange={(value) => updateSetting('hapticsEnabled', value)}
+              accessibilityLabel={t('personalizationScreen.hapticFeedback')}
             />
           }
         />

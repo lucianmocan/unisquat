@@ -83,7 +83,9 @@
     "feedback": "Feedback",
     "feedbackSubtitle": "Raportează o problemă sau sugerează o idee pe GitHub",
     "viewSource": "Vezi codul sursă",
-    "viewSourceSubtitle": "Explorează codul pe GitHub"
+    "viewSourceSubtitle": "Explorează codul pe GitHub",
+    "accessibility": "Accesibilitate",
+    "accessibilitySubtitle": "Opțiuni de text"
   },
   "languageScreen": {
     "systemDefault": "Implicit sistem",
@@ -123,5 +125,18 @@
   },
   "legalScreen": {
     "englishOnlyNotice": "Acest document este disponibil doar în limba engleză."
+  },
+  "accessibilityScreen": {
+    "boldText": "Text îngroșat",
+    "boldTextSubtitle": "Face textul mai gros și mai ușor de citit",
+    "footnote": "Textul îngroșat se activează automat și dacă este activat în setările de accesibilitate ale dispozitivului tău.",
+    "textSection": "Text",
+    "dyslexiaFont": "Font pentru dislexie",
+    "dyslexiaFontSubtitle": "Folosește OpenDyslexic, un font conceput pentru o citire mai ușoară",
+    "textSize": "Dimensiunea textului",
+    "fontSizeSmall": "Mic",
+    "fontSizeDefault": "Implicit",
+    "fontSizeLarge": "Mare",
+    "fontSizeExtraLarge": "Foarte mare"
   }
 }

@@ -7,18 +7,25 @@ import {
 } from "expo-router/unstable-native-tabs";
 import { useTranslation } from "react-i18next";
 
+import { useSettings } from "@/contexts/SettingsContext";
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { dyslexiaFontFamily } from "@/utils/dyslexia-font";
 
 // Real native tab bar (UITabBarController / Material Tabs) — gets iOS 26's Liquid Glass
 // automatically, falls back to the classic tab bar on iOS 18 and earlier, for free.
 export default function TabLayout() {
   const { t } = useTranslation();
+  const { settings } = useSettings();
   // Also picks up the user's chosen accent color (Personalization settings) and — unlike the
   // hardcoded light-mode value this replaced — the correct dark-mode variant too.
   const tintColor = useThemeColor({}, "tint");
+  const labelFontFamily = dyslexiaFontFamily(settings.dyslexiaFont);
 
   return (
-    <NativeTabs tintColor={tintColor}>
+    <NativeTabs
+      tintColor={tintColor}
+      labelStyle={labelFontFamily ? { fontFamily: labelFontFamily } : undefined}
+    >
       <NativeTabs.Trigger name="study">
         <Icon
           sf="magnifyingglass"

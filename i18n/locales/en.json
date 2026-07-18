@@ -81,7 +81,9 @@
     "feedback": "Feedback",
     "feedbackSubtitle": "Report a bug or suggest an idea on GitHub",
     "viewSource": "View Source",
-    "viewSourceSubtitle": "Browse the code on GitHub"
+    "viewSourceSubtitle": "Browse the code on GitHub",
+    "accessibility": "Accessibility",
+    "accessibilitySubtitle": "Text options"
   },
   "languageScreen": {
     "systemDefault": "System Default",
@@ -121,5 +123,18 @@
   },
   "legalScreen": {
     "englishOnlyNotice": "This document is only available in English."
+  },
+  "accessibilityScreen": {
+    "boldText": "Bold Text",
+    "boldTextSubtitle": "Make text heavier and easier to read",
+    "footnote": "Bold Text also turns on automatically if enabled in your device's own Accessibility settings.",
+    "textSection": "Text",
+    "dyslexiaFont": "Dyslexia-Friendly Font",
+    "dyslexiaFontSubtitle": "Use OpenDyslexic, a typeface designed for easier reading",
+    "textSize": "Text Size",
+    "fontSizeSmall": "Small",
+    "fontSizeDefault": "Default",
+    "fontSizeLarge": "Large",
+    "fontSizeExtraLarge": "Extra Large"
   }
 }

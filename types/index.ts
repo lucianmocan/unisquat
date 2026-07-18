@@ -46,4 +46,8 @@ export type AppSettings = {
   hapticsEnabled: boolean;
   accentColor: AccentColorKey;
   language: LanguageCode | 'system';
+  boldText: boolean;
+  dyslexiaFont: boolean;
+  /** Multiplies every ThemedText size/line-height — see components/themed-text.tsx. */
+  fontScale: number;
 };
