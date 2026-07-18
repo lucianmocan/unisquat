@@ -1,1148 +1,1743 @@
 [
-    {
-        "name": "UFR de Mathématiques-Informatique",
-        "id": 30626,
-        "isFavorite": false,
-        "roomLabels": {
-            "amphi": "Amphithéatres",
-            "td": "Salles de Cours - TD",
-            "tp": "Salles de TP",
-            "sem-irma": "Salles de Séminaires - réunions IRMA",
-            "sem-mai": "Salles de Séminaires - réunions MAI",
-            "specif": "Salles spécifiques"
-        },
-        "roomNames" : {
-            "amphi" : [
-                "GAM : Grand Amphi MAI Frenkel",
-                "PAM : Petit Amphi MAI"
-            ],
-            "td" : [
-                "Algéco 4 (Ex R12 Zool)",
-                "Algéco 5",
-                "Algéco 6",
-                "C01 MAI",
-                "C02 MAI",
-                "C03 MAI",
-                "C04 MAI",
-                "C05 MAI",
-                "C06 MAI",
-                "C07 MAI",
-                "C08 MAI",
-                "C09 MAI",
-                "C13 MAI (MPA)",
-                "C14 MAI",
-                "C15 MAI",
-                "C31 MAI",
-                "C32 MAI",
-                "C33 MAI (DUAS)",
-                "C41 MAI",
-                "C42 MAI",
-                "C43 MAI",
-                "C44 MAI"
-            ],
-            "tp" : [
-                "T01 MAI",
-                "T02 MAI",
-                "T03 MAI",
-                "T04 MAI",
-                "T05 MAI (réseaux)",
-                "T11 MAI",
-                "T20 MAI",
-                "T21 MAI",
-                "T22 MAI",
-                "T23 MAI",
-                "T24 MAI"
-            ],
-            "sem-irma" : [
-                "I-011 (R.D.C. I.R.E.M.)"
-            ],
-            "sem-mai" : [
-                "S.112B",
-                "S.301 : salle du conseil Math-Info",
-                "S.309",
-                "S.317"
-            ],
-            "specif" : [
-                "S.127 salle à part Mission Handicap",
-                "S.128",
-                "Salle de Khölles"
-            ]
-        }
+  {
+    "name": "UFR de Mathématiques-Informatique",
+    "id": 30626,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphithéatres",
+      "td": "Salles de Cours - TD",
+      "tp": "Salles de TP",
+      "sem-irma": "Salles de Séminaires - réunions IRMA",
+      "sem-mai": "Salles de Séminaires - réunions MAI",
+      "specif": "Salles spécifiques"
     },
-    {
-            "name": "EOST (Descartes) - École et Observatoire des Sciences de la Terre",
-            "id": 30773,
-            "isFavorite": false,
-            "roomLabels": {
-                "amphi" : "Amphithéatres",
-                "specif" : "Salles spécifiques"
-            },
-            "roomNames" : {
-                "amphi" : [
-                    "Amphi Rothé"
-                ],
-                "specif" : [
-                    "Salle R02"
-                ]
-            }
-    },
-    {
-        "name": "Atrium",
-        "id": 5208,
-        "isFavorite": false,
-        "roomLabels": {
-            "amphi" : "Amphithéatres",
-            "media" : "Salles multimédia",
-            "hall" : "Hall"
-        },
-        "roomNames" : {
-            "amphi" : [
-                "AMPHI AT8 ATRIUM",
-                "AMPHI AT9 ATRIUM"
-            ],
-            "media" : [
-                "ATRIUM AT2",
-                "ATRIUM AT3",
-                "ATRIUM AT4"
-            ],
-            "hall" : [
-                "HALL ATRIUM"
-            ]
-        }
-    },
-    {
-        "name": "Faculté de Chimie",
-        "id": 30631,
-        "isFavorite": false,
-        "roomLabels": {
-                "amphi": "Amphitéatres",
-                "tp": "Salles de TP",
-                "info": "Salles informatiques",
-                "td-meet": "Salles de cours & de réunions",
-                "cafet": "Cafétéria"
-        },
-        "roomNames" : {
-            "amphi" : [
-                "Amphi Fischer",
-                "Amphi GUY OURISSON",
-                "Amphi Muller"
-            ],
-            "tp" : [
-                "TP 1er Nord de Synthèse Organique-Inorganique",
-                "TP 1er Sud de Synthèse Organique",
-                "TP 2ème Nord de Préparation à l'Agrégation",
-                "TP 2ème Sud de Synthèse Organique-Inorganique, Chimie Physique",
-                "TP 3ème Nord de Synthèse Organique-Inorganique,Chimie Physique",
-                "TP 3ème Sud de Chimie",
-                "TP 4ème Nord de Chimie Analytique",
-                "TP 4ème Sud de Chimie-Physique"
-            ],
-            "info" : [
-                "Salle Info 401N",
-                "Salle Info 401S",
-                "Salle Info 402N"
-            ],
-            "td-meet" : [
-                "Salle du Conseil - rdc sud",
-                "Salle des Séminaires - rdc sud",
-                "Salle Schutzenberger",
-                "Salle Gerhardt",
-                "Salle des Examens",
-                "Salle Master",
-                "C.A.V. 1",
-                "C.A.V. 2",
-                "Salle Kern",
-                "S27 Agrégation Chimie"
-            ],
-            "cafet" : [
-                "Cafétéria"
-            ]
-        }
-    },
-    {
-        "name": "Escarpe",
-        "id": 336,
-        "isFavorite": false,
-        "roomLabels" : {
-            "amphi" : "Amphitéatres",
-            "cuej" : "CUEJ",
-            "fedrech" : "Fédération de Recherche",
-            "other" : "Autres"
-        },
-        "roomNames" : {
-            "amphi" : [
-                "A. Hélène Sinay (Ex.AMPHI 29 -ESCARPE)",
-                "A.ORTSCHEIDT (ESCARPE)",
-                "AMPHI 23 (ESCARPE)",
-                "AMPHI 24 (ESCARPE)"
-            ],
-            "cuej" : [
-                "CENTRE DOC",
-                "HORS CUEJ",
-                "S. BOCAL",
-                "S.204",
-                "S.205",
-                "S.206",
-                "S.207",
-                "S.210",
-                "S.211",
-                "S.229 / S.230",
-                "S.232 Mixage",
-                "S.233 Mixage",
-                "S.234-235 TV Std-Rég-1",
-                "S.238",
-                "S.239 Netia",
-                "S.241-242 Radio Std-Rég-2",
-                "S.243-244 Radio Std-Rég-1",
-                "S.245 Radio Montage 1",
-                "S.330"
-            ],
-            "fedrech" : [
-                "S.313 (ESCARPE)"
-            ],
-            "other" : [
-                "BIBLIOTHEQUE DE L'ESCARPE",
-                "HALL  (ESCARPE)",
-                "S.0017 (ESCARPE)",
-                "S.0019 (ESCARPE)",
-                "S.0027 (ESCARPE)",
-                "S.339 (ESCARPE)",
-                "S.409",
-                "S.420",
-                "Salle Master Arts Visuels"
-            ]
-        }
-    },
-    {
-        "name": "Faculté de Droit",
-        "id": 304,
-        "isFavorite": false,
-        "roomLabels" : {
-            "amphis" : "Amphitéathres",
-            "cours" : "Salles de cours",
-            "meet" : "Salles de réunion",
-            "other" : "Salles divers",
-            "info" : "Salles informatiques"
-        },
-        "roomNames" : {
-            "amphis" : [
-                "1. Carré de Malberg",
-                "2. Aubry et Rau",
-                "3. Eisenmann",
-                "4. Bischoff"
-            ],
-            "cours" : [
-                "001",
-                "002",
-                "302",
-                "303 (LP)",
-                "304 (LP)",
-                "306 (mob fixe)",
-                "307",
-                "309 (mob fixe)",
-                "310 (mob fixe)",
-                "311",
-                "312",
-                "313",
-                "401 (M2)",
-                "402 (M2)",
-                "405",
-                "406",
-                "408",
-                "410 (M2)",
-                "411 (DJCE)",
-                "412 (M2)",
-                "413 (M2)"
-            ],
-            "meet" : [
-                "301",
-                "Alex Weill",
-                "Robert Redslob"
-            ],
-            "other" : [
-                "AULA"
-            ],
-            "info" : [
-                "305 (Info)"
-            ]
-        }
-    },
-    {
-        "name": "I.P.C.B",
-        "id": 30695,
-        "isFavorite": false,
-        "roomLabels" : {
-            "amphi" : "Amphitéathres",
-            "tp" : "Salles de TP"
-        },
-        "roomNames" : {
-            "amphi" : [
-                "IPCB R10 AMPHI Fred VL ÈS CONFINEMENT",
-                "IPCB R10 AMPHI Fred VL ÈS Rez-de-chaussée"
-            ],
-            "tp" : [
-                "Salle de TP 001 - Henry Duranton",
-                "Salle de TP 006 - Geneviève Lebeurier",
-                "Salle de TP 017 - Pierre Joly",
-                "Salle de TP 111 - Benoît Wurtz",
-                "Salle de TP 112 - Léon Hirth",
-                "Salle de TP 113 - Jean-Pierre Ebel",
-                "Salle de TP 114 - Jacques-Henri Weil",
-                "Salle de TP S19 - Fred Studinsky",
-                "Salle de TP S25 - Philippe Miahle",
-                "Salle de TP S26 - Paul Feltz"
-            ]
-        }
-    },
-    {
-        "name": "Institut Le Bel",
-        "id": 5188,
-        "isFavorite": false,
-        "roomLabels" : {
-            "amphi": "Amphitéathres",
-            "other": "Autres",
-            "lansad": "Pôle Lansad",
-            "enseignement" : "Salles Enseignement",
-            "meet" : "Salles de réunion",
-            "tp" : "Salles de TP"
-        },
-        "roomNames" : {
-            "amphi" : [
-                "A. Geneviève Lebeurier (EX A1 ILB)",
-                "A. Katia et Maurice Krafft (EX.A2 ILB)",
-                "A. Mathilde Brini (Ex.A4 ILB)",
-                "A. Paulette Libermann (Ex. A6 ILB)",
-                "A3 ILB",
-                "A5 ILB"
-            ],
-            "other" : [
-                "HALL LE BEL",
-                "Jardin Intérieur",
-                "SAS LE BEL",
-                "Salle Demuyinck"
-            ],
-            "lansad" : [
-                "233 H",
-                "261 H",
-                "263 H",
-                "265 H",
-                "CL-255 H",
-                "CL-257 H"
-            ],
-            "enseignement" : [
-                "001H",
-                "009H",
-                "017H",
-                "023H ILB",
-                "107H ILB",
-                "115H ILB",
-                "123H ILB",
-                "131H ILB",
-                "353H ILB",
-                "361H",
-                "369H",
-                "S/sol -101H",
-                "S/sol -103H",
-                "S/sol -105H",
-                "S/sol -109H"
-            ],
-            "meet" : [
-                "018H (salle de réunion)",
-                "028H (salle de réunion)",
-                "034H (salle de réunion)",
-                "Salle Ourisson (salle de réunion et prestige)",
-                "Salle Vivien (salle de réunion et prestige)"
-            ],
-            "tp" : [
-                "044H ILB RDC  batiment haut (ex 012H)",
-                "047H ILB RDC batiment haut (ex 017H)",
-                "061H R.de.Ch Nord ILB (ex 021H)",
-                "146H ILB (ex 154H)",
-                "147H ILB (ex 171H)",
-                "161H ILB (ex 175H)"
-            ]
-        }
-    },
-    {
-        "name": "Le Portique",
-        "id": 8824,
-        "isFavorite": false,
-        "roomLabels" : {
-            "cours" : "Salles spécifiques",
-            "music" : "Musique",
-            "info" : "Informatique",
-            "other" : "Autres"
-        },
-        "roomNames" : {
-            "cours": [
-                "POR-R 002",
-                "POR-R 008",
-                "POR-R 011",
-                "POR-R 014",
-                "POR-R 015",
-                "POR-R 017",
-                "POR-R 018",
-                "POR-R 201",
-                "POR-R 209",
-                "POR-R 210",
-                "POR-R 211",
-                "POR-R 213",
-                "POR-R 301 Salle Bernard MICHON",
-                "POR-R 303",
-                "POR-R 401",
-                "POR-R 409",
-                "POR-R 410",
-                "POR-R 411",
-                "POR-R 412",
-                "POR-R 414",
-                "POR-R 415",
-                "POR-R 416"
-            ],
-            "music": [
-                "POR-R 001 (MUSIQUE)",
-                "POR-R 010 (MUSIQUE)",
-                "POR-R 012 (MUSIQUE)"
-            ],
-            "info": [
-                "POR-R 214 (Info)"
-            ],
-            "other": [
-                "Salle d'évolution",
-                "HALL PORTIQUE"
-            ]
-        }
-    },
-    {
-        "name": "Pangloss",
-        "id": 4480,
-        "isFavorite": false,
-        "roomLabels": {
-            "other" : "Autres",
-            "lansad" : "Pôle Lansad"
-        },
-        "roomNames": {
-            "other" : [
-                "108",
-                "224.TABLE OVALE",
-                "303",
-                "Amphi Pangloss",
-                "Espace Multimedia (213)",
-                "Hall PANGLOSS",
-                "Labo de langues (215)",
-                "Madrid"
-            ],
-            "lansad" : [
-                "CL",
-                "Salle 1",
-                "Salle 2",
-                "Salle Capitaine Nemo (R05)",
-                "Salle 11",
-                "Salle 12",
-                "Salle 15",
-                "Salle Ankara (bureau des enseignants)",
-                "Salle Arsène Lupin (205)",
-                "Salle Athenes",
-                "Salle Brastislava (salle Interprétation) - (IEMT et IRIUS)",
-                "Salle Bruxelles (salle informatique - IRIUS)",
-                "Salle Budapest (salle informatique - IEMT)",
-                "Salle Carmen (212)",
-                "Salle Emma Bovary (Salle 40)",
-                "Salle Esmeralda (R04)",
-                "Salle Granada",
-                "Salle Irkoutsk",
-                "Salle Meursault (Salle 60)",
-                "Salle Milano",
-                "Salle Passau",
-                "Salle R23 (documentation)",
-                "Salle Rouletabille (210)",
-                "Salle Simone de Beauvoir",
-                "Salle Zazie (208)",
-                "Salle d'Artagnan (R03)"
-            ]
-        }
-    },
-    {
-        "name": "Ensemble Saint Georges",
-        "id": 311,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "A210",
-                "A216",
-                "A318",
-                "A324",
-                "Atelier Carto",
-                "S.115",
-                "S.116",
-                "S.118",
-                "S.201",
-                "S.209",
-                "S.211",
-                "S.212",
-                "S.213",
-                "S.215",
-                "S.316",
-                "S.317",
-                "S.319",
-                "S.320",
-                "S.321",
-                "S.323",
-                "S.416"
-            ]
-        }
-    },
-    {
-        "name": "Lycée Franco-Allemand (Ex Galileo)",
-        "id": 50,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "101",
-                "102",
-                "103",
-                "105",
-                "106",
-                "108",
-                "109",
-                "111"
-            ]
-        }
-    },
-    {
-        "name": "École de Management Strasbourg",
-        "id": 30694,
-        "isFavorite": false,
-        "roomLabels": {
-            "em-stg-bureaux": "EM Stg Bureaux",
-            "aile-b-2eme-et-3eme-etage": "Aile B 2ème et 3ème étage",
-            "em-stg-salles-amphis": "EM Stg Salles - Amphis",
-            "d-crl": "D- CRL",
-            "em-stg-salles-infos": "EM Stg Salles Infos"
-        },
-        "roomNames": {
-            "em-stg-bureaux": [
-                "D 111",
-                "D 112",
-                "D 115 bureau",
-                "D 117",
-                "D 204 bureau",
-                "D 211 - INSPIRE OBSERVATION",
-                "D 211 - INSPIRE QUALITATIF",
-                "D 211 - INSPIRE STUDIO",
-                "D 213 - INSPIRE QUANTITATIF",
-                "D 215 bureau",
-                "D 219 bureau",
-                "D 220 bureau",
-                "D 221 Bureau",
-                "D 223 Bureau",
-                "PEGE - Salle commune (sous-sol)"
-            ],
-            "aile-b-2eme-et-3eme-etage": [
-                "B 201",
-                "B 202",
-                "B 203",
-                "B 204",
-                "B 205",
-                "B 206",
-                "B 207",
-                "B 208",
-                "B 209",
-                "B 210",
-                "B 213 (EM Service Recherche)",
-                "B 214",
-                "B 215",
-                "B 217",
-                "B 218",
-                "B 219",
-                "B 301"
-            ],
-            "em-stg-salles-amphis": [
-                "B 1",
-                "B 2",
-                "B 3",
-                "B 4",
-                "B 6",
-                "B 7",
-                "B 8",
-                "B 9 Réunion",
-                "C 304",
-                "D 7",
-                "D 8",
-                "D 9",
-                "D 10",
-                "D 11",
-                "D 12",
-                "D 209",
-                "D 210",
-                "D Amphi 7",
-                "D Amphi 8",
-                "FaB Room"
-            ],
-            "d-crl": [
-                "D-CRL",
-                "D-CRL 1",
-                "D-CRL 2",
-                "D-CRL 3",
-                "D-CRL 4",
-                "D-CRL 5"
-            ],
-            "em-stg-salles-infos": [
-                "Salle info B 5",
-                "Salle info D 212",
-                "Salle info D 224"
-            ]
-        }
-    },
-    {
-        "name": "Faculté des Sciences Économiques et de Gestion",
-        "id": 96,
-        "isFavorite": false,
-        "roomLabels": {
-            "fseg-amphis": "FSEG-Amphis",
-            "fseg-salles-infos": "FSEG-Salles Infos",
-            "fseg-salles-de-cours": "FSEG-Salles de cours"
-        },
-        "roomNames": {
-            "fseg-amphis": [
-                "Amphi 1",
-                "Amphi 2",
-                "Amphi 3",
-                "Amphi 4",
-                "Amphi 5"
-            ],
-            "fseg-salles-infos": [
-                "Salle info - A 309",
-                "Salle Info - B -1",
-                "Salle Info - B -3",
-                "Salle Info - B -4"
-            ],
-            "fseg-salles-de-cours": [
-                "A 015",
-                "A 016",
-                "A 017",
-                "A 018",
-                "A 019",
-                "A 020",
-                "A 021",
-                "A 022",
-                "A 023",
-                "A 024",
-                "A 025",
-                "A 026",
-                "A 027",
-                "A 210",
-                "A 231",
-                "A 232",
-                "A 233",
-                "A 310",
-                "A 311",
-                "A 312",
-                "A 313",
-                "A 314",
-                "A 325",
-                "A 326",
-                "A 327",
-                "A 328",
-                "A 329",
-                "A 330 - Idem-Lab",
-                "A 331",
-                "A 333",
-                "A 336",
-                "B 302",
-                "B 303",
-                "B 304",
-                "B 305",
-                "B 306",
-                "B 307",
-                "B 308",
-                "B 309",
-                "B 310",
-                "B 315",
-                "B 317",
-                "B 318",
-                "C 205"
-            ]
-        }
-    },
-    {
-        "name": "Pôle Lansad",
-        "id": 11715,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "A212",
-                "A213",
-                "A214",
-                "A215",
-                "CL-A216"
-            ]
-        }
-    },
-    {
-        "name": "Salles Communes (P.E.G.E.)",
-        "id": 27,
-        "isFavorite": false,
-        "roomLabels": {
-            "salles-communes": "Salles Communes",
-            "3eme-etage": "3ème Etage"
-        },
-        "roomNames": {
-            "salles-communes": [
-                "Cour intérieure niveau -1",
-                "Cour intérieure niveau 0",
-                "PEGE - Amphithéâtre commun (sous-sol)",
-                "PEGE-Bibliothèque"
-            ],
-            "3eme-etage": [
-                "B 314 (PEGE)"
-            ]
-        }
-    },
-    {
-        "name": "Faculté de Géographie",
-        "id": 30614,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "Géo labo d'analyses 205",
-                "Géo salle 006",
-                "Géo salle 008 (ex G)",
-                "Géo salle 009",
-                "Géo salle 010 (ex P)",
-                "Géo salle 011 (ex M)",
-                "Géo salle 107 (INFO)",
-                "Géo salle 108 (INFO)",
-                "Géo salle 109 (INFO)",
-                "Géo salle 114",
-                "Géo salle 116 (ex 114)"
-            ]
-        }
-    },
-    {
-        "name": "Institut de Mécanique des Fluides et des Solides",
-        "id": 30593,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "104",
-                "Salle Info MNI1",
-                "Salle Info MNI2"
-            ]
-        }
-    },
-    {
-        "name": "INSPÉ Colmar",
-        "id": 30622,
-        "isFavorite": false,
-        "roomLabels": {
-            "gymnase": "Salles de sport",
-            "aile-joffre": "Aile Joffre",
-            "batiment-principal": "Bâtiment Principal"
-        },
-        "roomNames": {
-            "gymnase": [
-                "Gymnase"
-            ],
-            "aile-joffre": [
-                "Aile Joffre - 015 (1er etage)",
-                "Aile Joffre - 016 (1er etage)",
-                "Aile Joffre - 017 (1er etage)"
-            ],
-            "batiment-principal": [
-                ".Bureau 006",
-                ".Léonard de Vinci (RDC)",
-                "002 Sciences",
-                "003 Amphi",
-                "004",
-                "008",
-                "009",
-                "012",
-                "101 (autonomie)",
-                "102 Info",
-                "103 Info",
-                "104",
-                "110",
-                "200",
-                "201",
-                "202",
-                "203 (Salle d'autonomie)",
-                "204",
-                "205",
-                "208",
-                "209",
-                "211",
-                "212",
-                "300",
-                "300 bis",
-                "Aile Joffre - Bibliothèque",
-                "Hall/couloir",
-                "Salle d'arts Visuels",
-                "Salle de musique"
-            ]
-        }
-    },
-    {
-        "name": "Campus Cronenbourg",
-        "id": 316,
-        "isFavorite": false,
-        "roomLabels": {
-            "ecpm-enseignement": "E.C.P.M. - Enseignement",
-            "ecpm-hall-technologie": "E.C.P.M. - Hall de Technologie",
-            "ecpm-tp": "E.C.P.M. - TP",
-            "ecpm-tutorat": "E.C.P.M. - Tutorat",
-            "iphc": "I.P.H.C. - Bâtiment 26",
-            "iness": "INESS"
-        },
-        "roomNames": {
-            "ecpm-enseignement": [
-                "A Fermi",
-                "A Forestier",
-                "A Lambla",
-                "Bureau 12",
-                "LAN L1",
-                "LAN L2",
-                "LAN L3",
-                "LAN L4",
-                "LAN L5",
-                "LAN L6",
-                "MEDIAT",
-                "Plateau Examen EX01",
-                "Salle GOLDSTAUB SC1",
-                "Salle HIRN",
-                "Salle WERNER",
-                "Salle WURTZ",
-                "Salle du Conseil"
-            ],
-            "ecpm-hall-technologie": [
-                "Mise en forme TP",
-                "Salle Blanche TP"
-            ],
-            "ecpm-tp": [
-                "TP CA LB01",
-                "TP CA LB02",
-                "TP CA LB03",
-                "TP CA LB04",
-                "TP CA LB05",
-                "TP CA LB06",
-                "TP CA1 TP01 Niv0",
-                "TP CA2 TP02 Niv 0",
-                "TP GC1 RE2 Niv 0",
-                "TP GC1 TP03 Niv 0",
-                "TP GC2 TP04 Niv 0",
-                "TP O LB01 N2",
-                "TP O LB02 N2",
-                "TP O1 TP01 Niv 2",
-                "TP O2 TP02 Niv 2",
-                "TP Pol TP04 Niv 2",
-                "TP Pol TP05 Niv 2",
-                "TP Pol TP06 Niv 2",
-                "TP SMI LB01 Niv 1",
-                "TP SMI LB03 Niv 1",
-                "TP SMI LB05 Niv 1",
-                "TP SMI1 TP01 Niv1",
-                "TP SMI2 TP02 Niv 1",
-                "TP SPI 2A LB6 Niv 1",
-                "TP SPI 2A TP03 Niv 1",
-                "TP SPI 2A TP04 Niv 1",
-                "TP SPI LB08"
-            ],
-            "ecpm-tutorat": [
-                "STRAC1",
-                "STRAC2",
-                "Salle Forêt Noire",
-                "Salle REYNOLDS",
-                "Salle Vosges",
-                "Salle WIPPLER"
-            ],
-            "iphc": [
-                "Campus Cronenbourg IPHC_Salle n°130",
-                "Salle n°115c"
-            ],
-            "iness": [
-                "INESS"
-            ]
-        }
-    },
-    {
-        "name": "Athena",
-        "id": 33171,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Amphithéatres"
-        },
-        "roomNames": {
-            "salle": [
-                "Amphi Danièle Huet-Weiller (Ex. AMPHI ATHENA)"
-            ]
-        }
-    },
-    {
-        "name": "Algéco Alinéa",
-        "id": 25899,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "Algéco Alinéa (ex R13 Zool)"
-            ]
-        }
-    },
-    {
-        "name": "M.I.S.H.A.",
-        "id": 4472,
-        "isFavorite": false,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "Salle AFRIQUE",
-                "Salle AMERIQUE",
-                "Salle ANTARTIQUE",
-                "Salle ASIE",
-                "Salle EUROPE (Exposition)",
-                "Salle OCEANIE",
-                "Salle de Conférence",
-                "Salle de formation informatique",
-                "Salle des délibérations",
-                "Table-Ronde MISHA"
-            ]
-        }
+    "roomNames": {
+      "amphi": [
+        "GAM : Grand Amphi MAI Frenkel",
+        "PAM : Petit Amphi MAI"
+      ],
+      "td": [
+        "Algéco 4 (Ex R12 Zool)",
+        "Algéco 5",
+        "Algéco 6",
+        "C01 MAI",
+        "C02 MAI",
+        "C03 MAI",
+        "C04 MAI",
+        "C05 MAI",
+        "C06 MAI",
+        "C07 MAI",
+        "C08 MAI",
+        "C09 MAI",
+        "C13 MAI (MPA)",
+        "C14 MAI",
+        "C15 MAI",
+        "C31 MAI",
+        "C32 MAI",
+        "C33 MAI (DUAS)",
+        "C41 MAI",
+        "C42 MAI",
+        "C43 MAI",
+        "C44 MAI"
+      ],
+      "tp": [
+        "T01 MAI",
+        "T02 MAI",
+        "T03 MAI",
+        "T04 MAI",
+        "T05 MAI (réseaux)",
+        "T11 MAI",
+        "T20 MAI",
+        "T21 MAI",
+        "T22 MAI",
+        "T23 MAI",
+        "T24 MAI"
+      ],
+      "sem-irma": [
+        "I-011 (R.D.C. I.R.E.M.)"
+      ],
+      "sem-mai": [
+        "S.112B",
+        "S.301 : salle du conseil Math-Info",
+        "S.309",
+        "S.317"
+      ],
+      "specif": [
+        "S.127 salle à part Mission Handicap",
+        "S.128",
+        "Salle de Khölles"
+      ]
     }
-,
-    {
-        "name": "MDP Maison des Personnels",
-        "id": 39466,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "Salle 1-01 sans postes informatique FC",
-                "Salle 1-03  postes informatique FC",
-                "Salle 1-05  postes informatique FC"
-            ]
-        },
-        "isFavorite": false
+  },
+  {
+    "name": "EOST (Descartes) - École et Observatoire des Sciences de la Terre",
+    "id": 30773,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphithéatres",
+      "specif": "Salles spécifiques"
     },
-    {
-        "name": "Patio",
-        "id": 4484,
-        "roomLabels": {
-            "amphi": "Amphithéatres",
-            "lansad": "Pôle Lansad",
-            "meet": "Salles de réunion",
-            "info": "Salles informatiques",
-            "other": "Autres"
-        },
-        "roomNames": {
-            "amphi": [
-                "A. Irène Melikoff (Ex Amphi 4 PATIO2)",
-                "AMPHI 3 PATIO2",
-                "AMPHI 5 PATIO2",
-                "AMPHI 6 PATIO2",
-                "AMPHI Cavailles",
-                "AMPHI Sébastien-Brant (ex AMPHI 2 ) PATIO2"
-            ],
-            "lansad": [
-                "Salle 5205 PATIO5",
-                "Salle 5206 PATIO5",
-                "Salle 5208 PATIO5",
-                "Salle 5228-29 PATIO5",
-                "Salle 5231 PATIO5",
-                "Salle 5233 PATIO5",
-                "Salle 5235 PATIO5",
-                "Salle 5236 PATIO5"
-            ],
-            "meet": [
-                "Salle Répétition",
-                "Salle 1106",
-                "Salle 1108",
-                "Salle de réunion 4202"
-            ],
-            "info": [
-                "Salle 3210 Informatique PATIO3",
-                "Salle 3211 Informatique PATIO3",
-                "Salle 4S04 Informatique PATIO4",
-                "Salle 4S05 PIX",
-                "Salle 5103 Informatique (réservée Master CAWEB)",
-                "Salle 5107 Informatique PATIO5"
-            ],
-            "other": [
-                "Bib 4304PATIO4",
-                "Bib 4313 PATIO4",
-                "Bib 4316 PATIO4",
-                "Bureau études hongroises",
-                "HALL DU PATIO",
-                "Salle 1107 PATIO1",
-                "Salle 3201 PATIO3",
-                "Salle 3202 PATIO3",
-                "Salle 3203 PATIO3",
-                "Salle 3204 PATIO3",
-                "Salle 3206 PATIO3",
-                "Salle 3208 PATIO3",
-                "Salle 3209 PATIO3",
-                "Salle 3213 PATIO3",
-                "Salle 3215 PATIO3",
-                "Salle 3218 PATIO3",
-                "Salle 3220 PATIO3",
-                "Salle 3R-E01",
-                "Salle 3R-E02",
-                "Salle 3R-E03",
-                "Salle 3R-E04",
-                "Salle 3R-E05",
-                "Salle 4103 PATIO4",
-                "Salle 4113 PATIO4",
-                "Salle 4213 PATIO4",
-                "Salle 4305 PATIO4",
-                "Salle 4307 PATIO4",
-                "Salle 4402 PATIO4",
-                "Salle 4406 PATIO4",
-                "Salle 4416/18 PATIO4",
-                "Salle 4419 PATIO4",
-                "Salle 4R-01 PATIO4",
-                "Salle 4R-02 PATIO4",
-                "Salle 4R-06 PATIO4",
-                "Salle 4R-07 PATIO4",
-                "Salle 4ss03 PATIO4",
-                "Salle 4ss06 PATIO4",
-                "Salle 5102 PATIO5",
-                "Salle 5109 PATIO5",
-                "Salle 5110 PATIO5",
-                "Salle 5113 PATIO5 (INES)",
-                "Salle 5115-16 PATIO5 (salle non utlisable)",
-                "Salle 5118-19 PATIO5",
-                "Salle 5139 PATIO5",
-                "Salle 5144 PATIO5",
-                "Salle 5146 PATIO5",
-                "Salle 5202 PATIO5",
-                "Salle 5310 PATIO5 (INFO)",
-                "Salle 5311 PATIO5 (IDUS)",
-                "Salle 5313 PATIO5",
-                "Salle 5314 PATIO5 (REUNION)",
-                "Salle 5316 PATIO5 (URBA)",
-                "Salle 5320 PATIO5 (ETHNO)",
-                "Salle 5336 PATIO5 (priorité Faculté des Sciences Sociale)",
-                "Salle de réunion à UFR Langues 4105 PATIO4"
-            ]
-        },
-        "isFavorite": false
-    },
-    {
-        "name": "Plateforme de Biologie",
-        "id": 5333,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "PLF BIO 201",
-                "PLF BIO 205",
-                "PLF BIO COURS 109",
-                "PLF BIO CULTURE 107",
-                "PLF BIO IN VITRO 105",
-                "PLF BIO IN VIVO 101",
-                "PLF BIO INFO 112",
-                "PLF BIO INFO 114",
-                "PLF BIO MICROSCOPIE 110",
-                "PLF BIO REUNION 010",
-                "PLF BIO TRANSFERT 208",
-                "PLF BIO TRANSFERT 210"
-            ]
-        },
-        "isFavorite": false
-    },
-    {
-        "name": "Présidence",
-        "id": 10310,
-        "roomLabels": {
-            "salle": "Salles de cours"
-        },
-        "roomNames": {
-            "salle": [
-                "Amphi Alain Beretz",
-                "S.0-01",
-                "S.3-13",
-                "S.3-22"
-            ]
-        },
-        "isFavorite": false
-    },
-    {
-        "name": "Parc Esplanade",
-        "id": 33959,
-        "roomLabels": {
-            "salle": "Espaces extérieurs"
-        },
-        "roomNames": {
-            "salle": [
-                "Espace \"Terrain de foot\"",
-                "Espace Tilleuls Présidence",
-                "Espace Tilleuls UFR MAI",
-                "Espace vert Fac Droit",
-                "Façade Patio Est-Ouest",
-                "Parvis Patio",
-                "Parvis Portique",
-                "Parvis Studium",
-                "Place des Nobels"
-            ]
-        },
-        "isFavorite": false
-    },
-    {
-        "name": "Studium",
-        "id": 457,
-        "roomLabels": {
-            "autres": "Salles autres",
-            "enseignement": "Salles Enseignement",
-            "sbu": "SBU",
-            "svu": "SVU"
-        },
-        "roomNames": {
-            "autres": [
-                "3.37 (Salle de réunion)",
-                "E.02 (Urfist)",
-                "In Quarto"
-            ],
-            "enseignement": [
-                "0.12",
-                "0.14",
-                "0.16",
-                "E.14",
-                "E.16"
-            ],
-            "sbu": [
-                "E.12",
-                "E.30",
-                "E.32"
-            ],
-            "svu": [
-                "Box 1",
-                "Box 2",
-                "Box 3",
-                "Buro Asso 1",
-                "Buro Asso 2",
-                "Buro VP",
-                "Salle Handivie"
-            ]
-        },
-        "isFavorite": false
+    "roomNames": {
+      "amphi": [
+        "Amphi Rothé"
+      ],
+      "specif": [
+        "Salle R02"
+      ]
     }
+  },
+  {
+    "name": "Atrium",
+    "id": 5208,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphithéatres",
+      "media": "Salles multimédia",
+      "hall": "Hall"
+    },
+    "roomNames": {
+      "amphi": [
+        "AMPHI AT8 ATRIUM",
+        "AMPHI AT9 ATRIUM"
+      ],
+      "media": [
+        "ATRIUM AT2",
+        "ATRIUM AT3",
+        "ATRIUM AT4"
+      ],
+      "hall": [
+        "HALL ATRIUM"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Chimie",
+    "id": 30631,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphitéatres",
+      "tp": "Salles de TP",
+      "info": "Salles informatiques",
+      "td-meet": "Salles de cours & de réunions",
+      "cafet": "Cafétéria"
+    },
+    "roomNames": {
+      "amphi": [
+        "Amphi Fischer",
+        "Amphi GUY OURISSON",
+        "Amphi Muller"
+      ],
+      "tp": [
+        "TP 1er Nord de Synthèse Organique-Inorganique",
+        "TP 1er Sud de Synthèse Organique",
+        "TP 2ème Nord de Préparation à l'Agrégation",
+        "TP 2ème Sud de Synthèse Organique-Inorganique, Chimie Physique",
+        "TP 3ème Nord de Synthèse Organique-Inorganique,Chimie Physique",
+        "TP 3ème Sud de Chimie",
+        "TP 4ème Nord de Chimie Analytique",
+        "TP 4ème Sud de Chimie-Physique"
+      ],
+      "info": [
+        "Salle Info 401N",
+        "Salle Info 401S",
+        "Salle Info 402N"
+      ],
+      "td-meet": [
+        "Salle du Conseil - rdc sud",
+        "Salle des Séminaires - rdc sud",
+        "Salle Schutzenberger",
+        "Salle Gerhardt",
+        "Salle des Examens",
+        "Salle Master",
+        "C.A.V. 1",
+        "C.A.V. 2",
+        "Salle Kern",
+        "S27 Agrégation Chimie"
+      ],
+      "cafet": [
+        "Cafétéria"
+      ]
+    }
+  },
+  {
+    "name": "Escarpe",
+    "id": 336,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphitéatres",
+      "cuej": "CUEJ",
+      "fedrech": "Fédération de Recherche",
+      "other": "Autres"
+    },
+    "roomNames": {
+      "amphi": [
+        "A. Hélène Sinay (Ex.AMPHI 29 -ESCARPE)",
+        "A.ORTSCHEIDT (ESCARPE)",
+        "AMPHI 23 (ESCARPE)",
+        "AMPHI 24 (ESCARPE)"
+      ],
+      "cuej": [
+        "CENTRE DOC",
+        "HORS CUEJ",
+        "S. BOCAL",
+        "S.204",
+        "S.205",
+        "S.206",
+        "S.207",
+        "S.210",
+        "S.211",
+        "S.229 / S.230",
+        "S.232 Mixage",
+        "S.233 Mixage",
+        "S.234-235 TV Std-Rég-1",
+        "S.238",
+        "S.239 Netia",
+        "S.241-242 Radio Std-Rég-2",
+        "S.243-244 Radio Std-Rég-1",
+        "S.245 Radio Montage 1",
+        "S.330"
+      ],
+      "fedrech": [
+        "S.313 (ESCARPE)"
+      ],
+      "other": [
+        "BIBLIOTHEQUE DE L'ESCARPE",
+        "HALL  (ESCARPE)",
+        "S.0017 (ESCARPE)",
+        "S.0019 (ESCARPE)",
+        "S.0027 (ESCARPE)",
+        "S.339 (ESCARPE)",
+        "S.409",
+        "S.420",
+        "Salle Master Arts Visuels"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Droit",
+    "id": 304,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphis": "Amphitéathres",
+      "cours": "Salles de cours",
+      "meet": "Salles de réunion",
+      "other": "Salles divers",
+      "info": "Salles informatiques"
+    },
+    "roomNames": {
+      "amphis": [
+        "1. Carré de Malberg",
+        "2. Aubry et Rau",
+        "3. Eisenmann",
+        "4. Bischoff"
+      ],
+      "cours": [
+        "001",
+        "002",
+        "302",
+        "303 (LP)",
+        "304 (LP)",
+        "306 (mob fixe)",
+        "307",
+        "309 (mob fixe)",
+        "310 (mob fixe)",
+        "311",
+        "312",
+        "313",
+        "401 (M2)",
+        "402 (M2)",
+        "405",
+        "406",
+        "408",
+        "410 (M2)",
+        "411 (DJCE)",
+        "412 (M2)",
+        "413 (M2)"
+      ],
+      "meet": [
+        "301",
+        "Alex Weill",
+        "Robert Redslob"
+      ],
+      "other": [
+        "AULA"
+      ],
+      "info": [
+        "305 (Info)"
+      ]
+    }
+  },
+  {
+    "name": "I.P.C.B",
+    "id": 30695,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphitéathres",
+      "tp": "Salles de TP"
+    },
+    "roomNames": {
+      "amphi": [
+        "IPCB R10 AMPHI Fred VL ÈS CONFINEMENT",
+        "IPCB R10 AMPHI Fred VL ÈS Rez-de-chaussée"
+      ],
+      "tp": [
+        "Salle de TP 001 - Henry Duranton",
+        "Salle de TP 006 - Geneviève Lebeurier",
+        "Salle de TP 017 - Pierre Joly",
+        "Salle de TP 111 - Benoît Wurtz",
+        "Salle de TP 112 - Léon Hirth",
+        "Salle de TP 113 - Jean-Pierre Ebel",
+        "Salle de TP 114 - Jacques-Henri Weil",
+        "Salle de TP S19 - Fred Studinsky",
+        "Salle de TP S25 - Philippe Miahle",
+        "Salle de TP S26 - Paul Feltz"
+      ]
+    }
+  },
+  {
+    "name": "Institut Le Bel",
+    "id": 5188,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphi": "Amphitéathres",
+      "other": "Autres",
+      "lansad": "Pôle Lansad",
+      "enseignement": "Salles Enseignement",
+      "meet": "Salles de réunion",
+      "tp": "Salles de TP"
+    },
+    "roomNames": {
+      "amphi": [
+        "A. Geneviève Lebeurier (EX A1 ILB)",
+        "A. Katia et Maurice Krafft (EX.A2 ILB)",
+        "A. Mathilde Brini (Ex.A4 ILB)",
+        "A. Paulette Libermann (Ex. A6 ILB)",
+        "A3 ILB",
+        "A5 ILB"
+      ],
+      "other": [
+        "HALL LE BEL",
+        "Jardin Intérieur",
+        "SAS LE BEL",
+        "Salle Demuyinck"
+      ],
+      "lansad": [
+        "233 H",
+        "261 H",
+        "263 H",
+        "265 H",
+        "CL-255 H",
+        "CL-257 H"
+      ],
+      "enseignement": [
+        "001H",
+        "009H",
+        "017H",
+        "023H ILB",
+        "107H ILB",
+        "115H ILB",
+        "123H ILB",
+        "131H ILB",
+        "353H ILB",
+        "361H",
+        "369H",
+        "S/sol -101H",
+        "S/sol -103H",
+        "S/sol -105H",
+        "S/sol -109H"
+      ],
+      "meet": [
+        "018H (salle de réunion)",
+        "028H (salle de réunion)",
+        "034H (salle de réunion)",
+        "Salle Ourisson (salle de réunion et prestige)",
+        "Salle Vivien (salle de réunion et prestige)"
+      ],
+      "tp": [
+        "044H ILB RDC  batiment haut (ex 012H)",
+        "047H ILB RDC batiment haut (ex 017H)",
+        "061H R.de.Ch Nord ILB (ex 021H)",
+        "146H ILB (ex 154H)",
+        "147H ILB (ex 171H)",
+        "161H ILB (ex 175H)"
+      ]
+    }
+  },
+  {
+    "name": "Le Portique",
+    "id": 8824,
+    "isFavorite": false,
+    "roomLabels": {
+      "cours": "Salles spécifiques",
+      "music": "Musique",
+      "info": "Informatique",
+      "other": "Autres"
+    },
+    "roomNames": {
+      "cours": [
+        "POR-R 002",
+        "POR-R 008",
+        "POR-R 011",
+        "POR-R 014",
+        "POR-R 015",
+        "POR-R 017",
+        "POR-R 018",
+        "POR-R 201",
+        "POR-R 209",
+        "POR-R 210",
+        "POR-R 211",
+        "POR-R 213",
+        "POR-R 301 Salle Bernard MICHON",
+        "POR-R 303",
+        "POR-R 401",
+        "POR-R 409",
+        "POR-R 410",
+        "POR-R 411",
+        "POR-R 412",
+        "POR-R 414",
+        "POR-R 415",
+        "POR-R 416"
+      ],
+      "music": [
+        "POR-R 001 (MUSIQUE)",
+        "POR-R 010 (MUSIQUE)",
+        "POR-R 012 (MUSIQUE)"
+      ],
+      "info": [
+        "POR-R 214 (Info)"
+      ],
+      "other": [
+        "Salle d'évolution",
+        "HALL PORTIQUE"
+      ]
+    }
+  },
+  {
+    "name": "Pangloss",
+    "id": 4480,
+    "isFavorite": false,
+    "roomLabels": {
+      "other": "Autres",
+      "lansad": "Pôle Lansad"
+    },
+    "roomNames": {
+      "other": [
+        "108",
+        "224.TABLE OVALE",
+        "303",
+        "Amphi Pangloss",
+        "Espace Multimedia (213)",
+        "Hall PANGLOSS",
+        "Labo de langues (215)",
+        "Madrid"
+      ],
+      "lansad": [
+        "CL",
+        "Salle 1",
+        "Salle 2",
+        "Salle Capitaine Nemo (R05)",
+        "Salle 11",
+        "Salle 12",
+        "Salle 15",
+        "Salle Ankara (bureau des enseignants)",
+        "Salle Arsène Lupin (205)",
+        "Salle Athenes",
+        "Salle Brastislava (salle Interprétation) - (IEMT et IRIUS)",
+        "Salle Bruxelles (salle informatique - IRIUS)",
+        "Salle Budapest (salle informatique - IEMT)",
+        "Salle Carmen (212)",
+        "Salle Emma Bovary (Salle 40)",
+        "Salle Esmeralda (R04)",
+        "Salle Granada",
+        "Salle Irkoutsk",
+        "Salle Meursault (Salle 60)",
+        "Salle Milano",
+        "Salle Passau",
+        "Salle R23 (documentation)",
+        "Salle Rouletabille (210)",
+        "Salle Simone de Beauvoir",
+        "Salle Zazie (208)",
+        "Salle d'Artagnan (R03)"
+      ]
+    }
+  },
+  {
+    "name": "Ensemble Saint Georges",
+    "id": 311,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "A210",
+        "A216",
+        "A318",
+        "A324",
+        "Atelier Carto",
+        "S.115",
+        "S.116",
+        "S.118",
+        "S.201",
+        "S.209",
+        "S.211",
+        "S.212",
+        "S.213",
+        "S.215",
+        "S.316",
+        "S.317",
+        "S.319",
+        "S.320",
+        "S.321",
+        "S.323",
+        "S.416"
+      ]
+    }
+  },
+  {
+    "name": "Lycée Franco-Allemand (Ex Galileo)",
+    "id": 50,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "101",
+        "102",
+        "103",
+        "105",
+        "106",
+        "108",
+        "109",
+        "111"
+      ]
+    }
+  },
+  {
+    "name": "École de Management Strasbourg",
+    "id": 30694,
+    "isFavorite": false,
+    "roomLabels": {
+      "em-stg-bureaux": "EM Stg Bureaux",
+      "aile-b-2eme-et-3eme-etage": "Aile B 2ème et 3ème étage",
+      "em-stg-salles-amphis": "EM Stg Salles - Amphis",
+      "d-crl": "D- CRL",
+      "em-stg-salles-infos": "EM Stg Salles Infos"
+    },
+    "roomNames": {
+      "em-stg-bureaux": [
+        "D 111",
+        "D 112",
+        "D 115 bureau",
+        "D 117",
+        "D 204 bureau",
+        "D 211 - INSPIRE OBSERVATION",
+        "D 211 - INSPIRE QUALITATIF",
+        "D 211 - INSPIRE STUDIO",
+        "D 213 - INSPIRE QUANTITATIF",
+        "D 215 bureau",
+        "D 219 bureau",
+        "D 220 bureau",
+        "D 221 Bureau",
+        "D 223 Bureau",
+        "PEGE - Salle commune (sous-sol)"
+      ],
+      "aile-b-2eme-et-3eme-etage": [
+        "B 201",
+        "B 202",
+        "B 203",
+        "B 204",
+        "B 205",
+        "B 206",
+        "B 207",
+        "B 208",
+        "B 209",
+        "B 210",
+        "B 213 (EM Service Recherche)",
+        "B 214",
+        "B 215",
+        "B 217",
+        "B 218",
+        "B 219",
+        "B 301"
+      ],
+      "em-stg-salles-amphis": [
+        "B 1",
+        "B 2",
+        "B 3",
+        "B 4",
+        "B 6",
+        "B 7",
+        "B 8",
+        "B 9 Réunion",
+        "C 304",
+        "D 7",
+        "D 8",
+        "D 9",
+        "D 10",
+        "D 11",
+        "D 12",
+        "D 209",
+        "D 210",
+        "D Amphi 7",
+        "D Amphi 8",
+        "FaB Room"
+      ],
+      "d-crl": [
+        "D-CRL",
+        "D-CRL 1",
+        "D-CRL 2",
+        "D-CRL 3",
+        "D-CRL 4",
+        "D-CRL 5"
+      ],
+      "em-stg-salles-infos": [
+        "Salle info B 5",
+        "Salle info D 212",
+        "Salle info D 224"
+      ]
+    }
+  },
+  {
+    "name": "Faculté des Sciences Économiques et de Gestion",
+    "id": 96,
+    "isFavorite": false,
+    "roomLabels": {
+      "fseg-amphis": "FSEG-Amphis",
+      "fseg-salles-infos": "FSEG-Salles Infos",
+      "fseg-salles-de-cours": "FSEG-Salles de cours"
+    },
+    "roomNames": {
+      "fseg-amphis": [
+        "Amphi 1",
+        "Amphi 2",
+        "Amphi 3",
+        "Amphi 4",
+        "Amphi 5"
+      ],
+      "fseg-salles-infos": [
+        "Salle info - A 309",
+        "Salle Info - B -1",
+        "Salle Info - B -3",
+        "Salle Info - B -4"
+      ],
+      "fseg-salles-de-cours": [
+        "A 015",
+        "A 016",
+        "A 017",
+        "A 018",
+        "A 019",
+        "A 020",
+        "A 021",
+        "A 022",
+        "A 023",
+        "A 024",
+        "A 025",
+        "A 026",
+        "A 027",
+        "A 210",
+        "A 231",
+        "A 232",
+        "A 233",
+        "A 310",
+        "A 311",
+        "A 312",
+        "A 313",
+        "A 314",
+        "A 325",
+        "A 326",
+        "A 327",
+        "A 328",
+        "A 329",
+        "A 330 - Idem-Lab",
+        "A 331",
+        "A 333",
+        "A 336",
+        "B 302",
+        "B 303",
+        "B 304",
+        "B 305",
+        "B 306",
+        "B 307",
+        "B 308",
+        "B 309",
+        "B 310",
+        "B 315",
+        "B 317",
+        "B 318",
+        "C 205"
+      ]
+    }
+  },
+  {
+    "name": "Pôle Lansad",
+    "id": 11715,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "A212",
+        "A213",
+        "A214",
+        "A215",
+        "CL-A216"
+      ]
+    }
+  },
+  {
+    "name": "Salles Communes (P.E.G.E.)",
+    "id": 27,
+    "isFavorite": false,
+    "roomLabels": {
+      "salles-communes": "Salles Communes",
+      "3eme-etage": "3ème Etage"
+    },
+    "roomNames": {
+      "salles-communes": [
+        "Cour intérieure niveau -1",
+        "Cour intérieure niveau 0",
+        "PEGE - Amphithéâtre commun (sous-sol)",
+        "PEGE-Bibliothèque"
+      ],
+      "3eme-etage": [
+        "B 314 (PEGE)"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Géographie",
+    "id": 30614,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Géo labo d'analyses 205",
+        "Géo salle 006",
+        "Géo salle 008 (ex G)",
+        "Géo salle 009",
+        "Géo salle 010 (ex P)",
+        "Géo salle 011 (ex M)",
+        "Géo salle 107 (INFO)",
+        "Géo salle 108 (INFO)",
+        "Géo salle 109 (INFO)",
+        "Géo salle 114",
+        "Géo salle 116 (ex 114)"
+      ]
+    }
+  },
+  {
+    "name": "Institut de Mécanique des Fluides et des Solides",
+    "id": 30593,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "104",
+        "Salle Info MNI1",
+        "Salle Info MNI2"
+      ]
+    }
+  },
+  {
+    "name": "INSPÉ Colmar",
+    "id": 30622,
+    "isFavorite": false,
+    "roomLabels": {
+      "gymnase": "Salles de sport",
+      "aile-joffre": "Aile Joffre",
+      "batiment-principal": "Bâtiment Principal"
+    },
+    "roomNames": {
+      "gymnase": [
+        "Gymnase"
+      ],
+      "aile-joffre": [
+        "Aile Joffre - 015 (1er etage)",
+        "Aile Joffre - 016 (1er etage)",
+        "Aile Joffre - 017 (1er etage)"
+      ],
+      "batiment-principal": [
+        ".Bureau 006",
+        ".Léonard de Vinci (RDC)",
+        "002 Sciences",
+        "003 Amphi",
+        "004",
+        "008",
+        "009",
+        "012",
+        "101 (autonomie)",
+        "102 Info",
+        "103 Info",
+        "104",
+        "110",
+        "200",
+        "201",
+        "202",
+        "203 (Salle d'autonomie)",
+        "204",
+        "205",
+        "208",
+        "209",
+        "211",
+        "212",
+        "300",
+        "300 bis",
+        "Aile Joffre - Bibliothèque",
+        "Hall/couloir",
+        "Salle d'arts Visuels",
+        "Salle de musique"
+      ]
+    }
+  },
+  {
+    "name": "Campus Cronenbourg",
+    "id": 316,
+    "isFavorite": false,
+    "roomLabels": {
+      "ecpm-enseignement": "E.C.P.M. - Enseignement",
+      "ecpm-hall-technologie": "E.C.P.M. - Hall de Technologie",
+      "ecpm-tp": "E.C.P.M. - TP",
+      "ecpm-tutorat": "E.C.P.M. - Tutorat",
+      "iphc": "I.P.H.C. - Bâtiment 26",
+      "iness": "INESS"
+    },
+    "roomNames": {
+      "ecpm-enseignement": [
+        "A Fermi",
+        "A Forestier",
+        "A Lambla",
+        "Bureau 12",
+        "LAN L1",
+        "LAN L2",
+        "LAN L3",
+        "LAN L4",
+        "LAN L5",
+        "LAN L6",
+        "MEDIAT",
+        "Plateau Examen EX01",
+        "Salle GOLDSTAUB SC1",
+        "Salle HIRN",
+        "Salle WERNER",
+        "Salle WURTZ",
+        "Salle du Conseil"
+      ],
+      "ecpm-hall-technologie": [
+        "Mise en forme TP",
+        "Salle Blanche TP"
+      ],
+      "ecpm-tp": [
+        "TP CA LB01",
+        "TP CA LB02",
+        "TP CA LB03",
+        "TP CA LB04",
+        "TP CA LB05",
+        "TP CA LB06",
+        "TP CA1 TP01 Niv0",
+        "TP CA2 TP02 Niv 0",
+        "TP GC1 RE2 Niv 0",
+        "TP GC1 TP03 Niv 0",
+        "TP GC2 TP04 Niv 0",
+        "TP O LB01 N2",
+        "TP O LB02 N2",
+        "TP O1 TP01 Niv 2",
+        "TP O2 TP02 Niv 2",
+        "TP Pol TP04 Niv 2",
+        "TP Pol TP05 Niv 2",
+        "TP Pol TP06 Niv 2",
+        "TP SMI LB01 Niv 1",
+        "TP SMI LB03 Niv 1",
+        "TP SMI LB05 Niv 1",
+        "TP SMI1 TP01 Niv1",
+        "TP SMI2 TP02 Niv 1",
+        "TP SPI 2A LB6 Niv 1",
+        "TP SPI 2A TP03 Niv 1",
+        "TP SPI 2A TP04 Niv 1",
+        "TP SPI LB08"
+      ],
+      "ecpm-tutorat": [
+        "STRAC1",
+        "STRAC2",
+        "Salle Forêt Noire",
+        "Salle REYNOLDS",
+        "Salle Vosges",
+        "Salle WIPPLER"
+      ],
+      "iphc": [
+        "Campus Cronenbourg IPHC_Salle n°130",
+        "Salle n°115c"
+      ],
+      "iness": [
+        "INESS"
+      ]
+    }
+  },
+  {
+    "name": "Athena",
+    "id": 33171,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Amphithéatres"
+    },
+    "roomNames": {
+      "salle": [
+        "Amphi Danièle Huet-Weiller (Ex. AMPHI ATHENA)"
+      ]
+    }
+  },
+  {
+    "name": "Algéco Alinéa",
+    "id": 25899,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Algéco Alinéa (ex R13 Zool)"
+      ]
+    }
+  },
+  {
+    "name": "M.I.S.H.A.",
+    "id": 4472,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Salle AFRIQUE",
+        "Salle AMERIQUE",
+        "Salle ANTARTIQUE",
+        "Salle ASIE",
+        "Salle EUROPE (Exposition)",
+        "Salle OCEANIE",
+        "Salle de Conférence",
+        "Salle de formation informatique",
+        "Salle des délibérations",
+        "Table-Ronde MISHA"
+      ]
+    }
+  },
+  {
+    "name": "MDP Maison des Personnels",
+    "id": 39466,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Salle 1-01 sans postes informatique FC",
+        "Salle 1-03  postes informatique FC",
+        "Salle 1-05  postes informatique FC"
+      ]
+    },
+    "isFavorite": false
+  },
+  {
+    "name": "Patio",
+    "id": 4484,
+    "roomLabels": {
+      "amphi": "Amphithéatres",
+      "lansad": "Pôle Lansad",
+      "meet": "Salles de réunion",
+      "info": "Salles informatiques",
+      "other": "Autres"
+    },
+    "roomNames": {
+      "amphi": [
+        "A. Irène Melikoff (Ex Amphi 4 PATIO2)",
+        "AMPHI 3 PATIO2",
+        "AMPHI 5 PATIO2",
+        "AMPHI 6 PATIO2",
+        "AMPHI Cavailles",
+        "AMPHI Sébastien-Brant (ex AMPHI 2 ) PATIO2"
+      ],
+      "lansad": [
+        "Salle 5205 PATIO5",
+        "Salle 5206 PATIO5",
+        "Salle 5208 PATIO5",
+        "Salle 5228-29 PATIO5",
+        "Salle 5231 PATIO5",
+        "Salle 5233 PATIO5",
+        "Salle 5235 PATIO5",
+        "Salle 5236 PATIO5"
+      ],
+      "meet": [
+        "Salle Répétition",
+        "Salle 1106",
+        "Salle 1108",
+        "Salle de réunion 4202"
+      ],
+      "info": [
+        "Salle 3210 Informatique PATIO3",
+        "Salle 3211 Informatique PATIO3",
+        "Salle 4S04 Informatique PATIO4",
+        "Salle 4S05 PIX",
+        "Salle 5103 Informatique (réservée Master CAWEB)",
+        "Salle 5107 Informatique PATIO5"
+      ],
+      "other": [
+        "Bib 4304PATIO4",
+        "Bib 4313 PATIO4",
+        "Bib 4316 PATIO4",
+        "Bureau études hongroises",
+        "HALL DU PATIO",
+        "Salle 1107 PATIO1",
+        "Salle 3201 PATIO3",
+        "Salle 3202 PATIO3",
+        "Salle 3203 PATIO3",
+        "Salle 3204 PATIO3",
+        "Salle 3206 PATIO3",
+        "Salle 3208 PATIO3",
+        "Salle 3209 PATIO3",
+        "Salle 3213 PATIO3",
+        "Salle 3215 PATIO3",
+        "Salle 3218 PATIO3",
+        "Salle 3220 PATIO3",
+        "Salle 3R-E01",
+        "Salle 3R-E02",
+        "Salle 3R-E03",
+        "Salle 3R-E04",
+        "Salle 3R-E05",
+        "Salle 4103 PATIO4",
+        "Salle 4113 PATIO4",
+        "Salle 4213 PATIO4",
+        "Salle 4305 PATIO4",
+        "Salle 4307 PATIO4",
+        "Salle 4402 PATIO4",
+        "Salle 4406 PATIO4",
+        "Salle 4416/18 PATIO4",
+        "Salle 4419 PATIO4",
+        "Salle 4R-01 PATIO4",
+        "Salle 4R-02 PATIO4",
+        "Salle 4R-06 PATIO4",
+        "Salle 4R-07 PATIO4",
+        "Salle 4ss03 PATIO4",
+        "Salle 4ss06 PATIO4",
+        "Salle 5102 PATIO5",
+        "Salle 5109 PATIO5",
+        "Salle 5110 PATIO5",
+        "Salle 5113 PATIO5 (INES)",
+        "Salle 5115-16 PATIO5 (salle non utlisable)",
+        "Salle 5118-19 PATIO5",
+        "Salle 5139 PATIO5",
+        "Salle 5144 PATIO5",
+        "Salle 5146 PATIO5",
+        "Salle 5202 PATIO5",
+        "Salle 5310 PATIO5 (INFO)",
+        "Salle 5311 PATIO5 (IDUS)",
+        "Salle 5313 PATIO5",
+        "Salle 5314 PATIO5 (REUNION)",
+        "Salle 5316 PATIO5 (URBA)",
+        "Salle 5320 PATIO5 (ETHNO)",
+        "Salle 5336 PATIO5 (priorité Faculté des Sciences Sociale)",
+        "Salle de réunion à UFR Langues 4105 PATIO4"
+      ]
+    },
+    "isFavorite": false
+  },
+  {
+    "name": "Plateforme de Biologie",
+    "id": 5333,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "PLF BIO 201",
+        "PLF BIO 205",
+        "PLF BIO COURS 109",
+        "PLF BIO CULTURE 107",
+        "PLF BIO IN VITRO 105",
+        "PLF BIO IN VIVO 101",
+        "PLF BIO INFO 112",
+        "PLF BIO INFO 114",
+        "PLF BIO MICROSCOPIE 110",
+        "PLF BIO REUNION 010",
+        "PLF BIO TRANSFERT 208",
+        "PLF BIO TRANSFERT 210"
+      ]
+    },
+    "isFavorite": false
+  },
+  {
+    "name": "Présidence",
+    "id": 10310,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Amphi Alain Beretz",
+        "S.0-01",
+        "S.3-13",
+        "S.3-22"
+      ]
+    },
+    "isFavorite": false
+  },
+  {
+    "name": "Parc Esplanade",
+    "id": 33959,
+    "roomLabels": {
+      "salle": "Espaces extérieurs"
+    },
+    "roomNames": {
+      "salle": [
+        "Espace \"Terrain de foot\"",
+        "Espace Tilleuls Présidence",
+        "Espace Tilleuls UFR MAI",
+        "Espace vert Fac Droit",
+        "Façade Patio Est-Ouest",
+        "Parvis Patio",
+        "Parvis Portique",
+        "Parvis Studium",
+        "Place des Nobels"
+      ]
+    },
+    "isFavorite": false
+  },
+  {
+    "name": "Studium",
+    "id": 457,
+    "roomLabels": {
+      "autres": "Salles autres",
+      "enseignement": "Salles Enseignement",
+      "sbu": "SBU",
+      "svu": "SVU"
+    },
+    "roomNames": {
+      "autres": [
+        "3.37 (Salle de réunion)",
+        "E.02 (Urfist)",
+        "In Quarto"
+      ],
+      "enseignement": [
+        "0.12",
+        "0.14",
+        "0.16",
+        "E.14",
+        "E.16"
+      ],
+      "sbu": [
+        "E.12",
+        "E.30",
+        "E.32"
+      ],
+      "svu": [
+        "Box 1",
+        "Box 2",
+        "Box 3",
+        "Buro Asso 1",
+        "Buro Asso 2",
+        "Buro VP",
+        "Salle Handivie"
+      ]
+    },
+    "isFavorite": false
+  },
+  {
+    "name": "IUT Haguenau",
+    "id": 30607,
+    "isFavorite": false,
+    "roomLabels": {
+      "amphis": "Amphis",
+      "autres": "Autres",
+      "com-langues": "COM & Langues",
+      "informatique": "Informatique",
+      "projet-coworking": "Projet & Coworking",
+      "salles-examens": "Salles Examens",
+      "salles-de-reunion": "Salles de réunion",
+      "td": "TD",
+      "tp-audiovisuel-art": "TP Audiovisuel & Art",
+      "tp-auto-reseau": "TP Auto & Réseau",
+      "tp-electronique-fablab": "TP Electronique & Fablab",
+      "tp-electrotechnique": "TP Electrotechnique",
+      "tp-lean-metrologie": "TP Lean & Métrologie"
+    },
+    "roomNames": {
+      "amphis": [
+        "Amphi 1",
+        "Amphi 3",
+        "Amphi Elsa Laugel-Erny ( Ex Amphi 2)"
+      ],
+      "autres": [
+        "B0-18 Infirmerie",
+        "B0-HALL",
+        "B0TP08_Cafet"
+      ],
+      "com-langues": [
+        "B1TP01_LANG",
+        "B1TP02_LANG",
+        "B1TP06_COM"
+      ],
+      "informatique": [
+        "A1TP03_INFO",
+        "A1TP04_INFO",
+        "A1TP06_INFO",
+        "A2TP01_INFO",
+        "A2TP02_INFO",
+        "A3TP01_INFO",
+        "A3TP02_INFO",
+        "B1TP04_INFO",
+        "B1TP05_INFO"
+      ],
+      "projet-coworking": [
+        "A2-COWORK-01",
+        "A2-COWORK-02",
+        "B0TP09_APP",
+        "B1TD02_COWORK",
+        "B1TD03_COWORK",
+        "B1TP03_PROJ",
+        "B1TP07_RESS"
+      ],
+      "salles-examens": [
+        "B1TD06",
+        "Salle Examen"
+      ],
+      "salles-de-reunion": [
+        "A0-01_DIR",
+        "A0-13a_POT",
+        "A0-13b_CONS",
+        "B0-15_TECH",
+        "C1-11_GEII",
+        "C2-01_QLIO"
+      ],
+      "td": [
+        "A3TD01",
+        "B1TD01_Audio",
+        "B1TD04",
+        "B1TD05",
+        "B1TD07",
+        "B1TD08",
+        "B1TD09",
+        "B1TD10",
+        "B1TD11_6tableaux"
+      ],
+      "tp-audiovisuel-art": [
+        "A2TP03_ART",
+        "A3TP03_MONTAGE",
+        "A3TP03_PLATEAU"
+      ],
+      "tp-auto-reseau": [
+        "A2TP04_REZO",
+        "B0TP01_AU",
+        "B0TP02_AU",
+        "B0TP05_06_ROB",
+        "B0TP07_ARS"
+      ],
+      "tp-electronique-fablab": [
+        "A1-01_Fablab",
+        "A1TP01_EN",
+        "A1TP02_EN",
+        "A1TP05_EN"
+      ],
+      "tp-electrotechnique": [
+        "B0-03_Réalisation",
+        "B0-04_HABILIT",
+        "B0TP03_EP",
+        "B0TP04_ETK"
+      ],
+      "tp-lean-metrologie": [
+        "B0TP10_MET",
+        "B0TP11_Lean1",
+        "B0TP11_Lean2Ergo",
+        "B0TP11_Lean4.H"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Philosophie",
+    "id": 5166,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Amphi Gusdorf  (ex:R4)",
+        "Atelier des sciences",
+        "CDE interne",
+        "salle de cours 7 Rue de l'Université"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Psychologie",
+    "id": 30612,
+    "isFavorite": false,
+    "roomLabels": {
+      "psycho": "Salles de cours",
+      "ribot": "Pavillon Théodule Ribot"
+    },
+    "roomNames": {
+      "psycho": [
+        "112 salle",
+        "125 salle maximum 30 places",
+        "215 salle TD",
+        "226 salle de TD",
+        "229 salle TD",
+        "306 salle informatique",
+        "Amphi LAGACHE  PSYCHO",
+        "Amphi VIAUD PSYCHO",
+        "TP1 1er étage PSYCHO",
+        "TP2 1er étage PSYCHO",
+        "TP3 1er étage PSYCHO",
+        "TP4 1er étage PSYCHO"
+      ],
+      "ribot": [
+        "Dolto salle TD",
+        "Moscovici salle TD",
+        "Wallon salle TD",
+        "Warrington salle TD"
+      ]
+    }
+  },
+  {
+    "name": "EOST (Rue Blessig) - École et Observatoire des Sciences de la Terre",
+    "id": 30633,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "AMPHI 2 (rue Blessig)",
+        "AMPHI DAUBREE",
+        "S BLEUE JAUNE 145/146",
+        "SALLE  DEA 116",
+        "SALLE DESS 148",
+        "SALLE OPTIQUE 149",
+        "SALLE ORANGE 144"
+      ]
+    }
+  },
+  {
+    "name": "Institut Botanique",
+    "id": 5144,
+    "isFavorite": false,
+    "roomLabels": {
+      "botanique": "Salles de cours",
+      "lansad": "Pôle Lansad"
+    },
+    "roomNames": {
+      "botanique": [
+        "112",
+        "201",
+        "205 (Salle informatique)",
+        "214",
+        "215",
+        "217",
+        "227",
+        "406 Bureau Weil",
+        "407 salle reunion",
+        "Amphi Maresquelle",
+        "Bota R01",
+        "Bota R21",
+        "Salle Alsace (R23)",
+        "Salle de travail N1",
+        "Salle de travail N2",
+        "Salle informatique 104"
+      ],
+      "lansad": [
+        "110",
+        "CL-1",
+        "CL-2"
+      ]
+    }
+  },
+  {
+    "name": "Institut de Physique",
+    "id": 30597,
+    "isFavorite": false,
+    "roomLabels": {
+      "physique": "Salles de cours",
+      "lansad": "Pôle Lansad"
+    },
+    "roomNames": {
+      "physique": [
+        "001 (TP Physique L1)",
+        "006 (TP Electronique)",
+        "017-022 (TP Physique)",
+        "051 (Salle Projet)",
+        "052 (TP  Electronique)",
+        "062 (TP Mécanique et Matériaux )",
+        "065 (TP Construction mécanique)",
+        "101 (Info)",
+        "102 (Info)",
+        "103",
+        "105",
+        "111",
+        "112",
+        "113",
+        "114 (Info)",
+        "145 (Agora)",
+        "150",
+        "153",
+        "160",
+        "163",
+        "165 (TP L1 Sciences de la VIE)/INSTITUT PHYSIQUE",
+        "167",
+        "201",
+        "202 (réserv. CAPES)",
+        "211 (Info)",
+        "212 (Info)",
+        "214 (Info - Accès libre)",
+        "245 (Salle de Réunion)",
+        "248 (Salle du Conseil)",
+        "249",
+        "254",
+        "255",
+        "257 (Salle de Projet)",
+        "346",
+        "348-349 (TP Physique)",
+        "Amphi Carnot",
+        "Amphi Fresnel",
+        "Amphi Weiss",
+        "FabLab",
+        "Salle d'exposition (ex cryo)"
+      ],
+      "lansad": [
+        "CL-366",
+        "CL-367"
+      ]
+    }
+  },
+  {
+    "name": "Institut de Zoologie",
+    "id": 30696,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Algéco 1 devant MATHS (ex R14)",
+        "Algéco 2 devant MATHS (ex R29)",
+        "Algéco 3 devant MATHS (ex R11)",
+        "Amphi Bataillon ZOOLOGIE",
+        "R07 Rez de chaussée",
+        "S 49  sous/sol",
+        "Salle Chatton ZOOLOGIE",
+        "Salle R16",
+        "Salle R23",
+        "Salle R27",
+        "SV-20  R17"
+      ]
+    }
+  },
+  {
+    "name": "Jardin (Campus Historique)",
+    "id": 34024,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Espaces extérieurs"
+    },
+    "roomNames": {
+      "salle": [
+        "Allée centrale P.U.",
+        "Allée centrale Sismo",
+        "Parvis Fac psycho",
+        "Zone façade arrière P.U.",
+        "Zone verte Extension physique",
+        "Zone verte Transfo"
+      ]
+    }
+  },
+  {
+    "name": "Palais Universitaire",
+    "id": 4474,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours",
+      "info": "Salles Informatique"
+    },
+    "roomNames": {
+      "salle": [
+        "A.Herrade de Landsberg (Ex Amphi 119)",
+        "A.Yvonne Rockset (EX.Amphi 118)",
+        "Amphi 019",
+        "Amphi 113",
+        "Atelier gravure",
+        "Atelier Sculpture",
+        "AULA",
+        "Bureau 8 RDJ",
+        "Laboratoire Recherche Salle 1 (Master ECCA)",
+        "Laboratoire Recherche Salle 2  (Master ECCA)",
+        "Office Traiteur",
+        "Salle 3 (salle du conseil)",
+        "Salle 008",
+        "Salle 10 CFTP (BIBLIO+SECRET.)",
+        "Salle 010 rez de jardin (THC)",
+        "Salle 017",
+        "Salle 018 (Master Arts Plastiques:Théorie&Pratique)",
+        "Salle 020 rez de jardin",
+        "Salle 025",
+        "Salle 027 (Salle d'Exposition Arts)",
+        "Salle 29B salle de réunion DMG",
+        "Salle 033",
+        "Salle 037 (THC)",
+        "Salle 044",
+        "Salle 047 (THC) salle du Conseil",
+        "Salle 048",
+        "Salle 102 - HISTOIRE",
+        "Salle 103 (Master Arts Visuels)",
+        "Salle 109",
+        "Salle 112",
+        "Salle 115",
+        "Salle 116",
+        "Salle 117",
+        "Salle 120",
+        "Salle 121",
+        "Salle 122",
+        "Salle 123",
+        "Salle 124",
+        "Salle 125",
+        "Salle 127-  salle du conseil HISTOIRE",
+        "Salle combles",
+        "Salle FUSTEL (salle de réunion de prestige)",
+        "Salle PASTEUR (salle de réunion de prestige)",
+        "Salle R36 - Salle Doctorants",
+        "Salle TAULER ( THC/THP)",
+        "Salle Transfo.",
+        "Vestibule"
+      ],
+      "info": [
+        "Salle 104 Informatique",
+        "Salle 106 Informatique",
+        "Salle 129  (Salle info)"
+      ]
+    }
+  },
+  {
+    "name": "Cardo",
+    "id": 7429,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours",
+      "amphi": "Amphithéâtres",
+      "biblio": "Bibliothèque",
+      "reunion": "Réunions & Exposition",
+      "salon": "Salons de travail"
+    },
+    "roomNames": {
+      "salle": [
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "211",
+        "212",
+        "213",
+        "215",
+        "216",
+        "217",
+        "220",
+        "222"
+      ],
+      "amphi": [
+        "Amphi A",
+        "Amphi B",
+        "Amphi C",
+        "Amphi D",
+        "Amphi E",
+        "Amphi F",
+        "Amphi G",
+        "Amphi H"
+      ],
+      "biblio": [
+        "115 Salle de Formation"
+      ],
+      "reunion": [
+        "Salle de réunion 3A",
+        "Salle de réunion 3B",
+        "Salle de réunion 4A",
+        "Salle de réunion 4B",
+        "Salle Exposition 0.08"
+      ],
+      "salon": [
+        "110 Salon de travail",
+        "209 Salon de travail",
+        "214 Salon de travail",
+        "218 Salon de travail"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Chirurgie Dentaire",
+    "id": 25353,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Amphithéâtre FRANK",
+        "Amphithéâtre HAÏKEL",
+        "Amphithéâtre RUCH",
+        "Hall",
+        "Salle 405 Radio & Simulation",
+        "Salle 406",
+        "Salle 407",
+        "Salle 408",
+        "Salle de lecture",
+        "Salle de réunion",
+        "Salle de stérilisation",
+        "Salle de T.P. (ALGECO)",
+        "Salle du conseil VEDRINE",
+        "Salle Informatique",
+        "Salle Plâtres TP12",
+        "Simulateurs 1-300 - P",
+        "Simulateurs 1-301 - J",
+        "Simulateurs 201 - RDC"
+      ]
+    }
+  },
+  {
+    "name": "Faculté de Médecine (Hôpital Civil)",
+    "id": 10172,
+    "isFavorite": false,
+    "roomLabels": {
+      "psychiatrie": "Clinique Psychiatrique",
+      "forum": "Forum de Médecine",
+      "anatomie": "Institut d'Anatomie",
+      "anesthesiologie": "Institut d'Anesthésiologie",
+      "ophtalmologie": "Institut d'Ophtalmologie",
+      "dermatologie": "Institut de Dermatologie",
+      "microbiologie": "Institut de Microbiologie",
+      "biophysique_amphi": "Institut de Physique Biologique (Amphithéâtre)",
+      "biophysique_tp": "Institut de Physique Biologique (TP)",
+      "bat01_amphi": "Bâtiment 1 (Amphithéâtres)",
+      "bat01_autres": "Bâtiment 1 (Autres salles)",
+      "bat02": "Bâtiment 2",
+      "bat03": "Bâtiment 3",
+      "unisimes": "UNISIMES"
+    },
+    "roomNames": {
+      "psychiatrie": [
+        "Amphi Psychiatrie - Hôpital Civil"
+      ],
+      "forum": [
+        "Amphithéâtre 301 - Forum",
+        "Cafétéria - Forum",
+        "Salle 113 -  Forum",
+        "Salle 114 - Forum",
+        "Salle 207 - Forum",
+        "Salle 208 - Forum",
+        "Salle 209 - Forum",
+        "Salle 210 - Forum",
+        "Salle 211 - Forum",
+        "Salle 212 - Forum",
+        "Salle informatique 107 - Forum"
+      ],
+      "anatomie": [
+        "Amphi Anatomie - Hôpital Civil",
+        "Salle 14-15 A.P. - Hôpital Civil",
+        "Salle 16 A.P. - Hôpital civil",
+        "Salle 19 A.P. - Hôpital Civil",
+        "Salle 21 A.P. - Hôpital Civil",
+        "Salle 23 A.P. - Hôpital Civil",
+        "Salle d'anatomie sur le vivant 1",
+        "Salle d'anatomie sur le vivant 2",
+        "SALLE DE DISSECTION",
+        "Salle TP Anatomie - Hôpital Civil"
+      ],
+      "anesthesiologie": [
+        "Amphi Anesthésiologie - Hôpital Civil"
+      ],
+      "ophtalmologie": [
+        "Salle Ophtalmologie - Hôpital Civil"
+      ],
+      "dermatologie": [
+        "Institut de Dermatologie"
+      ],
+      "microbiologie": [
+        "Salle 112-Bactériologie",
+        "Salle 114-Bactériologie",
+        "Salle de Conférence-Bactériologie"
+      ],
+      "biophysique_amphi": [
+        "Amphi de Biophysique - Hôpital Civil"
+      ],
+      "biophysique_tp": [
+        "R11/institut Biophy",
+        "R11a/institut Biophy",
+        "R12/institut Biophy",
+        "R14/institut Biophy"
+      ],
+      "bat01_amphi": [
+        "Grand Amphi Médecine",
+        "Petit Amphi Médecine"
+      ],
+      "bat01_autres": [
+        "Parvis - Fac de médecine",
+        "Salle SS01 - Bâtiment 1"
+      ],
+      "bat02": [
+        "Bibliothèque santé  - salle de formation",
+        "HALL",
+        "MEZZANINE",
+        "Salle du conseil"
+      ],
+      "bat03": [
+        "Salle 07 - Bâtiment 3",
+        "Salle 09 - Bâtiment 3",
+        "Salle 017 - Bâtiment 3",
+        "Salle 206 - Bâtiment 3",
+        "Salle 209 - Bâtiment 3",
+        "Salle 211 - Bâtiment 3",
+        "Salle 212 - Bâtiment 3",
+        "Salle 215 - Bâtiment 3",
+        "Salle 311 (salle TD d'histologie)",
+        "Salle 406 - Bâtiment 3",
+        "Salle 413 - Bâtiment 3",
+        "Salle 419 - Bâtiment 3",
+        "Salle 425 - Bâtiment 3",
+        "Salle 528 - Bâtiment 3 (DMG du mardi au vendredi)",
+        "Salle 549 - Bâtiment 3 - yoga",
+        "Salle Simonin - Bâtiment 3"
+      ],
+      "unisimes": [
+        "Salle UNISIMES"
+      ]
+    }
+  },
+  {
+    "name": "Collège Doctoral Européen",
+    "id": 22444,
+    "isFavorite": false,
+    "roomLabels": {
+      "salle": "Salles de cours"
+    },
+    "roomNames": {
+      "salle": [
+        "Amphithéâtre CDE (Prestige)",
+        "Hall",
+        "Jardin intérieur",
+        "Office de réchauffage",
+        "Salle de réunion 0.20 (ex visio)",
+        "Salle Séminaire"
+      ]
+    }
+  }
 ]
