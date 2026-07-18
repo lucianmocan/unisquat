@@ -65,6 +65,7 @@ UniSquat reads Université de Strasbourg's own public [ADE](https://www.adecampu
 - [react-i18next](https://react.i18next.com) for internationalization
 - `AsyncStorage` for local-only persistence (favorites, personalization settings) — nothing ever leaves the device
 - Native platform components throughout: `DateTimePicker`, `SegmentedControl`, and `NativeTabs` (with iOS 26 Liquid Glass support)
+- Runs on iOS 15.1+ (iPhone 6s and newer — 2015 hardware still welcome) or Android 7.0+ (API 24)
 
 ## Getting started
 
