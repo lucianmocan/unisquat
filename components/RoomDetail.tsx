@@ -61,11 +61,14 @@ function buildRows(
     stickyHeaderIndices.push(rows.length);
     rows.push({ type: 'header', key: `header-${key}`, label: SECTION_TITLES[key], sectionKey: key });
 
-    groupEvents.forEach((event, i) => {
+    groupEvents.forEach(event => {
       if (targetIndex === null && (key === 'current' || key === 'future')) {
         targetIndex = rows.length;
       }
-      rows.push({ type: 'event', key: `${event.start}-${i}`, event, status: key });
+      // Keyed by the row's own position in the final flattened array, not a per-group index —
+      // two events sharing a start time can land at the same local index in different groups
+      // (past[2] vs future[2]), which produced duplicate keys when the key only used that index.
+      rows.push({ type: 'event', key: `event-${rows.length}`, event, status: key });
     });
   });
 

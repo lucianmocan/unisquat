@@ -22,12 +22,24 @@ export function DepartmentsProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     (async () => {
+      const seed = departmentList as unknown as Department[];
       try {
         const stored = await AsyncStorage.getItem(STORAGE_KEY);
-        setDepartments(stored ? JSON.parse(stored) : (departmentList as unknown as Department[]));
+        const persisted: Department[] = stored ? JSON.parse(stored) : [];
+        // The bundled list is the source of truth for which departments/rooms exist — a
+        // persisted-only load would silently freeze the app on whatever list was cached at
+        // first launch, ignoring every later edit to departmentList.json. Carry over only the
+        // user's own state (isFavorite) for departments that still exist; anything cached under
+        // an id no longer in the seed (e.g. a department split into several new ids) is dropped.
+        const persistedById = new Map(persisted.map(d => [d.id, d]));
+        const merged = seed.map(dept => {
+          const existing = persistedById.get(dept.id);
+          return existing ? { ...dept, isFavorite: existing.isFavorite } : dept;
+        });
+        setDepartments(merged);
       } catch (error) {
         console.error('Failed to load persisted departments:', error);
-        setDepartments(departmentList as unknown as Department[]);
+        setDepartments(seed);
       } finally {
         setIsLoaded(true);
       }

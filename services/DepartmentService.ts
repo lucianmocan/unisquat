@@ -133,32 +133,33 @@ export class DepartmentService {
         try {
           const event = new ICAL.Event(vevent);
 
-          const location = event.location;
+          const rawLocation = event.location;
           const summary = event.summary;
           const description = event.description || '';
           const startDate = event.startDate?.toJSDate();
           const endDate = event.endDate?.toJSDate();
 
-          if (location && startDate && endDate && summary) {
-            // Improved room matching - try multiple strategies
+          if (!rawLocation || !startDate || !endDate || !summary) {
+            return;
+          }
+
+          // A single VEVENT can book several rooms at once, comma-separated (e.g.
+          // "A 021,Amphi 2" or "B 310,B 315,B 318,B 306") — attribute it to each one.
+          const locations = rawLocation.split(',').map(s => s.trim()).filter(Boolean);
+
+          for (const location of locations) {
+            // Room matching: exact, case-insensitive, or one string containing the other (e.g.
+            // defined room "C42 MAI" vs a booked location of "C42 MAI (annexe)" or just "C42").
+            // Deliberately NOT matching on a "code" extracted from the location's first
+            // space-separated token (e.g. "Amphi" from "Amphi 2", or "Algéco" from "Algéco 5") —
+            // whenever several rooms share that leading word ("Amphi 1".."Amphi 5", "Algéco
+            // 4".."Algéco 6"), that check matched every one of them to whichever sibling room
+            // happened to come first in the array, silently merging all their events together.
             let room = rooms.find(r => {
-              // Exact match
               if (r.location === location) return true;
-
-              // Case-insensitive exact match
               if (r.location.toLowerCase() === location.toLowerCase()) return true;
-
-              // Partial match both ways
               if (location.toLowerCase().includes(r.location.toLowerCase()) ||
                   r.location.toLowerCase().includes(location.toLowerCase())) return true;
-
-              // Extract room code (e.g., "C42" from "C42 MAI")
-              const locationCode = location.split(' ')[0];
-              if (r.location === locationCode || r.location.toLowerCase() === locationCode.toLowerCase()) return true;
-
-              // Try with room prefixes (T, C, etc.)
-              if (locationCode && r.location.includes(locationCode)) return true;
-
               return false;
             });
 

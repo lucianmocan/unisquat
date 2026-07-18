@@ -447,5 +447,251 @@
                 "Salle d'Artagnan (R03)"
             ]
         }
+    },
+    {
+        "name": "ENSEMBLE SAINT GEORGES",
+        "id": 311,
+        "isFavorite": false,
+        "roomLabels": {
+            "salle": "Salles de cours"
+        },
+        "roomNames": {
+            "salle": [
+                "A210",
+                "A216",
+                "A318",
+                "A324",
+                "Atelier Carto",
+                "S.115",
+                "S.116",
+                "S.118",
+                "S.201",
+                "S.209",
+                "S.211",
+                "S.212",
+                "S.213",
+                "S.215",
+                "S.316",
+                "S.317",
+                "S.319",
+                "S.320",
+                "S.321",
+                "S.323",
+                "S.416"
+            ]
+        }
+    },
+    {
+        "name": "Lycée Franco-Allemand (Ex GALILEO)",
+        "id": 50,
+        "isFavorite": false,
+        "roomLabels": {
+            "salle": "Salles de cours"
+        },
+        "roomNames": {
+            "salle": [
+                "101",
+                "102",
+                "103",
+                "105",
+                "106",
+                "108",
+                "109",
+                "111"
+            ]
+        }
+    },
+    {
+        "name": "Ecole de Management Strasbourg",
+        "id": 30694,
+        "isFavorite": false,
+        "roomLabels": {
+            "em-stg-bureaux": "EM Stg Bureaux",
+            "aile-b-2eme-et-3eme-etage": "Aile B 2ème et 3ème étage",
+            "em-stg-salles-amphis": "EM Stg Salles - Amphis",
+            "d-crl": "D- CRL",
+            "em-stg-salles-infos": "EM Stg Salles Infos"
+        },
+        "roomNames": {
+            "em-stg-bureaux": [
+                "D 111",
+                "D 112",
+                "D 115 bureau",
+                "D 117",
+                "D 204 bureau",
+                "D 211 - INSPIRE OBSERVATION",
+                "D 211 - INSPIRE QUALITATIF",
+                "D 211 - INSPIRE STUDIO",
+                "D 213 - INSPIRE QUANTITATIF",
+                "D 215 bureau",
+                "D 219 bureau",
+                "D 220 bureau",
+                "D 221 Bureau",
+                "D 223 Bureau",
+                "PEGE - Salle commune (sous-sol)"
+            ],
+            "aile-b-2eme-et-3eme-etage": [
+                "B 201",
+                "B 202",
+                "B 203",
+                "B 204",
+                "B 205",
+                "B 206",
+                "B 207",
+                "B 208",
+                "B 209",
+                "B 210",
+                "B 213 (EM Service Recherche)",
+                "B 214",
+                "B 215",
+                "B 217",
+                "B 218",
+                "B 219",
+                "B 301"
+            ],
+            "em-stg-salles-amphis": [
+                "B 1",
+                "B 2",
+                "B 3",
+                "B 4",
+                "B 6",
+                "B 7",
+                "B 8",
+                "B 9 Réunion",
+                "C 304",
+                "D 7",
+                "D 8",
+                "D 9",
+                "D 10",
+                "D 11",
+                "D 12",
+                "D 209",
+                "D 210",
+                "D Amphi 7",
+                "D Amphi 8",
+                "FaB Room"
+            ],
+            "d-crl": [
+                "D-CRL",
+                "D-CRL 1",
+                "D-CRL 2",
+                "D-CRL 3",
+                "D-CRL 4",
+                "D-CRL 5"
+            ],
+            "em-stg-salles-infos": [
+                "Salle info B 5",
+                "Salle info D 212",
+                "Salle info D 224"
+            ]
+        }
+    },
+    {
+        "name": "Faculté des Sciences Economiques et de Gestion",
+        "id": 96,
+        "isFavorite": false,
+        "roomLabels": {
+            "fseg-amphis": "FSEG-Amphis",
+            "fseg-salles-infos": "FSEG-Salles Infos",
+            "fseg-salles-de-cours": "FSEG-Salles de cours"
+        },
+        "roomNames": {
+            "fseg-amphis": [
+                "Amphi 1",
+                "Amphi 2",
+                "Amphi 3",
+                "Amphi 4",
+                "Amphi 5"
+            ],
+            "fseg-salles-infos": [
+                "Salle info - A 309",
+                "Salle Info - B -1",
+                "Salle Info - B -3",
+                "Salle Info - B -4"
+            ],
+            "fseg-salles-de-cours": [
+                "A 015",
+                "A 016",
+                "A 017",
+                "A 018",
+                "A 019",
+                "A 020",
+                "A 021",
+                "A 022",
+                "A 023",
+                "A 024",
+                "A 025",
+                "A 026",
+                "A 027",
+                "A 210",
+                "A 231",
+                "A 232",
+                "A 233",
+                "A 310",
+                "A 311",
+                "A 312",
+                "A 313",
+                "A 314",
+                "A 325",
+                "A 326",
+                "A 327",
+                "A 328",
+                "A 329",
+                "A 330 - Idem-Lab",
+                "A 331",
+                "A 333",
+                "A 336",
+                "B 302",
+                "B 303",
+                "B 304",
+                "B 305",
+                "B 306",
+                "B 307",
+                "B 308",
+                "B 309",
+                "B 310",
+                "B 315",
+                "B 317",
+                "B 318",
+                "C 205"
+            ]
+        }
+    },
+    {
+        "name": "Pôle Lansad",
+        "id": 11715,
+        "isFavorite": false,
+        "roomLabels": {
+            "salle": "Salles de cours"
+        },
+        "roomNames": {
+            "salle": [
+                "A212",
+                "A213",
+                "A214",
+                "A215",
+                "CL-A216"
+            ]
+        }
+    },
+    {
+        "name": "Salles Communes (P.E.G.E.)",
+        "id": 27,
+        "isFavorite": false,
+        "roomLabels": {
+            "salles-communes": "Salles Communes",
+            "3eme-etage": "3ème Etage"
+        },
+        "roomNames": {
+            "salles-communes": [
+                "Cour intérieure niveau -1",
+                "Cour intérieure niveau 0",
+                "PEGE - Amphithéâtre commun (sous-sol)",
+                "PEGE-Bibliothèque"
+            ],
+            "3eme-etage": [
+                "B 314 (PEGE)"
+            ]
+        }
     }
 ]
