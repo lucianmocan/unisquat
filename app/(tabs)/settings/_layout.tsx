@@ -13,6 +13,10 @@ export default function SettingsLayout() {
         }}
       />
       <Stack.Screen name="about" options={{ title: 'About' }} />
+      <Stack.Screen
+        name="personalization"
+        options={{ title: 'Personalization', headerTransparent: Platform.OS === 'ios' }}
+      />
     </Stack>
   );
 }

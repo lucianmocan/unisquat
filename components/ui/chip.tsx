@@ -1,7 +1,7 @@
 import { ThemedText } from '@/components/themed-text';
 import { Radius, Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '@/services/haptics';
 import { ReactNode } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
@@ -19,7 +19,7 @@ export function Chip({ label, selected, onPress, icon }: ChipProps) {
   const textColor = useThemeColor({}, 'icon');
 
   const handlePress = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     onPress();
   };
 

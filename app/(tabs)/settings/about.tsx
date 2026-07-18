@@ -2,8 +2,8 @@ import { ThemedText } from '@/components/themed-text';
 import { Card } from '@/components/ui/card';
 import { Spacing } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { haptics } from '@/services/haptics';
 import { Image } from 'expo-image';
-import * as Haptics from 'expo-haptics';
 import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const CREDIT_URL = 'https://unisquat.alwaysdata.net/';
@@ -12,7 +12,7 @@ export default function AboutScreen() {
   const tintColor = useThemeColor({}, 'tint');
 
   const handleOpenCredit = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     Linking.openURL(CREDIT_URL);
   };
 

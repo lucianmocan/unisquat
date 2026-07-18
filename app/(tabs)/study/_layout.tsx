@@ -1,5 +1,5 @@
-import { Stack } from 'expo-router';
-import { Platform } from 'react-native';
+import { Stack } from "expo-router";
+import { Platform } from "react-native";
 
 export default function StudyLayout() {
   return (
@@ -7,18 +7,18 @@ export default function StudyLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: 'Squat',
+          title: "Search",
           headerLargeTitle: true,
-          headerTransparent: Platform.OS === 'ios',
+          headerTransparent: Platform.OS === "ios",
         }}
       />
       <Stack.Screen
         name="[departmentId]/index"
-        options={{ title: '', headerTransparent: Platform.OS === 'ios' }}
+        options={{ title: "", headerTransparent: Platform.OS === "ios" }}
       />
       <Stack.Screen
         name="[departmentId]/room/[roomId]"
-        options={{ title: '', headerTransparent: Platform.OS === 'ios' }}
+        options={{ title: "", headerTransparent: Platform.OS === "ios" }}
       />
     </Stack>
   );

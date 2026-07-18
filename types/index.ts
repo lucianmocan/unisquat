@@ -1,5 +1,7 @@
 // Type definitions for the app
 
+import { AccentColorKey } from '@/constants/theme';
+
 export type Department = {
   name: string;
   id: number;
@@ -31,4 +33,15 @@ export type RoomEvent = {
   departmentName: string;
   description: string;
   summary: string;
+};
+
+// User-configurable UI preferences, persisted via SettingsContext. Keep every field a plain
+// boolean/primitive (not nested objects) so a new field can be added later with just a default
+// value in SettingsContext — no migration logic needed, since loading merges persisted data over
+// fresh defaults key-by-key.
+export type AppSettings = {
+  autoCollapseSearchFilters: boolean;
+  autoCollapseDepartmentFilters: boolean;
+  hapticsEnabled: boolean;
+  accentColor: AccentColorKey;
 };

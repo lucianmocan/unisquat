@@ -2,7 +2,7 @@ import { ThemedText } from '@/components/themed-text';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Radius } from '@/constants/theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '@/services/haptics';
 import { ReactNode } from 'react';
 import { LayoutChangeEvent, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
@@ -37,11 +37,12 @@ interface RowProps {
   onPress?: () => void;
   right?: ReactNode;
   /**
-   * Set to `false` when `right` is purely informational (no touchable of its own) so the
-   * whole row — including `right` — becomes the tap target. Defaults to `true`, which keeps
-   * `right` a sibling of the tappable area rather than its child: some callers (e.g. a
-   * favorite-toggle button) put a real touchable in `right`, and nesting touchables breaks on
-   * web (invalid `<button>`-in-`<button>`) and is fragile on native.
+   * Whether `right` has a touchable of its own (e.g. a favorite-toggle button or a Switch).
+   * When `true`, `right` stays a sibling of the tappable area rather than its child — nesting
+   * touchables breaks on web (invalid `<button>`-in-`<button>`) and is fragile on native.
+   * Defaults to `!!right`: a row with no `right` at all has nothing to conflict with, so the
+   * whole row — including the trailing padding and chevron — becomes the tap target; a row
+   * that does pass `right` keeps it separate unless explicitly overridden.
    */
   rightIsInteractive?: boolean;
   showChevron?: boolean;
@@ -57,7 +58,7 @@ export function Row({
   subtitleColor,
   onPress,
   right,
-  rightIsInteractive = true,
+  rightIsInteractive = !!right,
   showChevron = !!onPress,
   titleNumberOfLines,
   accessibilityLabel,
@@ -66,7 +67,7 @@ export function Row({
 
   const handlePress = onPress
     ? () => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        haptics.impact();
         onPress();
       }
     : undefined;

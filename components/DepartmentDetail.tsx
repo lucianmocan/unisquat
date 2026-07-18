@@ -6,12 +6,13 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 import { RoomsListSkeleton } from '@/components/ui/skeleton';
 import { Radius, Spacing } from '@/constants/theme';
+import { useSettings } from '@/contexts/SettingsContext';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { DepartmentService } from '@/services/DepartmentService';
+import { haptics, NotificationFeedbackType } from '@/services/haptics';
 import { Department } from '@/types';
 import { formatShortDate, formatTime } from '@/utils/date-format';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AppState, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -42,6 +43,7 @@ export default function DepartmentDetail({
   // inspect, and ticking it forward would fight their selection.
   const [isLive, setIsLive] = useState(true);
   const insets = useSafeAreaInsets();
+  const { settings } = useSettings();
 
   const iconColor = useThemeColor({}, 'icon');
   const tintColor = useThemeColor({}, 'tint');
@@ -51,12 +53,12 @@ export default function DepartmentDetail({
   const isFilterActive = selectedFilter !== 'Toutes';
 
   const handleFavoritePress = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     onFavoriteToggle(department.id);
   }, [department.id, onFavoriteToggle]);
 
   const handleFilterToggle = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     setIsPickerVisible(prev => !prev);
   }, []);
 
@@ -111,14 +113,14 @@ export default function DepartmentDetail({
       // Only signal the outcome for an explicit refresh (pull-to-refresh, error retry) — the
       // initial silent load on screen-open shouldn't buzz the phone.
       if (force) {
-        Haptics.notificationAsync(success ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Error);
+        haptics.notification(success ? NotificationFeedbackType.Success : NotificationFeedbackType.Error);
       }
     } catch (error) {
       console.error('Error fetching department data:', error);
       setDownloadSuccess(false);
       setHasError(true);
       if (force) {
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+        haptics.notification(NotificationFeedbackType.Error);
       }
     } finally {
       setIsRefreshing(false);
@@ -142,15 +144,18 @@ export default function DepartmentDetail({
 
   const handleFilterChange = (filter: string) => {
     setSelectedFilter(filter);
+    if (settings.autoCollapseDepartmentFilters) {
+      setIsPickerVisible(false);
+    }
   };
 
   const handleOpenDatePicker = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     setShowDatePicker(true);
   };
 
   const handleOpenTimePicker = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     setShowTimePicker(true);
   };
 
@@ -163,7 +168,7 @@ export default function DepartmentDetail({
   };
 
   const handleResetToNow = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     setIsLive(true);
     setSelectedDate(new Date());
   }, []);

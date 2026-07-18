@@ -1,6 +1,7 @@
-import * as Haptics from 'expo-haptics';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useRef } from 'react';
+
+import { haptics } from '@/services/haptics';
 
 /**
  * Fires a light haptic tap whenever this screen regains focus (e.g. switching to its tab).
@@ -13,7 +14,7 @@ export function useTabHaptics() {
   useFocusEffect(
     useCallback(() => {
       if (hasMounted.current) {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        haptics.impact();
       }
       hasMounted.current = true;
     }, [])

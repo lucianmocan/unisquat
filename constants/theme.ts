@@ -5,8 +5,31 @@
 
 import { Platform } from 'react-native';
 
-// One brand accent shared by both modes.
+// One brand accent shared by both modes — the default until the user picks a different one in
+// Personalization settings (see ACCENT_COLORS below).
 const tintColor = '#6a5acd';
+
+// A curated set of accent color choices, each with a light- and dark-mode variant tuned
+// separately: a color that reads well as a filled background (with white text/icons on top) or
+// as plain text/icon color against a white surface often needs a *different*, usually brighter,
+// variant to stay legible against the near-black dark-mode background — plain "one hex for both
+// modes" doesn't hold for most hues (verified against WCAG contrast ratios; a couple of these
+// intentionally deviate from Apple's stock system colors — e.g. green/orange/teal are Apple's
+// system colors in dark mode, but darkened in light mode — because the light-mode stock values
+// don't clear ~4.5:1 contrast against white when used as a filled chip background with white text).
+export const ACCENT_COLORS = {
+  purple: { label: 'Purple', light: tintColor, dark: tintColor },
+  blue: { label: 'Blue', light: '#007AFF', dark: '#0A84FF' },
+  indigo: { label: 'Indigo', light: '#5856D6', dark: '#5E5CE6' },
+  pink: { label: 'Pink', light: '#FF2D55', dark: '#FF375F' },
+  red: { label: 'Red', light: '#FF3B30', dark: '#FF453A' },
+  orange: { label: 'Orange', light: '#C1660A', dark: '#FF9F0A' },
+  green: { label: 'Green', light: '#248A3D', dark: '#30D158' },
+  teal: { label: 'Teal', light: '#007A8C', dark: '#40C8E0' },
+} as const;
+
+export type AccentColorKey = keyof typeof ACCENT_COLORS;
+export const DEFAULT_ACCENT_COLOR: AccentColorKey = 'purple';
 
 export const Colors = {
   light: {

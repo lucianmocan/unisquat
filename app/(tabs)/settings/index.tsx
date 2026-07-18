@@ -4,8 +4,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Spacing } from '@/constants/theme';
 import { useTabHaptics } from '@/hooks/use-tab-haptics';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { haptics, NotificationFeedbackType } from '@/services/haptics';
 import { router } from 'expo-router';
-import * as Haptics from 'expo-haptics';
 import { Alert, Linking, ScrollView, StyleSheet } from 'react-native';
 
 export default function SettingsScreen() {
@@ -22,18 +22,14 @@ export default function SettingsScreen() {
     router.push('/settings/about');
   };
 
+  const handlePersonalization = () => {
+    router.push('/settings/personalization');
+  };
+
   const handleLanguage = () => {
     Alert.alert(
       'Language Settings',
       'Language selection feature coming soon!\nCurrently supporting English.',
-      [{ text: 'OK' }]
-    );
-  };
-
-  const handleTime = () => {
-    Alert.alert(
-      'Time Settings',
-      'Time configuration feature coming soon!\nCurrently using device timezone & time format.',
       [{ text: 'OK' }]
     );
   };
@@ -49,7 +45,7 @@ export default function SettingsScreen() {
     if (canOpen) {
       await Linking.openURL(url);
     } else {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      haptics.notification(NotificationFeedbackType.Warning);
       Alert.alert(
         'Unable to open email',
         `Please send your issue report to: ${email}`,
@@ -69,7 +65,7 @@ export default function SettingsScreen() {
     if (canOpen) {
       await Linking.openURL(url);
     } else {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      haptics.notification(NotificationFeedbackType.Warning);
       Alert.alert(
         'Unable to open email',
         `Please send your suggestion to: ${email}`,
@@ -106,10 +102,10 @@ export default function SettingsScreen() {
         />
         <CardSeparator />
         <Row
-          icon={<IconSymbol name="clock" size={22} color={iconColor} />}
-          title="Time"
-          subtitle="Set your time preferences"
-          onPress={handleTime}
+          icon={<IconSymbol name="paintbrush.fill" size={22} color={iconColor} />}
+          title="Personalization"
+          subtitle="Customize how the app behaves"
+          onPress={handlePersonalization}
         />
       </Card>
 

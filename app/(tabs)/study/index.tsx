@@ -1,4 +1,3 @@
-import * as Haptics from "expo-haptics";
 import { router, useNavigation } from "expo-router";
 import { Fragment, useLayoutEffect, useMemo, useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
@@ -10,8 +9,10 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Radius, Spacing } from "@/constants/theme";
 import { useDepartments } from "@/contexts/DepartmentsContext";
+import { useSettings } from "@/contexts/SettingsContext";
 import { useTabHaptics } from "@/hooks/use-tab-haptics";
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { haptics } from "@/services/haptics";
 import { Department } from "@/types";
 
 const ALL_CAMPUSES = "Tous";
@@ -24,6 +25,7 @@ export default function StudyScreen() {
   const [selectedCampus, setSelectedCampus] = useState(ALL_CAMPUSES);
   const [isCampusPickerVisible, setIsCampusPickerVisible] = useState(false);
   const { departments, toggleFavorite } = useDepartments();
+  const { settings } = useSettings();
 
   const iconColor = useThemeColor({}, "icon");
   const tintColor = useThemeColor({}, "tint");
@@ -82,23 +84,26 @@ export default function StudyScreen() {
   ]);
 
   const handleToggleFavorite = (departmentId: number) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     toggleFavorite(departmentId);
   };
 
   // Row and the campus Chip options already fire their own haptic on press.
   const toggleFavoritesFilter = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     setShowFavoritesOnly(!showFavoritesOnly);
   };
 
   const handleCampusFilterToggle = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.impact();
     setIsCampusPickerVisible((prev) => !prev);
   };
 
   const handleCampusChange = (campus: string) => {
     setSelectedCampus(campus);
+    if (settings.autoCollapseSearchFilters) {
+      setIsCampusPickerVisible(false);
+    }
   };
 
   const handleDepartmentPress = (department: Department) => {

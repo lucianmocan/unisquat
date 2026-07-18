@@ -7,6 +7,7 @@ import { useThemeColor } from '@/hooks/use-theme-color';
 import { cleanDescription } from '@/services/DepartmentService';
 import { Room, RoomEvent } from '@/types';
 import { formatShortWeekdayDate, formatTime } from '@/utils/date-format';
+import { useTheme } from '@react-navigation/native';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { FlatList, LayoutChangeEvent, Platform, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -77,8 +78,12 @@ function buildRows(
 
 export default function RoomDetail({ room, referenceDate }: RoomDetailProps) {
   const insets = useSafeAreaInsets();
-  // iOS system grouped-background gray, used behind the sticky section headers.
-  const sectionBackground = useThemeColor({ light: '#F2F2F7', dark: '#1c1c1e' }, 'background');
+  // The screen's actual root background is React Navigation's own theme (set in
+  // app/_layout.tsx), not constants/theme.ts's 'background' token — reading it straight from
+  // here keeps the sticky section headers exactly in sync with it instead of guessing a
+  // matching hex value that can drift if the navigation theme ever changes.
+  const { colors } = useTheme();
+  const sectionBackground = colors.background;
   const tintColor = useThemeColor({}, 'tint');
   const sectionHeaderColor = useThemeColor({}, 'icon');
   const textColor = useThemeColor({}, 'text');

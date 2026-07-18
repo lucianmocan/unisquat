@@ -1,6 +1,6 @@
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { haptics } from '@/services/haptics';
 import RNSegmentedControl, { type NativeSegmentedControlIOSChangeEvent } from '@react-native-segmented-control/segmented-control';
-import * as Haptics from 'expo-haptics';
 import { NativeSyntheticEvent, StyleSheet } from 'react-native';
 
 interface SegmentedControlProps {
@@ -19,7 +19,7 @@ export function SegmentedControl({ options, selectedIndex, onChange }: Segmented
       values={options}
       selectedIndex={selectedIndex}
       onChange={(event: NativeSyntheticEvent<NativeSegmentedControlIOSChangeEvent>) => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        haptics.impact();
         onChange(event.nativeEvent.selectedSegmentIndex);
       }}
       tintColor={tintColor}

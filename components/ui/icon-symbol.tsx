@@ -37,6 +37,8 @@ const MAPPING = {
   'checkmark.shield.fill': 'verified-user',
   'doc.text.fill': 'description',
   'line.3.horizontal.decrease.circle': 'filter-list',
+  'paintbrush.fill': 'brush',
+  'hand.tap.fill': 'touch-app',
   'calendar': 'event',
   'arrow.clockwise': 'refresh',
 } as IconMapping;
