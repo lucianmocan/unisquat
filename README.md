@@ -79,6 +79,10 @@ Scan the QR code with the [Expo Go](https://expo.dev/go) app on your device to r
 
 Issues and pull requests are welcome — [open one on GitHub](https://github.com/lucianmocan/unisquat/issues/new). Since this is licensed under the GPL, anything you distribute based on this code needs to stay open source too (see below).
 
+## Acknowledgements
+
+Inspired by [unisquat.alwaysdata.net](https://unisquat.alwaysdata.net/), the original UniSquat.
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 — see [LICENSE](./LICENSE) for the full text.
